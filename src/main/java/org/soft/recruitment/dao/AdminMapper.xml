@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.soft.recruitment.dao.AdminMapper" >
+  <resultMap id="BaseResultMap" type="org.soft.recruitment.model.Admin" >
+    <id column="admin_Id" property="adminId" jdbcType="INTEGER" />
+    <result column="admin_Login_Name" property="adminLoginName" jdbcType="VARCHAR" />
+    <result column="admin_Login_Password" property="adminLoginPassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    admin_Id, admin_Login_Name, admin_Login_Password
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.AdminExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where admin_Id = #{adminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin
+    where admin_Id = #{adminId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.soft.recruitment.model.AdminExample" >
+    delete from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.soft.recruitment.model.Admin" >
+    insert into admin (admin_Id, admin_Login_Name, admin_Login_Password
+      )
+    values (#{adminId,jdbcType=INTEGER}, #{adminLoginName,jdbcType=VARCHAR}, #{adminLoginPassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.soft.recruitment.model.Admin" >
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminId != null" >
+        admin_Id,
+      </if>
+      <if test="adminLoginName != null" >
+        admin_Login_Name,
+      </if>
+      <if test="adminLoginPassword != null" >
+        admin_Login_Password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="adminLoginName != null" >
+        #{adminLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminLoginPassword != null" >
+        #{adminLoginPassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.soft.recruitment.model.AdminExample" resultType="java.lang.Integer" >
+    select count(*) from admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update admin
+    <set >
+      <if test="record.adminId != null" >
+        admin_Id = #{record.adminId,jdbcType=INTEGER},
+      </if>
+      <if test="record.adminLoginName != null" >
+        admin_Login_Name = #{record.adminLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminLoginPassword != null" >
+        admin_Login_Password = #{record.adminLoginPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update admin
+    set admin_Id = #{record.adminId,jdbcType=INTEGER},
+      admin_Login_Name = #{record.adminLoginName,jdbcType=VARCHAR},
+      admin_Login_Password = #{record.adminLoginPassword,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.soft.recruitment.model.Admin" >
+    update admin
+    <set >
+      <if test="adminLoginName != null" >
+        admin_Login_Name = #{adminLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminLoginPassword != null" >
+        admin_Login_Password = #{adminLoginPassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where admin_Id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.Admin" >
+    update admin
+    set admin_Login_Name = #{adminLoginName,jdbcType=VARCHAR},
+      admin_Login_Password = #{adminLoginPassword,jdbcType=VARCHAR}
+    where admin_Id = #{adminId,jdbcType=INTEGER}
+  </update>
+  <select id="findAllAdmin" resultMap="BaseResultMap">
+  	select * from admin
+  </select>
+</mapper>

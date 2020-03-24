@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.soft.recruitment.dao.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="org.soft.recruitment.model.Company" >
+    <id column="company_Id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_Login_Name" property="companyLoginName" jdbcType="VARCHAR" />
+    <result column="company_Login_Password" property="companyLoginPassword" jdbcType="VARCHAR" />
+    <result column="company_Name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_Type" property="companyType" jdbcType="VARCHAR" />
+    <result column="company_Industry" property="companyIndustry" jdbcType="VARCHAR" />
+    <result column="company_Profile" property="companyProfile" jdbcType="VARCHAR" />
+    <result column="company_Address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="company_Web" property="companyWeb" jdbcType="VARCHAR" />
+    <result column="company_Phone" property="companyPhone" jdbcType="VARCHAR" />
+    <result column="company_Email" property="companyEmail" jdbcType="VARCHAR" />
+    <result column="company_Number" property="companyNumber" jdbcType="INTEGER" />
+    <result column="company_Owner" property="companyOwner" jdbcType="VARCHAR" />
+    <result column="company_Register_Capital" property="companyRegisterCapital" jdbcType="VARCHAR" />
+    <result column="company_Create_Time" property="companyCreateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    company_Id, company_Login_Name, company_Login_Password, company_Name, company_Type, 
+    company_Industry, company_Profile, company_Address, company_Web, company_Phone, company_Email, 
+    company_Number, company_Owner, company_Register_Capital, company_Create_Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.CompanyExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_Id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from company
+    where company_Id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.soft.recruitment.model.CompanyExample" >
+    delete from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.soft.recruitment.model.Company" >
+    insert into company (company_Id, company_Login_Name, company_Login_Password, 
+      company_Name, company_Type, company_Industry, 
+      company_Profile, company_Address, company_Web, 
+      company_Phone, company_Email, company_Number, 
+      company_Owner, company_Register_Capital, company_Create_Time
+      )
+    values (#{companyId,jdbcType=INTEGER}, #{companyLoginName,jdbcType=VARCHAR}, #{companyLoginPassword,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{companyType,jdbcType=VARCHAR}, #{companyIndustry,jdbcType=VARCHAR}, 
+      #{companyProfile,jdbcType=VARCHAR}, #{companyAddress,jdbcType=VARCHAR}, #{companyWeb,jdbcType=VARCHAR}, 
+      #{companyPhone,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, #{companyNumber,jdbcType=INTEGER}, 
+      #{companyOwner,jdbcType=VARCHAR}, #{companyRegisterCapital,jdbcType=VARCHAR}, #{companyCreateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.soft.recruitment.model.Company" >
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        company_Id,
+      </if>
+      <if test="companyLoginName != null" >
+        company_Login_Name,
+      </if>
+      <if test="companyLoginPassword != null" >
+        company_Login_Password,
+      </if>
+      <if test="companyName != null" >
+        company_Name,
+      </if>
+      <if test="companyType != null" >
+        company_Type,
+      </if>
+      <if test="companyIndustry != null" >
+        company_Industry,
+      </if>
+      <if test="companyProfile != null" >
+        company_Profile,
+      </if>
+      <if test="companyAddress != null" >
+        company_Address,
+      </if>
+      <if test="companyWeb != null" >
+        company_Web,
+      </if>
+      <if test="companyPhone != null" >
+        company_Phone,
+      </if>
+      <if test="companyEmail != null" >
+        company_Email,
+      </if>
+      <if test="companyNumber != null" >
+        company_Number,
+      </if>
+      <if test="companyOwner != null" >
+        company_Owner,
+      </if>
+      <if test="companyRegisterCapital != null" >
+        company_Register_Capital,
+      </if>
+      <if test="companyCreateTime != null" >
+        company_Create_Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyLoginName != null" >
+        #{companyLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLoginPassword != null" >
+        #{companyLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null" >
+        #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIndustry != null" >
+        #{companyIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="companyProfile != null" >
+        #{companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWeb != null" >
+        #{companyWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null" >
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNumber != null" >
+        #{companyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="companyOwner != null" >
+        #{companyOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRegisterCapital != null" >
+        #{companyRegisterCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCreateTime != null" >
+        #{companyCreateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.soft.recruitment.model.CompanyExample" resultType="java.lang.Integer" >
+    select count(*) from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update company
+    <set >
+      <if test="record.companyId != null" >
+        company_Id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyLoginName != null" >
+        company_Login_Name = #{record.companyLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyLoginPassword != null" >
+        company_Login_Password = #{record.companyLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null" >
+        company_Name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyType != null" >
+        company_Type = #{record.companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyIndustry != null" >
+        company_Industry = #{record.companyIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyProfile != null" >
+        company_Profile = #{record.companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddress != null" >
+        company_Address = #{record.companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyWeb != null" >
+        company_Web = #{record.companyWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyPhone != null" >
+        company_Phone = #{record.companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyEmail != null" >
+        company_Email = #{record.companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyNumber != null" >
+        company_Number = #{record.companyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyOwner != null" >
+        company_Owner = #{record.companyOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyRegisterCapital != null" >
+        company_Register_Capital = #{record.companyRegisterCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyCreateTime != null" >
+        company_Create_Time = #{record.companyCreateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update company
+    set company_Id = #{record.companyId,jdbcType=INTEGER},
+      company_Login_Name = #{record.companyLoginName,jdbcType=VARCHAR},
+      company_Login_Password = #{record.companyLoginPassword,jdbcType=VARCHAR},
+      company_Name = #{record.companyName,jdbcType=VARCHAR},
+      company_Type = #{record.companyType,jdbcType=VARCHAR},
+      company_Industry = #{record.companyIndustry,jdbcType=VARCHAR},
+      company_Profile = #{record.companyProfile,jdbcType=VARCHAR},
+      company_Address = #{record.companyAddress,jdbcType=VARCHAR},
+      company_Web = #{record.companyWeb,jdbcType=VARCHAR},
+      company_Phone = #{record.companyPhone,jdbcType=VARCHAR},
+      company_Email = #{record.companyEmail,jdbcType=VARCHAR},
+      company_Number = #{record.companyNumber,jdbcType=INTEGER},
+      company_Owner = #{record.companyOwner,jdbcType=VARCHAR},
+      company_Register_Capital = #{record.companyRegisterCapital,jdbcType=VARCHAR},
+      company_Create_Time = #{record.companyCreateTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.soft.recruitment.model.Company" >
+    update company
+    <set >
+      <if test="companyLoginName != null" >
+        company_Login_Name = #{companyLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLoginPassword != null" >
+        company_Login_Password = #{companyLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_Name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null" >
+        company_Type = #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIndustry != null" >
+        company_Industry = #{companyIndustry,jdbcType=VARCHAR},
+      </if>
+      <if test="companyProfile != null" >
+        company_Profile = #{companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        company_Address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWeb != null" >
+        company_Web = #{companyWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhone != null" >
+        company_Phone = #{companyPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null" >
+        company_Email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyNumber != null" >
+        company_Number = #{companyNumber,jdbcType=INTEGER},
+      </if>
+      <if test="companyOwner != null" >
+        company_Owner = #{companyOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="companyRegisterCapital != null" >
+        company_Register_Capital = #{companyRegisterCapital,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCreateTime != null" >
+        company_Create_Time = #{companyCreateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_Id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.Company" >
+    update company
+    set company_Login_Name = #{companyLoginName,jdbcType=VARCHAR},
+      company_Login_Password = #{companyLoginPassword,jdbcType=VARCHAR},
+      company_Name = #{companyName,jdbcType=VARCHAR},
+      company_Type = #{companyType,jdbcType=VARCHAR},
+      company_Industry = #{companyIndustry,jdbcType=VARCHAR},
+      company_Profile = #{companyProfile,jdbcType=VARCHAR},
+      company_Address = #{companyAddress,jdbcType=VARCHAR},
+      company_Web = #{companyWeb,jdbcType=VARCHAR},
+      company_Phone = #{companyPhone,jdbcType=VARCHAR},
+      company_Email = #{companyEmail,jdbcType=VARCHAR},
+      company_Number = #{companyNumber,jdbcType=INTEGER},
+      company_Owner = #{companyOwner,jdbcType=VARCHAR},
+      company_Register_Capital = #{companyRegisterCapital,jdbcType=VARCHAR},
+      company_Create_Time = #{companyCreateTime,jdbcType=VARCHAR}
+    where company_Id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <select id="findAllCompany" resultMap="BaseResultMap">
+  	select * from company
+  </select>
+</mapper>

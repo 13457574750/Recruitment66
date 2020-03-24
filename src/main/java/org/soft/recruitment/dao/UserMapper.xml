@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.soft.recruitment.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="org.soft.recruitment.model.User" >
+    <id column="user_Id" property="userId" jdbcType="INTEGER" />
+    <result column="user_Login_Name" property="userLoginName" jdbcType="VARCHAR" />
+    <result column="user_Login_Password" property="userLoginPassword" jdbcType="VARCHAR" />
+    <result column="user_Phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_Email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="user_Real_Name" property="userRealName" jdbcType="VARCHAR" />
+    <result column="user_Sex" property="userSex" jdbcType="VARCHAR" />
+    <result column="user_Birthday" property="userBirthday" jdbcType="VARCHAR" />
+    <result column="user_Education" property="userEducation" jdbcType="VARCHAR" />
+    <result column="user_University" property="userUniversity" jdbcType="VARCHAR" />
+    <result column="user_Major" property="userMajor" jdbcType="VARCHAR" />
+    <result column="user_Profile" property="userProfile" jdbcType="VARCHAR" />
+    <result column="user_Technology" property="userTechnology" jdbcType="VARCHAR" />
+    <result column="user_Want_Money" property="userWantMoney" jdbcType="DOUBLE" />
+    <result column="user_State" property="userState" jdbcType="VARCHAR" />
+    <result column="user_Create_Time" property="userCreateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_Id, user_Login_Name, user_Login_Password, user_Phone, user_Email, user_Real_Name, 
+    user_Sex, user_Birthday, user_Education, user_University, user_Major, user_Profile, 
+    user_Technology, user_Want_Money, user_State, user_Create_Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_Id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where user_Id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.soft.recruitment.model.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.soft.recruitment.model.User" >
+    insert into user (user_Id, user_Login_Name, user_Login_Password, 
+      user_Phone, user_Email, user_Real_Name, 
+      user_Sex, user_Birthday, user_Education, 
+      user_University, user_Major, user_Profile, 
+      user_Technology, user_Want_Money, user_State, 
+      user_Create_Time)
+    values (#{userId,jdbcType=INTEGER}, #{userLoginName,jdbcType=VARCHAR}, #{userLoginPassword,jdbcType=VARCHAR}, 
+      #{userPhone,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userRealName,jdbcType=VARCHAR}, 
+      #{userSex,jdbcType=VARCHAR}, #{userBirthday,jdbcType=VARCHAR}, #{userEducation,jdbcType=VARCHAR}, 
+      #{userUniversity,jdbcType=VARCHAR}, #{userMajor,jdbcType=VARCHAR}, #{userProfile,jdbcType=VARCHAR}, 
+      #{userTechnology,jdbcType=VARCHAR}, #{userWantMoney,jdbcType=DOUBLE}, #{userState,jdbcType=VARCHAR}, 
+      #{userCreateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.soft.recruitment.model.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_Id,
+      </if>
+      <if test="userLoginName != null" >
+        user_Login_Name,
+      </if>
+      <if test="userLoginPassword != null" >
+        user_Login_Password,
+      </if>
+      <if test="userPhone != null" >
+        user_Phone,
+      </if>
+      <if test="userEmail != null" >
+        user_Email,
+      </if>
+      <if test="userRealName != null" >
+        user_Real_Name,
+      </if>
+      <if test="userSex != null" >
+        user_Sex,
+      </if>
+      <if test="userBirthday != null" >
+        user_Birthday,
+      </if>
+      <if test="userEducation != null" >
+        user_Education,
+      </if>
+      <if test="userUniversity != null" >
+        user_University,
+      </if>
+      <if test="userMajor != null" >
+        user_Major,
+      </if>
+      <if test="userProfile != null" >
+        user_Profile,
+      </if>
+      <if test="userTechnology != null" >
+        user_Technology,
+      </if>
+      <if test="userWantMoney != null" >
+        user_Want_Money,
+      </if>
+      <if test="userState != null" >
+        user_State,
+      </if>
+      <if test="userCreateTime != null" >
+        user_Create_Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userLoginName != null" >
+        #{userLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginPassword != null" >
+        #{userLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealName != null" >
+        #{userRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null" >
+        #{userBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="userEducation != null" >
+        #{userEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="userUniversity != null" >
+        #{userUniversity,jdbcType=VARCHAR},
+      </if>
+      <if test="userMajor != null" >
+        #{userMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="userProfile != null" >
+        #{userProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="userTechnology != null" >
+        #{userTechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="userWantMoney != null" >
+        #{userWantMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="userState != null" >
+        #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreateTime != null" >
+        #{userCreateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.soft.recruitment.model.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.userId != null" >
+        user_Id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userLoginName != null" >
+        user_Login_Name = #{record.userLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userLoginPassword != null" >
+        user_Login_Password = #{record.userLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userPhone != null" >
+        user_Phone = #{record.userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userEmail != null" >
+        user_Email = #{record.userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userRealName != null" >
+        user_Real_Name = #{record.userRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userSex != null" >
+        user_Sex = #{record.userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userBirthday != null" >
+        user_Birthday = #{record.userBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userEducation != null" >
+        user_Education = #{record.userEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userUniversity != null" >
+        user_University = #{record.userUniversity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userMajor != null" >
+        user_Major = #{record.userMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userProfile != null" >
+        user_Profile = #{record.userProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userTechnology != null" >
+        user_Technology = #{record.userTechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userWantMoney != null" >
+        user_Want_Money = #{record.userWantMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="record.userState != null" >
+        user_State = #{record.userState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userCreateTime != null" >
+        user_Create_Time = #{record.userCreateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set user_Id = #{record.userId,jdbcType=INTEGER},
+      user_Login_Name = #{record.userLoginName,jdbcType=VARCHAR},
+      user_Login_Password = #{record.userLoginPassword,jdbcType=VARCHAR},
+      user_Phone = #{record.userPhone,jdbcType=VARCHAR},
+      user_Email = #{record.userEmail,jdbcType=VARCHAR},
+      user_Real_Name = #{record.userRealName,jdbcType=VARCHAR},
+      user_Sex = #{record.userSex,jdbcType=VARCHAR},
+      user_Birthday = #{record.userBirthday,jdbcType=VARCHAR},
+      user_Education = #{record.userEducation,jdbcType=VARCHAR},
+      user_University = #{record.userUniversity,jdbcType=VARCHAR},
+      user_Major = #{record.userMajor,jdbcType=VARCHAR},
+      user_Profile = #{record.userProfile,jdbcType=VARCHAR},
+      user_Technology = #{record.userTechnology,jdbcType=VARCHAR},
+      user_Want_Money = #{record.userWantMoney,jdbcType=DOUBLE},
+      user_State = #{record.userState,jdbcType=VARCHAR},
+      user_Create_Time = #{record.userCreateTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.soft.recruitment.model.User" >
+    update user
+    <set >
+      <if test="userLoginName != null" >
+        user_Login_Name = #{userLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userLoginPassword != null" >
+        user_Login_Password = #{userLoginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="userPhone != null" >
+        user_Phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userEmail != null" >
+        user_Email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userRealName != null" >
+        user_Real_Name = #{userRealName,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_Sex = #{userSex,jdbcType=VARCHAR},
+      </if>
+      <if test="userBirthday != null" >
+        user_Birthday = #{userBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="userEducation != null" >
+        user_Education = #{userEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="userUniversity != null" >
+        user_University = #{userUniversity,jdbcType=VARCHAR},
+      </if>
+      <if test="userMajor != null" >
+        user_Major = #{userMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="userProfile != null" >
+        user_Profile = #{userProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="userTechnology != null" >
+        user_Technology = #{userTechnology,jdbcType=VARCHAR},
+      </if>
+      <if test="userWantMoney != null" >
+        user_Want_Money = #{userWantMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="userState != null" >
+        user_State = #{userState,jdbcType=VARCHAR},
+      </if>
+      <if test="userCreateTime != null" >
+        user_Create_Time = #{userCreateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_Id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.User" >
+    update user
+    set user_Login_Name = #{userLoginName,jdbcType=VARCHAR},
+      user_Login_Password = #{userLoginPassword,jdbcType=VARCHAR},
+      user_Phone = #{userPhone,jdbcType=VARCHAR},
+      user_Email = #{userEmail,jdbcType=VARCHAR},
+      user_Real_Name = #{userRealName,jdbcType=VARCHAR},
+      user_Sex = #{userSex,jdbcType=VARCHAR},
+      user_Birthday = #{userBirthday,jdbcType=VARCHAR},
+      user_Education = #{userEducation,jdbcType=VARCHAR},
+      user_University = #{userUniversity,jdbcType=VARCHAR},
+      user_Major = #{userMajor,jdbcType=VARCHAR},
+      user_Profile = #{userProfile,jdbcType=VARCHAR},
+      user_Technology = #{userTechnology,jdbcType=VARCHAR},
+      user_Want_Money = #{userWantMoney,jdbcType=DOUBLE},
+      user_State = #{userState,jdbcType=VARCHAR},
+      user_Create_Time = #{userCreateTime,jdbcType=VARCHAR}
+    where user_Id = #{userId,jdbcType=INTEGER}
+  </update>
+  <select id="findAllUser" resultMap="BaseResultMap">
+  	select * from user
+  </select>
+</mapper>
