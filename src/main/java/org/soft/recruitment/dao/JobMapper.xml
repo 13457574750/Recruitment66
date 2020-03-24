@@ -361,20 +361,20 @@
   <!-- 查询所有职位 -->
   <select id="findAllJob" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
-    com.company_name,
+    com.company_Name,
     com.company_Id,
     j.job_Id,
     j.job_Name,
     j.job_Salary,
     j.job_Address,
-    j.job_jobER,
-    j.job_jobEducation,
-    j.job_jobType,
-    j.job_jobReleaseTime,
-    j.job_jobNumber,
-    j.job_jobWelfare,
-    j.job_jobContent,
-    j.job_jobRequirements
+    j.job_ER,
+    j.job_Education,
+    j.job_Type,
+    j.job_Release_Time,
+    j.job_Number,
+    j.job_Welfare,
+    j.job_Content,
+    j.job_Requirements
     from job j
     inner join company com
     on j.company_Id=com.company_Id

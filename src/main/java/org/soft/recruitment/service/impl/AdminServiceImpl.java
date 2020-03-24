@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.soft.recruitment.dao.AdminMapper;
 import org.soft.recruitment.model.Admin;
 import org.soft.recruitment.model.AdminExample;
-import org.soft.recruitment.model.User;
 import org.soft.recruitment.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

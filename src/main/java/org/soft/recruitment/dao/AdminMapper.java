@@ -5,7 +5,9 @@ import org.apache.ibatis.annotations.Param;
 import org.soft.recruitment.model.Admin;
 import org.soft.recruitment.model.AdminExample;
 import org.soft.recruitment.model.User;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AdminMapper {
     int countByExample(AdminExample example);
 

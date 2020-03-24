@@ -4,7 +4,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.CompanyExample;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CompanyMapper {
     int countByExample(CompanyExample example);
 
