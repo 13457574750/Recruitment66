@@ -1137,5 +1137,4 @@ public class JobExample {
             this(condition, value, secondValue, null);
         }
     }
-
 }

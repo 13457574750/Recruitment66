@@ -29,6 +29,17 @@ public class Job {
 
     private Integer companyId;
 
+
+
+    private Company company;
+
+    public Company getCompany() { return company; }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+
     public Integer getJobId() {
         return jobId;
     }

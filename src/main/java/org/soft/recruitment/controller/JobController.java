@@ -2,7 +2,7 @@ package org.soft.recruitment.controller;
 
 import java.util.List;
 
-import org.soft.recruitment.model.JobInfoExt;
+import org.soft.recruitment.model.Job;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -28,8 +28,12 @@ public class JobController {
 	 */
 	@RequestMapping("findAllJob")
 	public String findAllJob(String jobName,String jobAddress,String companyName,Model model){
-		List<JobInfoExt> jobInfoList = jobService.findAllJob(jobName,jobAddress,companyName);
-		model.addAttribute("jobInfoList", jobInfoList);
+		List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
+		model.addAttribute("jobList", jobList);
 		return "/job/allJob";
 	}
+
+
+
+
 }

@@ -1,6 +1,8 @@
 package org.soft.recruitment.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.JobExample;
@@ -27,4 +29,8 @@ public interface JobMapper {
     int updateByPrimaryKeySelective(Job record);
 
     int updateByPrimaryKey(Job record);
+
+    //模糊查询所有职位
+    List<Job> findAllJob(Map<String,Object> map);
+
 }

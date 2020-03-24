@@ -4,6 +4,7 @@ import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.model.User;
 import org.soft.recruitment.service.ICompanyService;
+import org.soft.recruitment.service.IJobService;
 import org.soft.recruitment.service.IUserService;
 import org.soft.recruitment.util.EncodingTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,9 @@ public class UserController {
 
     @Autowired
     private ICompanyService companyService;
+
+    @Autowired
+    private IJobService jobService;
 
     /**
      * 用户注册

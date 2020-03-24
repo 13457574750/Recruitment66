@@ -22,10 +22,32 @@
 
             <!-- 左边 Start-->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <!-- 职位列表 Start -->
-
+                <!-- 搜索栏 Start -->
                 <div class="company-list-wrap row">
+                    <form action="${path}/job/findAllJob" id="searchForm" method="post">
+                        职位名称:<input type="text" name="jobName"/>
+                        工作地址:<input type="text" name="jobAddress"/>
+                        公司名称:<input type="text" name="companyName"/>
+                        <button type="button" class="" onclick="search()"></button>
+                    </form>
+                </div>
+                <!-- 搜索栏 Start -->
 
+                <!-- 职位列表 Start -->
+                <div class="company-list-wrap row">
+                    <c:forEach items="${jobInfoList}" var="job">
+                        <!-- 1 -->
+                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
+                            <a href="${path}/user/showACompany?jobId=${job.jobId}" class="company-list" value="${job.jobId}">
+                                <span class="company-logo"><img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
+                                <h6 class="title">${job.companyName}</h6>
+                                <span>${job.companyType}/${job.companyIndustry}/${job.companyNumber}人</span></br>
+                                <span>${job.companyProfile}</span></br>
+                                <span><i class="fa fa-map-o"></i>${job.companyAddress}</span>
+                            </a>
+                        </div>
+                        <!-- 1 -->
+                    </c:forEach>
 
                 </div>
                 <!-- 职位列表 Start -->

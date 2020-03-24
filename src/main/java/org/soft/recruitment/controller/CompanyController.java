@@ -3,6 +3,7 @@ package org.soft.recruitment.controller;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.service.ICompanyService;
+import org.soft.recruitment.service.IJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class CompanyController {
 
     @Autowired
     public ICompanyService companyService;
+
+    @Autowired
+    private IJobService jobService;
 
     /**
      * 公司注册
