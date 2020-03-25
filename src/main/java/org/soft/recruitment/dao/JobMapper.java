@@ -6,9 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.JobExample;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface JobMapper {
     int countByExample(JobExample example);
 

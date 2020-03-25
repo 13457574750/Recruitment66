@@ -7,14 +7,16 @@ import org.soft.recruitment.dao.AdminMapper;
 import org.soft.recruitment.model.Admin;
 import org.soft.recruitment.model.AdminExample;
 import org.soft.recruitment.service.IAdminService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 @Service
 @Transactional
 public class AdminServiceImpl implements IAdminService {
-	@Autowired
+
+	@Resource
 	private AdminMapper adminMapper;
 
 	/**

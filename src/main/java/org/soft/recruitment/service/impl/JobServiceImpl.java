@@ -6,20 +6,22 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.soft.recruitment.dao.JobMapper;
+import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.JobExample;
 import org.soft.recruitment.model.JobExample.Criteria;
 import org.soft.recruitment.service.IJobService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 
 
 @Service
 @Transactional
 public class JobServiceImpl implements IJobService {
 
-	@Autowired
+	@Resource
 	private JobMapper jobMapper;
 
 	/**
@@ -56,6 +58,17 @@ public class JobServiceImpl implements IJobService {
 			return jobList.get(0);
 		}
 		return null;
+	}
+
+	/**
+	 * 根据jobId查询job详细新信息
+	 *
+	 * @param jobId
+	 * @return
+	 */
+	public Job findJobByJobId(Integer jobId) {
+		Job job = jobMapper.selectByPrimaryKey(jobId);
+		return job;
 	}
 
 	/**

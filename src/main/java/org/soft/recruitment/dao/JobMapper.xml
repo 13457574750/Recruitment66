@@ -361,8 +361,11 @@
   <!-- 查询所有职位 -->
   <select id="findAllJob" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
-    com.company_Name,
     com.company_Id,
+    com.company_Name,
+    com.company_Industry,
+    com.company_Number,
+    com.company_Create_Time,
     j.job_Id,
     j.job_Name,
     j.job_Salary,

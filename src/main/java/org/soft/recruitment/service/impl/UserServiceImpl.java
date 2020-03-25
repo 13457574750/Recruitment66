@@ -5,18 +5,17 @@ import org.soft.recruitment.model.User;
 import org.soft.recruitment.model.UserExample;
 import org.soft.recruitment.dao.UserMapper;
 import org.soft.recruitment.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 @Transactional
 public class UserServiceImpl implements IUserService {
 
-    @Autowired
+    @Resource
     public UserMapper userMapper;
 
     /**

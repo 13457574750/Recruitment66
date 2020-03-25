@@ -2,6 +2,7 @@ package org.soft.recruitment.controller;
 
 import java.util.List;
 
+import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,19 @@ public class JobController {
 		return "/job/allJob";
 	}
 
-
-
+	/**
+	 * 浏览单个工作的的详细信息
+	 * @param model
+	 * @param jobId
+	 * @return
+	 */
+	@RequestMapping("showAJob")
+	public String showAJob(Model model, Integer jobId) {
+		Job job = jobService.findJobByJobId(jobId);
+		if (job != null) {
+			model.addAttribute("job", job);
+		}
+		return "/job/showAJob";
+	}
 
 }
