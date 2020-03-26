@@ -16,7 +16,6 @@
 <!-- 首页图片 End -->
 
 <!-- 搜索栏 Start-->
-<div class="section section-padding">
     <div class="container">
         <form action="${path}/job/findAllJob" id="searchForm" method="post">
             职位名称:<input type="text" name="jobName"/>
@@ -25,10 +24,9 @@
             <button type="button" class="btn btn-primary w-100" onclick="search()">搜索</button>
         </form>
     </div>
-</div>
 <!-- 搜索栏 End -->
 
-<!-- 博客内容 Start -->
+<!-- 职位列表 Start -->
 <div class="section section-padding">
     <div class="container">
         <div class="row mb-n5">
@@ -46,15 +44,14 @@
                                         <div class="foot row justify-content-between align-items-start mb-n2">
                                             <div class="blog-tags col-auto mb-2">
                                                 <ul>
-                                                    <li><a href="${path}/job/showAJob?jobId=${job.jobId}"
-                                                           value="${job.jobId}"><strong>${job.jobName}</strong></a></li>
-                                                    <li><strong>${job.jobAddress}</strong></li>
+                                                    <li><a href="${path}/job/showAJob?jobId=${job.jobId}&companyId=${job.company.companyId}"><strong>${job.jobName}[${job.jobAddress}]</strong></a></li>
                                                     <li><strong>${job.jobReleaseTime}发布</strong></li>
                                                 </ul>
                                             </div>
                                             <div class="blog-share col-auto mb-2">
                                                 <ul>
-                                                    <li><strong>${job.company.companyName}</strong></li>
+                                                    <li><a href="${path}/user/showACompany?companyId=${job.companyId}"
+                                                           value="${job.companyId}"><strong>${job.company.companyName}</strong></a></li>
                                                 </ul>
                                             </div>
 
@@ -78,6 +75,7 @@
                                             <ul>
                                                 <li><strong>${job.company.companyIndustry}</strong></li>
                                                 <li><strong>${job.company.companyNumber}人</strong></li>
+                                                <li><strong>${job.company.companyCreateTime}</strong></li>
                                             </ul>
                                         </div>
 
@@ -90,6 +88,16 @@
                     </c:forEach>
                     <!-- 左1 End -->
 
+                    <!-- 分页按钮 Start -->
+                    <ul class="pagination pagination-center mt-5">
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                    <!-- 分页按钮 End -->
                 </div>
                 <!--  左边 End -->
 
@@ -163,7 +171,7 @@
         </div>
     </div>
 </div>
-<!-- 博客内容 End -->
+<!-- 职位列表 End -->
 
 
 <%@include file="../user/foot.jsp" %>

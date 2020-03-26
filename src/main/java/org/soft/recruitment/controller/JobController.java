@@ -2,7 +2,6 @@ package org.soft.recruitment.controller;
 
 import java.util.List;
 
-import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.beans.factory.annotation.Autowired;
