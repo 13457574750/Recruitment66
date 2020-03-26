@@ -1,6 +1,8 @@
 package org.soft.recruitment.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.soft.recruitment.dao.CompanyMapper;
@@ -77,8 +79,10 @@ public class CompanyServiceImpl implements ICompanyService {
      *
      * @return
      */
-    public List<Company> findAllCompany() {
-        List<Company> companyList = companyMapper.findAllCompany();
+    public List<Company> findAllCompany(String companyName) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("companyName", companyName);
+        List<Company> companyList = companyMapper.findAllCompany(map);
         return companyList;
     }
 

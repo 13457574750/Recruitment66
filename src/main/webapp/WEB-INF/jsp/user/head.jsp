@@ -44,7 +44,7 @@
                 <ul>
                     <li class="has-children"><a href="${path}/user/userIndex" target="_parent">首页</a></li>
                     <li class="has-children"><a href="${path}/job/findAllJob" target="_parent">职位</a></li>
-                    <li><a href="${path}/user/allCompany" target="_parent">公司</a></li>
+                    <li><a href="${path}/user/findAllCompany" target="_parent">公司</a></li>
                     <li><a href="${path}/user/blog" target="_parent">博客</a></li>
                     <li><a href="${path}/user/aboutUs" target="_parent">关于我们</a>
                         <ul class="sub-menu">
@@ -93,7 +93,7 @@
                 <ul>
                     <li class="has-children"><a href="${path}/user/userIndex" target="_parent">首页</a></li>
                     <li class="has-children"><a href="${path}/job/findAllJob" target="_parent">职位</a></li>
-                    <li><a href="${path}/user/allCompany" target="_parent">公司</a></li>
+                    <li><a href="${path}/user/findAllCompany" target="_parent">公司</a></li>
                     <li><a href="${path}/user/blog" target="_parent">博客</a></li>
                     <li><a href="${path}/user/aboutUs" target="_parent">关于我们</a>
                         <ul class="sub-menu">

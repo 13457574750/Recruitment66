@@ -56,18 +56,14 @@
 
             <!-- 右边 Start-->
             <div class="col-lg-4 col-12 mb-5">
+                <form action="${path}/user/findAllCompany" method="post">
                 <div class="sidebar-wrap">
                     <!-- 搜索 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">
-                            <h6 class="title"><trans oldtip="Search Company" newtip="搜索公司">搜索公司</trans></h6>
+                            <h6 class="title"><trans>搜索公司</trans></h6>
                             <form action="#">
-                                <div class="row">
-                                    <div class="col-12 mb-3"><input type="text" placeholder="Keyword"></div>
-                                    <div class="col-12 mb-3">
-                                        <input class="btn btn-primary w-100" type="submit" value="搜索">
-                                    </div>
-                                </div>
+                                <input type="text" name="companyName" placeholder="请输入要搜索的公司">
                             </form>
                         </div>
                     </div>
@@ -81,6 +77,7 @@
                     </div>
                     <!-- 2 End -->
                 </div>
+                </form>
             </div>
             <!-- 右边 End -->
 

@@ -183,8 +183,8 @@ public class AdminController {/*管理员所能使用的功能*/
      * @return
      */
     @RequestMapping("company")
-    public String company(Model model) {
-        List<Company> companyList = companyService.findAllCompany();
+    public String company(String companyName, Model model) {
+        List<Company> companyList = companyService.findAllCompany(companyName);
         model.addAttribute("companyList", companyList);
         return "/admin/company";
     }

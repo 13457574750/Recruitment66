@@ -286,9 +286,9 @@ public class UserController {
      * @param model
      * @return
      */
-    @RequestMapping("allCompany")
-    public String allCompany(Model model) {
-        List<Company> companyList = companyService.findAllCompany();
+    @RequestMapping("findAllCompany")
+    public String findAllCompany(String companyName,Model model) {
+        List<Company> companyList = companyService.findAllCompany(companyName);
         model.addAttribute("companyList", companyList);
         return "/user/allCompany";
     }

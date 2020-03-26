@@ -368,7 +368,30 @@
       company_Create_Time = #{companyCreateTime,jdbcType=VARCHAR}
     where company_Id = #{companyId,jdbcType=INTEGER}
   </update>
-  <select id="findAllCompany" resultMap="BaseResultMap">
-  	select * from company
+
+  <!-- 查询所有职位 -->
+  <select id="findAllCompany" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    company_Id,
+    company_Login_Name,
+    company_Login_Password,
+    company_Name,
+    company_Type,
+    company_Industry,
+    company_Profile,
+    company_Address,
+    company_Web,
+    company_Phone,
+    company_Email,
+    company_Number,
+    company_Owner,
+    company_Register_Capital,
+    company_Create_Time
+    from company
+    where 1=1
+    <if test="companyName != null and companyName != ''">
+      <bind name="companyName" value=" '%' + companyName + '%' "/>
+      and company_name like #{companyName}
+    </if>
   </select>
 </mapper>

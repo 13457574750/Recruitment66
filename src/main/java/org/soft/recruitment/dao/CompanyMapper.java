@@ -1,6 +1,8 @@
 package org.soft.recruitment.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.CompanyExample;
@@ -28,5 +30,5 @@ public interface CompanyMapper {
 
     int updateByPrimaryKey(Company record);
 
-    List<Company> findAllCompany();
+    List<Company> findAllCompany(Map<String,Object> map);
 }

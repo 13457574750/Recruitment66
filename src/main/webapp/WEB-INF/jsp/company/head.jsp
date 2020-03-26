@@ -48,7 +48,7 @@
                                 <li><a href="job-single.html" target="_parent">发布职位</a></li>
                             </ul>
                         </li>
-                        <li><a href="${path}/company/allCompany" target="_parent">公司</a></li>
+                        <li><a href="${path}/company/findAllCompany" target="_parent">公司</a></li>
                         <li><a href="${path}/company/blog" target="_parent">博客</a></li>
                         <li><a href="${path}/company/aboutUs" target="_parent">关于我们</a>
                             <ul class="sub-menu">
@@ -97,7 +97,7 @@
                 <ul>
                     <li class="has-children"><a href="${path}/company/companyIndex" target="_parent">首页</a></li>
                     <li class="has-children"><a href="job-list.html" target="_parent">职位</a></li>
-                    <li><a href="${path}/company/allCompany" target="_parent">公司</a></li>
+                    <li><a href="${path}/company/findAllCompany" target="_parent">公司</a></li>
                     <li><a href="${path}/company/blog" target="_parent">博客</a></li>
                     <li><a href="${path}/company/aboutUs" target="_parent">关于我们</a>
                         <ul class="sub-menu">

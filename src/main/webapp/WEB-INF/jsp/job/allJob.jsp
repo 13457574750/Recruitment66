@@ -52,7 +52,7 @@
                         <div class="content col">
                             <h6 class="title"><trans>${job.jobName}</trans></h6>
                             <ul class="meta">
-                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.companyName}</trans></strong></li>
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.company.companyName}</trans></strong></li>
                                 <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobAddress}</trans></strong></li>
                                 <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEr}</trans></strong></li>
                                 <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEducation}</trans></strong></li>
