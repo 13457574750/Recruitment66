@@ -1,6 +1,7 @@
 package org.soft.recruitment.controller;
 
 import org.soft.recruitment.model.Company;
+import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.model.User;
 import org.soft.recruitment.service.ICompanyService;
@@ -299,7 +300,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany(Model model, Integer companyId) {
+    public String showACompany(Model model, Integer companyId, Integer jobId,String jobName) {
         Company company = companyService.findCompanyByCompanyId(companyId);
         if (company != null) {
             model.addAttribute("company", company);

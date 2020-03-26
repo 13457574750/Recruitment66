@@ -39,7 +39,7 @@
                             </h5>
                             <ul class="meta">
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                    <trans>${job.jobSalary}</trans>
+                                    <trans>${job.companyName}</trans>
                                 </strong></li>
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                     <trans>${job.jobAddress}</trans>
@@ -146,48 +146,6 @@
                         </div>
                     </div>
                     <!-- 右2 End -->
-
-                    <!-- 右3 Start -->
-                    <div class="sidebar-widget">
-                        <div class="inner">
-                            <h6 class="title">
-                                <trans>公司概述</trans>
-                            </h6>
-                            <ul class="job-overview list-unstyled">
-                                <li><strong>
-                                    <trans>公司名称：</trans>
-                                </strong>
-                                    <trans>${job.company.companyName}</trans>
-                                </li>
-                                <li><strong>
-                                    <trans>行业类型：</trans>
-                                </strong>
-                                    <trans>${job.company.companyIndustry}</trans>
-                                </li>
-                                <li><strong>
-                                    <trans>公司规模：</trans>
-                                </strong>
-                                    <trans>${job.company.companyNumber}</trans>
-                                </li>
-                                <li><strong>
-                                    <trans>注册资本：</trans>
-                                </strong>
-                                    <trans>${job.company.companyRegisterCapital}</trans>
-                                </li>
-                                <li><strong>
-                                    <trans>邮箱：</trans>
-                                </strong>
-                                    <trans>${job.company.companyEmail}</trans>
-                                </li>
-                                <li><strong>
-                                    <trans >网址：</trans>
-                                </strong>
-                                    <trans >${job.company.companyWeb}</trans>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- 右3 End -->
                 </div>
             </div>
             <!-- 右边 End -->

@@ -1,6 +1,5 @@
 package org.soft.recruitment.service;
 
-import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 
 import java.util.List;

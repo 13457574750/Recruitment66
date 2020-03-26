@@ -15,160 +15,123 @@
      data-overlay="50"></div>
 <!-- 首页图片 End -->
 
-<!-- 搜索栏 Start-->
-    <div class="container">
-        <form action="${path}/job/findAllJob" id="searchForm" method="post">
-            职位名称:<input type="text" name="jobName"/>
-            工作地址:<input type="text" name="jobAddress"/>
-            公司名称:<input type="text" name="companyName"/>
-            <button type="button" class="btn btn-primary w-100" onclick="search()">搜索</button>
-        </form>
-    </div>
-<!-- 搜索栏 End -->
-
 <!-- 职位列表 Start -->
 <div class="section section-padding">
     <div class="container">
+        <form action="${path}/job/findAllJob" id="searchForm" method="post">
+
         <div class="row mb-n5">
+
+            <!-- 左边 Start -->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <!--左边 Start -->
-                <div class="blog-wrap row">
 
-                    <!-- 左1 Start -->
-                    <c:forEach items="${jobList}" var="job">
-                        <div class="col-12">
-                                <%--名称--%>
-                            <div class="blog blog-single">
-                                <div class="content">
-                                    <div class="desc">
-                                        <div class="foot row justify-content-between align-items-start mb-n2">
-                                            <div class="blog-tags col-auto mb-2">
-                                                <ul>
-                                                    <li><a href="${path}/job/showAJob?jobId=${job.jobId}&companyId=${job.company.companyId}"><strong>${job.jobName}[${job.jobAddress}]</strong></a></li>
-                                                    <li><strong>${job.jobReleaseTime}发布</strong></li>
-                                                </ul>
-                                            </div>
-                                            <div class="blog-share col-auto mb-2">
-                                                <ul>
-                                                    <li><a href="${path}/user/showACompany?companyId=${job.companyId}"
-                                                           value="${job.companyId}"><strong>${job.company.companyName}</strong></a></li>
-                                                </ul>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                <%--名称--%>
-                        <div class="blog blog-single">
-                            <div class="content">
-                                <div class="desc">
-                                    <div class="foot row justify-content-between align-items-start mb-n2">
-                                        <div class="blog-tags col-auto mb-2">
-                                            <ul>
-                                                <li>${job.jobSalary}</li>
-                                                <li>${job.jobEr}</li>
-                                                <li>${job.jobEducation}</li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-share col-auto mb-2">
-                                            <ul>
-                                                <li><strong>${job.company.companyIndustry}</strong></li>
-                                                <li><strong>${job.company.companyNumber}人</strong></li>
-                                                <li><strong>${job.company.companyCreateTime}</strong></li>
-                                            </ul>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="divider_type_3 m_bottom_30">
-                    </div>
-                    </c:forEach>
-                    <!-- 左1 End -->
-
-                    <!-- 分页按钮 Start -->
-                    <ul class="pagination pagination-center mt-5">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
-                    <!-- 分页按钮 End -->
+                <!-- 左1--工作列表头 Start -->
+                <div class="job-list-toolbar">
+                    <p><trans>显示34项结果中的1-10项</trans></p>
+                    <p><trans>按下列顺序分类：</trans><select>
+                        <option><trans>最近</trans></option>
+                        <option><trans>最高额定</trans></option>
+                        <option><trans>最受欢迎</trans></option>
+                    </select>
+                    </p>
                 </div>
-                <!--  左边 End -->
+                <!-- 左1--工作列表头 End -->
 
+                <!-- 工作列表 Start -->
+                <div class="job-list-wrap">
+                    <c:forEach items="${jobList}" var="job">
+
+                    <a href="${path}/job/showAJob?jobId=${job.jobId}&&companyId=${job.companyId}" class="job-list">
+                        <div class="company-logo col-auto">
+                            <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                        </div>
+                        <div class="salary-type col-auto order-sm-3">
+                            <span class="salary-range">$${job.jobSalary}</span>
+                            <span class="badge badge-success"><trans>${job.jobType}</trans></span>
+                        </div>
+                        <div class="content col">
+                            <h6 class="title"><trans>${job.jobName}</trans></h6>
+                            <ul class="meta">
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.companyName}</trans></strong></li>
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobAddress}</trans></strong></li>
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEr}</trans></strong></li>
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEducation}</trans></strong></li>
+                            </ul>
+                        </div>
+                    </a>
+                    </c:forEach>
+                </div>
+                <!-- 工作列表 End -->
+
+                <!-- 分页 Start -->
+                <ul class="pagination pagination-center mt-5">
+                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                </ul>
+                <!-- 分页 End -->
             </div>
+            <!-- 左边 End -->
+
 
             <!-- 右边 Start -->
             <div class="col-lg-4 col-12 mb-5">
+                <form action="${path}/job/findAllJob" method="post">
+
                 <div class="sidebar-wrap">
                     <!-- 右1 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">
-                            <div id="demo" class="carousel slide" data-ride="carousel">
-
-                                <!-- 指示符 -->
-                                <ul class="carousel-indicators">
-                                    <li data-target="#demo" data-slide-to="1" class="active"></li>
-                                    <li data-target="#demo" data-slide-to="2"></li>
-                                    <li data-target="#demo" data-slide-to="3"></li>
-                                </ul>
-
-                                <!-- 轮播图片 -->
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="${path}/images/img_fjords_wide.jpg">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="${path}/images/img_nature_wide.jpg">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="${path}/images/img_mountains_wide.jpg">
-                                    </div>
-                                </div>
-
-                                <!-- 左右切换按钮 -->
-                                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                                    <span class="carousel-control-prev-icon"></span>
-                                </a>
-                                <a class="carousel-control-next" href="#demo" data-slide="next">
-                                    <span class="carousel-control-next-icon"></span>
-                                </a>
-
-                            </div>
+                            <h6 class="title"><trans>搜索职位</trans></h6>
+                            <form action="#">
+                                <input type="text" name="jobName" placeholder="请输入要搜索的职位名称">
+                            </form>
                         </div>
                     </div>
                     <!-- 右1 End -->
 
+                    <!-- 右2 Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <h6 class="title"><trans>搜索位置</trans></h6>
+                            <form action="#">
+                                <input type="text" name="jobAddress" placeholder="请输入要搜索的工作地点">
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 右2 End -->
+
                     <!-- 右3 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">
-                            <h6 class="title"><trans oldtip="Category" newtip="Category" style="">分类</trans></h6>
-                            <ul class="sidebar-list">
-                                <li><a href="#"><trans oldtip="Business" newtip="Business">商业</trans></a>
-                                </li>
-                                <li><a href="#"><trans oldtip="Design &amp; Creative" newtip="Design &amp; Creative">设计与创新</trans></a>
-                                </li>
-                                <li><a href="#"><trans oldtip="Education" newtip="Education">教育</trans></a>
-                                </li>
-                                <li><a href="#"><trans oldtip="IT &amp; Computer" newtip="IT &amp; Computer">IT与计算机</trans></a>
-                                </li>
-                                <li><a href="#"><trans oldtip="Photography" newtip="Photography">摄影</trans></a>
-                                </li>
-                            </ul>
+                            <h6 class="title"><trans>搜索公司</trans></h6>
+                            <form action="#">
+                                <input type="text" name="companyName" placeholder="请输入要搜索的公司">
+                            </form>
                         </div>
                     </div>
                     <!-- 右3 End -->
+
+                    <!-- 右4 Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <h6 class="title"><trans>重置条件</trans></h6>
+                            <form action="#">
+                                <button type="button" class="btn btn-primary w-100" onclick="search()">重置</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 右4 End -->
                 </div>
+                </form>
             </div>
             <!-- 右边 End -->
 
-
         </div>
+        </form>
     </div>
 </div>
 <!-- 职位列表 End -->

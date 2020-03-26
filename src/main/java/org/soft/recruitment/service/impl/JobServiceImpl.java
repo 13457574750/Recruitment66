@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.soft.recruitment.dao.JobMapper;
-import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.JobExample;
 import org.soft.recruitment.model.JobExample.Criteria;
@@ -23,6 +22,8 @@ public class JobServiceImpl implements IJobService {
 
 	@Resource
 	private JobMapper jobMapper;
+
+
 
 	/**
 	 * 查询所有的工作
