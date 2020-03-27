@@ -29,16 +29,19 @@
                     <c:forEach items="${companyList}" var="company">
                     <!-- 1 -->
                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
-                        <a href="${path}/user/showACompany?companyId=${company.companyId}" class="company-list" value="${company.companyId}">
+<%--                        <c:forEach items="" var="job">--%>
+                        <a href="${path}/user/showACompany?companyId=${company.companyId}&&jobId=${job.jobId}" class="company-list">
                             <span class="company-logo"><img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
                             <h6 class="title">${company.companyName}</h6>
                             <span>${company.companyType}/${company.companyIndustry}/${company.companyNumber}人</span></br>
                             <span>${company.companyProfile}</span></br>
                             <span><i class="fa fa-map-o"></i>${company.companyAddress}</span>
                         </a>
+<%--                        </c:forEach>--%>
+
                     </div>
                     <!-- 1 -->
-                    </c:forEach>
+                        </c:forEach>
                 </div>
                 <!-- 企业列表 Start -->
                 <!-- 分页按钮 Start -->

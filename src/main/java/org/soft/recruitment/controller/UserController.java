@@ -287,9 +287,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("findAllCompany")
-    public String findAllCompany(String companyName,Model model) {
+    public String findAllCompany(String companyName,Model model,String jobName, String jobAddress) {
         List<Company> companyList = companyService.findAllCompany(companyName);
         model.addAttribute("companyList", companyList);
+
+        List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
+        model.addAttribute("jobList", jobList);
         return "/user/allCompany";
     }
 
@@ -300,7 +303,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany(Model model, Integer companyId, Integer jobId,String jobName) {
+    public String showACompany(Model model, Integer companyId,Integer jobId) {
+        Job job = jobService.findJobByJobId(jobId);
+        if (job != null) {
+            model.addAttribute("job", job);
+        }
+
         Company company = companyService.findCompanyByCompanyId(companyId);
         if (company != null) {
             model.addAttribute("company", company);

@@ -35,7 +35,7 @@
                     <p>
                         <trans>
                             <i class="mdi mdi-fingerprint"></i>${company.companyWeb}
-                            <i class="fa fa-phone-square"></i>${company.companyPhone}&nbsp;&nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-phone-square"></i>${company.companyPhone}
                             <i class="fa fa-envelope-o"></i>${company.companyEmail}
                         </trans>
                     </p>
@@ -44,14 +44,14 @@
                             <trans>${company.companyProfile}</trans>
                         </li>
                     </ul>
-                    <p><h6 style="text-align: center"><a class="button" onclick="$('#target').toggle();">招聘职位</a></h6></p>
+                    <p><h6 style="text-align: center"><a class="button" name="companyName" value="${company.companyName}" onclick="$('#target').toggle();">招聘职位</a></h6></p>
                     <!-- 左1 Start -->
 
                     <!-- 左2 Start -->
                     <div class="job-list-wrap mt-5" id="target" >
-                        <c:forEach items="${jobList}" var="job">
+<%--                        <c:forEach items="${jobList}" var="job">--%>
 
-                            <a href="${path}/job/showAJob?jobId=${job.jobId}&&companyId=${job.companyId}" class="job-list">
+                            <a href="${path}/job/showAJob?jobId=${job.jobId}&&companyId=${job.company.companyId}" class="job-list">
                                 <div class="company-logo col-auto">
                                     <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
                                 </div>
@@ -62,14 +62,14 @@
                                 <div class="content col">
                                     <h6 class="title"><trans>${job.jobName}</trans></h6>
                                     <ul class="meta">
-                                        <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.companyName}</trans></strong></li>
+                                        <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${company.companyName}</trans></strong></li>
                                         <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobAddress}</trans></strong></li>
                                         <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEr}</trans></strong></li>
                                         <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEducation}</trans></strong></li>
                                     </ul>
                                 </div>
                             </a>
-                        </c:forEach>
+<%--                        </c:forEach>--%>
 
                     </div>
                     <!-- 左2 Start -->

@@ -2,7 +2,9 @@ package org.soft.recruitment.controller;
 
 import java.util.List;
 
+import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
+import org.soft.recruitment.service.ICompanyService;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class JobController {
 	@Autowired
 	private IJobService jobService;
+
+	@Autowired
+	private ICompanyService companyService;
 
 	/**
 	 * 查询出所有职位信息
@@ -40,11 +45,17 @@ public class JobController {
 	 * @return
 	 */
 	@RequestMapping("showAJob")
-	public String showAJob(Model model, Integer jobId) {
+	public String showAJob(Model model, Integer jobId, Integer companyId) {
 		Job job = jobService.findJobByJobId(jobId);
 		if (job != null) {
 			model.addAttribute("job", job);
 		}
+
+		Company company = companyService.findCompanyByCompanyId(companyId);
+		if (company != null) {
+			model.addAttribute("company", company);
+		}
+
 		return "/job/showAJob";
 	}
 

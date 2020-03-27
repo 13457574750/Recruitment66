@@ -26,7 +26,7 @@
                 <div class="job-list-details">
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
-                            <a href="${path}/user/showACompany?companyId=${job.company.companyId}"><img
+                            <a href="${path}/user/showACompany?jobId=${job.jobId}&&companyId=${job.company.companyId}"><img
                                     src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
@@ -39,7 +39,7 @@
                             </h5>
                             <ul class="meta">
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                    <trans>${job.company.companyName}</trans>
+                                    <trans>${company.companyName}</trans>
                                 </strong></li>
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                     <trans>${job.jobAddress}</trans>

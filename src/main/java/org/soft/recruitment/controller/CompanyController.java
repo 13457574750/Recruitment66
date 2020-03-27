@@ -1,6 +1,7 @@
 package org.soft.recruitment.controller;
 
 import org.soft.recruitment.model.Company;
+import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.service.ICompanyService;
 import org.soft.recruitment.service.IJobService;
@@ -125,8 +126,10 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany(Model model, Integer companyId) {
+    public String showACompany(Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
         Company company = companyService.findCompanyByCompanyId(companyId);
+        List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
+        model.addAttribute("jobList", jobList);
         if (company != null) {
             model.addAttribute("company", company);
         }

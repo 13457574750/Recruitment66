@@ -17,6 +17,7 @@
     <result column="company_Owner" property="companyOwner" jdbcType="VARCHAR" />
     <result column="company_Register_Capital" property="companyRegisterCapital" jdbcType="VARCHAR" />
     <result column="company_Create_Time" property="companyCreateTime" jdbcType="VARCHAR" />
+
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
