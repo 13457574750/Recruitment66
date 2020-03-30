@@ -49,7 +49,10 @@
                             <span class="badge badge-success"><trans>${job.jobType}</trans></span>
                         </div>
                         <div class="content col">
-                            <h6 class="title"><trans>${job.jobName}</trans></h6>
+                            <ul class="meta">
+                                <li><h6 class="title"><trans>${job.jobName}</trans></h6></li>
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>发布时间：${job.jobReleaseTime}</trans></strong></li>
+                            </ul>
                             <ul class="meta">
                                 <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.company.companyName}</trans></strong></li>
                                 <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobAddress}</trans></strong></li>

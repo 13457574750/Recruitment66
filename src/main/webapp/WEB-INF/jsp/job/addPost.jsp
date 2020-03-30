@@ -183,7 +183,7 @@
                     alert("您还没有登录，请先登录！");
                 }else if("Yes" == data.str){
                     alert("发布职位成功");
-                    var url="${path}/job/allJob?companyId=${sessionScope.currCompany.companyId}";
+                    var url="${path}/job/findAllJob?companyId=${sessionScope.currCompany.companyId}";
                     window.location.href=url;
                 }else if("发布的职位名称已存在" == data.str){
                     alert("发布失败,发布的职位名称不可以重复");

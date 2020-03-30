@@ -23,21 +23,13 @@ public class ApplyServiceImpl implements IApplyService {
      * 查询所有申请记录
      *
      * @param userRealName
-     * @param jobAddress
-     * @param jobName
      * @return
      */
-    public Apply findAllApply(String userRealName, String jobAddress, String jobName) {
+    public Apply findAllApply(String userRealName) {
         ApplyExample example = new ApplyExample();
         Criteria criteria = example.createCriteria();
         if (StringUtils.isNotBlank(userRealName)) {
             criteria.andUserRealNameEqualTo(userRealName);
-        }
-        if (StringUtils.isNotBlank(jobAddress)) {
-            criteria.andJobAddressEqualTo(jobAddress);
-        }
-        if (StringUtils.isNotBlank(jobName)) {
-            criteria.andJobNameEqualTo(jobName);
         }
         List<Apply> applyList = applyMapper.selectByExample(example);
         if (applyList != null && applyList.isEmpty()) {

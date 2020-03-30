@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface IApplyService {
 
-    //查看所有申请记录
-    public Apply findAllApply(String userRealName, String jobAddress, String jobName);
+    //根据用户真名查询所有职位
+    public Apply findAllApply(String userRealName);
 
     //根据公司名称查询所有的申请人(公司信箱)
     public List<Apply> findApplyByCompanyName(String companyName);

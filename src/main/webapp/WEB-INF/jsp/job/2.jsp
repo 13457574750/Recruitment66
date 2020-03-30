@@ -74,3 +74,6 @@ return false;
         </c:forEach>
     </table>
 </div>
+
+
+<%--List<Apply> findAllApply();--%>

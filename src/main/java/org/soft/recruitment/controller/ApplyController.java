@@ -1,6 +1,5 @@
 package org.soft.recruitment.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -58,36 +57,26 @@ public class ApplyController {
     /**
      * 投递简历插入具体数据到表
      *
-     * @param jobName
-     * @param jobAddress
-     * @param jobReleaseTime
-     * @param userRealName
-     * @param jobSalary
+     * @param applyReleaseTime
      * @param companyName
+     * @param companyCreateTime
+     * @param userRealName
+     * @param jobId
      * @return
      */
     @RequestMapping("/addApply")
     @ResponseBody
-    public Message addApply(String jobName, String jobAddress, Date jobReleaseTime,
-                            String userRealName, String jobSalary, String companyName, String companyCreateTime, Integer companyId, Integer userId) {
+    public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName, Integer jobId) {
         Message message = new Message();
-//        if (userRealName == null || userRealName.isEmpty()) {//判断用户是否登录
-//            message.setStr("您还没有登录！");
-//            return message;
-//        }
-        Apply apply = applyService.findAllApply(userRealName, jobAddress, jobName);
+        Apply apply = applyService.findAllApply(userRealName);
         if (apply == null) {
             //插入职位具体数据
             Apply apply_ = new Apply();
-            apply_.setJobAddress(jobAddress);
-            apply_.setJobName(jobName);
-            apply_.setJobSalary(jobSalary);
-            apply_.setUserRealName(userRealName);
-            apply_.setJobReleaseTime(jobReleaseTime);
+            apply_.setCompanyName(applyReleaseTime);
             apply_.setCompanyName(companyName);
             apply_.setCompanyCreateTime(companyCreateTime);
-            apply_.setCompanyId(companyId);
-            apply_.setUserId(userId);
+            apply_.setUserRealName(userRealName);
+            apply_.setJobId(String.valueOf(jobId));
 
             int result = applyService.insertApply(apply_);
 
