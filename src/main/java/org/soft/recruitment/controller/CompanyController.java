@@ -36,17 +36,17 @@ public class CompanyController {
     @RequestMapping("toCompanyRegister")
     @ResponseBody
     public Message toCompanyRegister(Company company) {
-        Message msg=new Message();
+        Message msg = new Message();
         int result = companyService.findCompanyByCompanyLoginName(company.getCompanyLoginName());//获得公司登录名去数据库中查询
-        if(result==1) {//公司登录名已经存在
+        if (result == 1) {//公司登录名已经存在
             msg.setStr("用户名已经存在");
             return msg;
-        }else if(result==0){//公司登录名也没被注册
-            int result_ = companyService.findCompanyByCompanyName(company.getCompanyName());	//判断公司名称是否唯一
-            if(result_==1){
+        } else if (result == 0) {//公司登录名也没被注册
+            int result_ = companyService.findCompanyByCompanyName(company.getCompanyName());    //判断公司名称是否唯一
+            if (result_ == 1) {
                 msg.setStr("公司名称已经存在");
                 return msg;
-            }else{
+            } else {
                 //公司名字也没被注册
                 companyService.companyRegister(company);//插入具体数据
                 msg.setStr("success");
@@ -58,6 +58,7 @@ public class CompanyController {
 
     /**
      * 公司登录
+     *
      * @param request
      * @param companyLoginName
      * @param companyLoginPassword
@@ -79,6 +80,7 @@ public class CompanyController {
             return msg;
         }
     }
+
     /**
      * 跳转到修改密码界面
      *
@@ -96,6 +98,7 @@ public class CompanyController {
 
     /**
      * 保存密码功能
+     *
      * @param companyId
      * @param company
      * @returns
@@ -121,6 +124,7 @@ public class CompanyController {
 
     /**
      * 浏览单个企业的详细信息
+     *
      * @param model
      * @param companyId
      * @return
@@ -128,7 +132,7 @@ public class CompanyController {
     @RequestMapping("showACompany")
     public String showACompany(Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
         Company company = companyService.findCompanyByCompanyId(companyId);
-        List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
+        List<Job> jobList = jobService.findAllJob(jobName, jobAddress, companyName);
         model.addAttribute("jobList", jobList);
         if (company != null) {
             model.addAttribute("company", company);
@@ -137,7 +141,7 @@ public class CompanyController {
     }
 
     /**
-     * 查看当前ID的企业信息
+     * 查看本登录ID的企业信息
      *
      * @param model
      * @param request
@@ -148,7 +152,7 @@ public class CompanyController {
         //获得session中存的当前对象
         Company currCompany = (Company) request.getSession().getAttribute("currCompany");
         Integer CompanyId = currCompany.getCompanyId();
-        //  根据ID查询用户并显示该用户
+          //根据ID查询用户并显示该用户
         Company company = companyService.findCompanyByCompanyId(CompanyId);
         model.addAttribute("company", company);
         return "/company/showCompany";
@@ -156,6 +160,7 @@ public class CompanyController {
 
     /**
      * 跳转到公司修改界面
+     *
      * @param model
      * @param companyId
      * @return
@@ -168,8 +173,10 @@ public class CompanyController {
         }
         return "/company/updateCompany";
     }
+
     /**
      * 修改后保存功能
+     *
      * @param companyId
      * @param company
      * @return
@@ -196,73 +203,81 @@ public class CompanyController {
 
     /**
      * 根据ID删除公司
+     *
      * @param companyId
      * @return
      */
     @RequestMapping("deleteCompany")
     public String deleteCompany(Integer companyId) {
         companyService.deleteCompany(companyId);
-        // 重定向到列表界面
+         //重定向到列表界面
         return "redirect:/admin/company";
     }
 
     /**
      * 跳转到公司首页
+     *
      * @param model
      * @return
      */
     @RequestMapping("companyIndex")
-    public String companyIndex(Model model){
+    public String companyIndex(Model model) {
         return "/company/companyIndex";
     }
 
     /**
      * 跳转到底部导航
+     *
      * @param model
      * @return
      */
     @RequestMapping("foot")
-    public String foot(Model model){
+    public String foot(Model model) {
         return "/company/foot";
     }
+
     /**
      * 跳转到顶部部导航
+     *
      * @param model
      * @return
      */
     @RequestMapping("head")
-    public String head(Model model){
+    public String head(Model model) {
         return "/company/head";
     }
 
     /**
      * 跳转到博客
+     *
      * @param model
      * @return
      */
     @RequestMapping("blog")
-    public String blog(Model model){
+    public String blog(Model model) {
         return "/company/blog";
     }
 
     /**
      * 跳转到关于我们
+     *
      * @param model
      * @return
      */
     @RequestMapping("aboutUs")
-    public String aboutUs(Model model){
+    public String aboutUs(Model model) {
         return "/company/aboutUs";
     }
 
 
     /**
      * 跳转到联系我们
+     *
      * @param model
      * @return
      */
     @RequestMapping("contactUs")
-    public String contactUs(Model model){
+    public String contactUs(Model model) {
         return "/company/contactUs";
     }
 
@@ -275,7 +290,7 @@ public class CompanyController {
      */
     @RequestMapping(value = "/exit")
     public String exit(HttpServletRequest request) throws Exception {
-        // 退出时清空session
+         //退出时清空session
         request.getSession().removeAttribute("currCompany");
         return "company/companyIndex";
     }

@@ -9,12 +9,15 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="5">
+          <list size="8">
             <item index="0" class="java.lang.String" itemvalue="value" />
             <item index="1" class="java.lang.String" itemvalue="var" />
             <item index="2" class="java.lang.String" itemvalue="action" />
             <item index="3" class="java.lang.String" itemvalue="method" />
             <item index="4" class="java.lang.String" itemvalue="charset" />
+            <item index="5" class="java.lang.String" itemvalue="maxlength" />
+            <item index="6" class="java.lang.String" itemvalue="placeholder" />
+            <item index="7" class="java.lang.String" itemvalue="unselectable" />
           </list>
         </value>
       </option>
@@ -39,6 +42,9 @@
         </value>
       </option>
       <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="RequiredAttributes" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myAdditionalRequiredHtmlAttributes" value="cols,type" />
     </inspection_tool>
   </profile>
 </component>

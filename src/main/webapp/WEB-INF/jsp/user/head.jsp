@@ -27,7 +27,7 @@
 
             <div class="col">
                 <div class="header-logo">
-                    <a href="${path}/user/userIndex">
+                    <a href="${path}/user/userIndex?userId=${sessionScope.currUser.userId}">
                         <img src="${path}/assets/images/logo/logo-light.png" alt="Site Logo"
                              target="_parent"></a>
                 </div>
@@ -42,13 +42,13 @@
 
             <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
                 <ul>
-                    <li class="has-children"><a href="${path}/user/userIndex" target="_parent">首页</a></li>
-                    <li class="has-children"><a href="${path}/job/findAllJob" target="_parent">职位</a></li>
-                    <li><a href="${path}/user/findAllCompany" target="_parent">公司</a></li>
-                    <li><a href="${path}/user/blog" target="_parent">博客</a></li>
-                    <li><a href="${path}/user/aboutUs" target="_parent">关于我们</a>
+                    <li class="has-children"><a href="${path}/user/userIndex?userId=${sessionScope.currUser.userId}" target="_parent">首页</a></li>
+                    <li class="has-children"><a href="${path}/user/findAllJob?userId=${sessionScope.currUser.userId}" target="_parent">职位</a></li>
+                    <li><a href="${path}/user/findAllCompany?userId=${sessionScope.currUser.userId}" target="_parent">公司</a></li>
+                    <li><a href="${path}/user/blog?userId=${sessionScope.currUser.userId}" target="_parent">博客</a></li>
+                    <li><a href="${path}/user/aboutUs?userId=${sessionScope.currUser.userId}" target="_parent">关于我们</a>
                         <ul class="sub-menu">
-                            <li><a href="${path}/user/contactUs" target="_parent">联系我们</a></li>
+                            <li><a href="${path}/user/contactUs?userId=${sessionScope.currUser.userId}" target="_parent">联系我们</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,7 +77,7 @@
 
             <div class="col">
                 <div class="header-logo">
-                    <a href="${path}/user/userIndex">
+                    <a href="${path}/user/userIndex?userId=${sessionScope.currUser.userId}">
                         <img src="${path}/assets/images/logo/logo-light.png" alt="Site Logo"
                              target="_parent"></a>
                 </div>
@@ -91,13 +91,13 @@
 
             <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
                 <ul>
-                    <li class="has-children"><a href="${path}/user/userIndex" target="_parent">首页</a></li>
-                    <li class="has-children"><a href="${path}/job/findAllJob" target="_parent">职位</a></li>
-                    <li><a href="${path}/user/findAllCompany" target="_parent">公司</a></li>
-                    <li><a href="${path}/user/blog" target="_parent">博客</a></li>
-                    <li><a href="${path}/user/aboutUs" target="_parent">关于我们</a>
+                    <li class="has-children"><a href="${path}/user/userIndex?userId=${sessionScope.currUser.userId}" target="_parent">首页</a></li>
+                    <li class="has-children"><a href="${path}/user/findAllJob?userId=${sessionScope.currUser.userId}" target="_parent">职位</a></li>
+                    <li><a href="${path}/user/findAllCompany?userId=${sessionScope.currUser.userId}" target="_parent">公司</a></li>
+                    <li><a href="${path}/user/blog?userId=${sessionScope.currUser.userId}" target="_parent">博客</a></li>
+                    <li><a href="${path}/user/aboutUs?userId=${sessionScope.currUser.userId}" target="_parent">关于我们</a>
                         <ul class="sub-menu">
-                            <li><a href="${path}/user/contactUs" target="_parent">联系我们</a></li>
+                            <li><a href="${path}/user/contactUs?userId=${sessionScope.currUser.userId}" target="_parent">联系我们</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -113,7 +113,7 @@
                                 <li><a href="${path}/user/updateUserPassword?userId=${sessionScope.currUser.userId}" target="_parent">修改密码</a></li>
                                 <li><a href="${path}/user/showResume?userId=${sessionScope.currUser.userId}" target="_parent">个人简历</a></li>
                                 <li><a href="${path}/user/showUser?userId=${sessionScope.currUser.userId}" target="_parent">收藏夹</a></li>
-                                <li><a href="${path}/user/showUser?userId=${sessionScope.currUser.userId}" target="_parent">投递箱</a></li>
+                                <li><a href="${path}/apply/userShowApply?userId=${sessionScope.currUser.userId}" target="_parent">投递箱</a></li>
                                 <li><a href="${path}/user/exit" target="_parent">退出</a></li>
                             </ul>
                         </li>
@@ -232,7 +232,7 @@
             success:function(data){
                 if("success"==data.str){
                     alert("登录成功，请完善个人简历信息");
-                    var url="${pageContext.request.contextPath}/user/userIndex";
+                    var url="${pageContext.request.contextPath}/user/userIndex?userId=${sessionScope.currUser.userId}";
                     window.location.href=url;
                 }else{
                     alert("登录失败,请输入正确的用户名和密码");

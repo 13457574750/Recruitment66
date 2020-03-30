@@ -4,24 +4,24 @@
   <resultMap id="BaseResultMap" type="org.soft.recruitment.model.Job" >
     <id column="job_Id" property="jobId" jdbcType="INTEGER" />
     <result column="job_Name" property="jobName" jdbcType="VARCHAR" />
-    <result column="job_Salary" property="jobSalary" jdbcType="DOUBLE" />
+    <result column="job_Salary" property="jobSalary" jdbcType="VARCHAR" />
     <result column="job_Address" property="jobAddress" jdbcType="VARCHAR" />
     <result column="job_ER" property="jobEr" jdbcType="VARCHAR" />
     <result column="job_Education" property="jobEducation" jdbcType="VARCHAR" />
     <result column="job_Type" property="jobType" jdbcType="VARCHAR" />
     <result column="job_Release_Time" property="jobReleaseTime" jdbcType="VARCHAR" />
-    <result column="job_Number" property="jobNumber" jdbcType="INTEGER" />
+    <result column="job_Number" property="jobNumber" jdbcType="VARCHAR" />
     <result column="job_Welfare" property="jobWelfare" jdbcType="VARCHAR" />
     <result column="job_Content" property="jobContent" jdbcType="VARCHAR" />
     <result column="job_Requirements" property="jobRequirements" jdbcType="VARCHAR" />
-    <result column="company_Name" property="companyName" jdbcType="VARCHAR" />
-    <result column="company_Id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_Id" property="companyId" jdbcType="VARCHAR" />
 
-    <!--关联company表-->
+
     <association property="company" resultMap="org.soft.recruitment.dao.CompanyMapper.BaseResultMap">
       <id column="company_Id" property="companyId"/>
       <result column="company_Name" property="companyName"/>
     </association>
+
 
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -84,7 +84,7 @@
   </sql>
   <sql id="Base_Column_List" >
     job_Id, job_Name, job_Salary, job_Address, job_ER, job_Education, job_Type, job_Release_Time, 
-    job_Number, job_Welfare, job_Content, job_Requirements, company_Name, company_Id
+    job_Number, job_Welfare, job_Content, job_Requirements, company_Id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.JobExample" >
     select
@@ -121,12 +121,12 @@
       job_Address, job_ER, job_Education, 
       job_Type, job_Release_Time, job_Number, 
       job_Welfare, job_Content, job_Requirements, 
-      company_Name, company_Id)
-    values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobSalary,jdbcType=DOUBLE}, 
+      company_Id)
+    values (#{jobId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, #{jobSalary,jdbcType=VARCHAR}, 
       #{jobAddress,jdbcType=VARCHAR}, #{jobEr,jdbcType=VARCHAR}, #{jobEducation,jdbcType=VARCHAR}, 
-      #{jobType,jdbcType=VARCHAR}, #{jobReleaseTime,jdbcType=VARCHAR}, #{jobNumber,jdbcType=INTEGER}, 
+      #{jobType,jdbcType=VARCHAR}, #{jobReleaseTime,jdbcType=VARCHAR}, #{jobNumber,jdbcType=VARCHAR}, 
       #{jobWelfare,jdbcType=VARCHAR}, #{jobContent,jdbcType=VARCHAR}, #{jobRequirements,jdbcType=VARCHAR}, 
-      #{companyName,jdbcType=VARCHAR}, #{companyId,jdbcType=INTEGER})
+      #{companyId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.soft.recruitment.model.Job" >
     insert into job
@@ -167,9 +167,6 @@
       <if test="jobRequirements != null" >
         job_Requirements,
       </if>
-      <if test="companyName != null" >
-        company_Name,
-      </if>
       <if test="companyId != null" >
         company_Id,
       </if>
@@ -182,7 +179,7 @@
         #{jobName,jdbcType=VARCHAR},
       </if>
       <if test="jobSalary != null" >
-        #{jobSalary,jdbcType=DOUBLE},
+        #{jobSalary,jdbcType=VARCHAR},
       </if>
       <if test="jobAddress != null" >
         #{jobAddress,jdbcType=VARCHAR},
@@ -200,7 +197,7 @@
         #{jobReleaseTime,jdbcType=VARCHAR},
       </if>
       <if test="jobNumber != null" >
-        #{jobNumber,jdbcType=INTEGER},
+        #{jobNumber,jdbcType=VARCHAR},
       </if>
       <if test="jobWelfare != null" >
         #{jobWelfare,jdbcType=VARCHAR},
@@ -211,11 +208,8 @@
       <if test="jobRequirements != null" >
         #{jobRequirements,jdbcType=VARCHAR},
       </if>
-      <if test="companyName != null" >
-        #{companyName,jdbcType=VARCHAR},
-      </if>
       <if test="companyId != null" >
-        #{companyId,jdbcType=INTEGER},
+        #{companyId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -235,7 +229,7 @@
         job_Name = #{record.jobName,jdbcType=VARCHAR},
       </if>
       <if test="record.jobSalary != null" >
-        job_Salary = #{record.jobSalary,jdbcType=DOUBLE},
+        job_Salary = #{record.jobSalary,jdbcType=VARCHAR},
       </if>
       <if test="record.jobAddress != null" >
         job_Address = #{record.jobAddress,jdbcType=VARCHAR},
@@ -253,7 +247,7 @@
         job_Release_Time = #{record.jobReleaseTime,jdbcType=VARCHAR},
       </if>
       <if test="record.jobNumber != null" >
-        job_Number = #{record.jobNumber,jdbcType=INTEGER},
+        job_Number = #{record.jobNumber,jdbcType=VARCHAR},
       </if>
       <if test="record.jobWelfare != null" >
         job_Welfare = #{record.jobWelfare,jdbcType=VARCHAR},
@@ -264,11 +258,8 @@
       <if test="record.jobRequirements != null" >
         job_Requirements = #{record.jobRequirements,jdbcType=VARCHAR},
       </if>
-      <if test="record.companyName != null" >
-        company_Name = #{record.companyName,jdbcType=VARCHAR},
-      </if>
       <if test="record.companyId != null" >
-        company_Id = #{record.companyId,jdbcType=INTEGER},
+        company_Id = #{record.companyId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -279,18 +270,17 @@
     update job
     set job_Id = #{record.jobId,jdbcType=INTEGER},
       job_Name = #{record.jobName,jdbcType=VARCHAR},
-      job_Salary = #{record.jobSalary,jdbcType=DOUBLE},
+      job_Salary = #{record.jobSalary,jdbcType=VARCHAR},
       job_Address = #{record.jobAddress,jdbcType=VARCHAR},
       job_ER = #{record.jobEr,jdbcType=VARCHAR},
       job_Education = #{record.jobEducation,jdbcType=VARCHAR},
       job_Type = #{record.jobType,jdbcType=VARCHAR},
       job_Release_Time = #{record.jobReleaseTime,jdbcType=VARCHAR},
-      job_Number = #{record.jobNumber,jdbcType=INTEGER},
+      job_Number = #{record.jobNumber,jdbcType=VARCHAR},
       job_Welfare = #{record.jobWelfare,jdbcType=VARCHAR},
       job_Content = #{record.jobContent,jdbcType=VARCHAR},
       job_Requirements = #{record.jobRequirements,jdbcType=VARCHAR},
-      company_Name = #{record.companyName,jdbcType=VARCHAR},
-      company_Id = #{record.companyId,jdbcType=INTEGER}
+      company_Id = #{record.companyId,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -302,7 +292,7 @@
         job_Name = #{jobName,jdbcType=VARCHAR},
       </if>
       <if test="jobSalary != null" >
-        job_Salary = #{jobSalary,jdbcType=DOUBLE},
+        job_Salary = #{jobSalary,jdbcType=VARCHAR},
       </if>
       <if test="jobAddress != null" >
         job_Address = #{jobAddress,jdbcType=VARCHAR},
@@ -320,7 +310,7 @@
         job_Release_Time = #{jobReleaseTime,jdbcType=VARCHAR},
       </if>
       <if test="jobNumber != null" >
-        job_Number = #{jobNumber,jdbcType=INTEGER},
+        job_Number = #{jobNumber,jdbcType=VARCHAR},
       </if>
       <if test="jobWelfare != null" >
         job_Welfare = #{jobWelfare,jdbcType=VARCHAR},
@@ -331,11 +321,8 @@
       <if test="jobRequirements != null" >
         job_Requirements = #{jobRequirements,jdbcType=VARCHAR},
       </if>
-      <if test="companyName != null" >
-        company_Name = #{companyName,jdbcType=VARCHAR},
-      </if>
       <if test="companyId != null" >
-        company_Id = #{companyId,jdbcType=INTEGER},
+        company_Id = #{companyId,jdbcType=VARCHAR},
       </if>
     </set>
     where job_Id = #{jobId,jdbcType=INTEGER}
@@ -343,18 +330,17 @@
   <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.Job" >
     update job
     set job_Name = #{jobName,jdbcType=VARCHAR},
-      job_Salary = #{jobSalary,jdbcType=DOUBLE},
+      job_Salary = #{jobSalary,jdbcType=VARCHAR},
       job_Address = #{jobAddress,jdbcType=VARCHAR},
       job_ER = #{jobEr,jdbcType=VARCHAR},
       job_Education = #{jobEducation,jdbcType=VARCHAR},
       job_Type = #{jobType,jdbcType=VARCHAR},
       job_Release_Time = #{jobReleaseTime,jdbcType=VARCHAR},
-      job_Number = #{jobNumber,jdbcType=INTEGER},
+      job_Number = #{jobNumber,jdbcType=VARCHAR},
       job_Welfare = #{jobWelfare,jdbcType=VARCHAR},
       job_Content = #{jobContent,jdbcType=VARCHAR},
       job_Requirements = #{jobRequirements,jdbcType=VARCHAR},
-      company_Name = #{companyName,jdbcType=VARCHAR},
-      company_Id = #{companyId,jdbcType=INTEGER}
+      company_Id = #{companyId,jdbcType=VARCHAR}
     where job_Id = #{jobId,jdbcType=INTEGER}
   </update>
 

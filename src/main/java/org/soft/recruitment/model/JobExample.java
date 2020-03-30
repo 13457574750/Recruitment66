@@ -244,52 +244,62 @@ public class JobExample {
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryEqualTo(Double value) {
+        public Criteria andJobSalaryEqualTo(String value) {
             addCriterion("job_Salary =", value, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryNotEqualTo(Double value) {
+        public Criteria andJobSalaryNotEqualTo(String value) {
             addCriterion("job_Salary <>", value, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryGreaterThan(Double value) {
+        public Criteria andJobSalaryGreaterThan(String value) {
             addCriterion("job_Salary >", value, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryGreaterThanOrEqualTo(Double value) {
+        public Criteria andJobSalaryGreaterThanOrEqualTo(String value) {
             addCriterion("job_Salary >=", value, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryLessThan(Double value) {
+        public Criteria andJobSalaryLessThan(String value) {
             addCriterion("job_Salary <", value, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryLessThanOrEqualTo(Double value) {
+        public Criteria andJobSalaryLessThanOrEqualTo(String value) {
             addCriterion("job_Salary <=", value, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryIn(List<Double> values) {
+        public Criteria andJobSalaryLike(String value) {
+            addCriterion("job_Salary like", value, "jobSalary");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobSalaryNotLike(String value) {
+            addCriterion("job_Salary not like", value, "jobSalary");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobSalaryIn(List<String> values) {
             addCriterion("job_Salary in", values, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryNotIn(List<Double> values) {
+        public Criteria andJobSalaryNotIn(List<String> values) {
             addCriterion("job_Salary not in", values, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryBetween(Double value1, Double value2) {
+        public Criteria andJobSalaryBetween(String value1, String value2) {
             addCriterion("job_Salary between", value1, value2, "jobSalary");
             return (Criteria) this;
         }
 
-        public Criteria andJobSalaryNotBetween(Double value1, Double value2) {
+        public Criteria andJobSalaryNotBetween(String value1, String value2) {
             addCriterion("job_Salary not between", value1, value2, "jobSalary");
             return (Criteria) this;
         }
@@ -654,52 +664,62 @@ public class JobExample {
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberEqualTo(Integer value) {
+        public Criteria andJobNumberEqualTo(String value) {
             addCriterion("job_Number =", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberNotEqualTo(Integer value) {
+        public Criteria andJobNumberNotEqualTo(String value) {
             addCriterion("job_Number <>", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberGreaterThan(Integer value) {
+        public Criteria andJobNumberGreaterThan(String value) {
             addCriterion("job_Number >", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberGreaterThanOrEqualTo(Integer value) {
+        public Criteria andJobNumberGreaterThanOrEqualTo(String value) {
             addCriterion("job_Number >=", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberLessThan(Integer value) {
+        public Criteria andJobNumberLessThan(String value) {
             addCriterion("job_Number <", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberLessThanOrEqualTo(Integer value) {
+        public Criteria andJobNumberLessThanOrEqualTo(String value) {
             addCriterion("job_Number <=", value, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberIn(List<Integer> values) {
+        public Criteria andJobNumberLike(String value) {
+            addCriterion("job_Number like", value, "jobNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumberNotLike(String value) {
+            addCriterion("job_Number not like", value, "jobNumber");
+            return (Criteria) this;
+        }
+
+        public Criteria andJobNumberIn(List<String> values) {
             addCriterion("job_Number in", values, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberNotIn(List<Integer> values) {
+        public Criteria andJobNumberNotIn(List<String> values) {
             addCriterion("job_Number not in", values, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberBetween(Integer value1, Integer value2) {
+        public Criteria andJobNumberBetween(String value1, String value2) {
             addCriterion("job_Number between", value1, value2, "jobNumber");
             return (Criteria) this;
         }
 
-        public Criteria andJobNumberNotBetween(Integer value1, Integer value2) {
+        public Criteria andJobNumberNotBetween(String value1, String value2) {
             addCriterion("job_Number not between", value1, value2, "jobNumber");
             return (Criteria) this;
         }
@@ -914,76 +934,6 @@ public class JobExample {
             return (Criteria) this;
         }
 
-        public Criteria andCompanyNameIsNull() {
-            addCriterion("company_Name is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameIsNotNull() {
-            addCriterion("company_Name is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameEqualTo(String value) {
-            addCriterion("company_Name =", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameNotEqualTo(String value) {
-            addCriterion("company_Name <>", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameGreaterThan(String value) {
-            addCriterion("company_Name >", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameGreaterThanOrEqualTo(String value) {
-            addCriterion("company_Name >=", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameLessThan(String value) {
-            addCriterion("company_Name <", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameLessThanOrEqualTo(String value) {
-            addCriterion("company_Name <=", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameLike(String value) {
-            addCriterion("company_Name like", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameNotLike(String value) {
-            addCriterion("company_Name not like", value, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameIn(List<String> values) {
-            addCriterion("company_Name in", values, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameNotIn(List<String> values) {
-            addCriterion("company_Name not in", values, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameBetween(String value1, String value2) {
-            addCriterion("company_Name between", value1, value2, "companyName");
-            return (Criteria) this;
-        }
-
-        public Criteria andCompanyNameNotBetween(String value1, String value2) {
-            addCriterion("company_Name not between", value1, value2, "companyName");
-            return (Criteria) this;
-        }
-
         public Criteria andCompanyIdIsNull() {
             addCriterion("company_Id is null");
             return (Criteria) this;
@@ -994,52 +944,62 @@ public class JobExample {
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdEqualTo(Integer value) {
+        public Criteria andCompanyIdEqualTo(String value) {
             addCriterion("company_Id =", value, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdNotEqualTo(Integer value) {
+        public Criteria andCompanyIdNotEqualTo(String value) {
             addCriterion("company_Id <>", value, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdGreaterThan(Integer value) {
+        public Criteria andCompanyIdGreaterThan(String value) {
             addCriterion("company_Id >", value, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCompanyIdGreaterThanOrEqualTo(String value) {
             addCriterion("company_Id >=", value, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdLessThan(Integer value) {
+        public Criteria andCompanyIdLessThan(String value) {
             addCriterion("company_Id <", value, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdLessThanOrEqualTo(Integer value) {
+        public Criteria andCompanyIdLessThanOrEqualTo(String value) {
             addCriterion("company_Id <=", value, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdIn(List<Integer> values) {
+        public Criteria andCompanyIdLike(String value) {
+            addCriterion("company_Id like", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdNotLike(String value) {
+            addCriterion("company_Id not like", value, "companyId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCompanyIdIn(List<String> values) {
             addCriterion("company_Id in", values, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdNotIn(List<Integer> values) {
+        public Criteria andCompanyIdNotIn(List<String> values) {
             addCriterion("company_Id not in", values, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdBetween(Integer value1, Integer value2) {
+        public Criteria andCompanyIdBetween(String value1, String value2) {
             addCriterion("company_Id between", value1, value2, "companyId");
             return (Criteria) this;
         }
 
-        public Criteria andCompanyIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andCompanyIdNotBetween(String value1, String value2) {
             addCriterion("company_Id not between", value1, value2, "companyId");
             return (Criteria) this;
         }

@@ -30,6 +30,7 @@ public interface JobMapper {
 
     int updateByPrimaryKey(Job record);
 
+
     //模糊查询所有职位
     List<Job> findAllJob(Map<String,Object> map);
 

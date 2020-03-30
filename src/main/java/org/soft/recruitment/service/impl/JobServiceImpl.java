@@ -1,4 +1,4 @@
- package org.soft.recruitment.service.impl;
+package org.soft.recruitment.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +23,6 @@ public class JobServiceImpl implements IJobService {
 	@Resource
 	private JobMapper jobMapper;
 
-
-
 	/**
 	 * 查询所有的工作
 	 * @param jobName
@@ -41,7 +39,8 @@ public class JobServiceImpl implements IJobService {
 		return jobList;
 	}
 
-	/**
+
+    /**
 	 * 查询指定companyId下的jobName,目的是判断新增工作是否重复
 	 * @param companyId
 	 * @param jobName
@@ -53,7 +52,7 @@ public class JobServiceImpl implements IJobService {
 		if (StringUtils.isNotBlank(jobName)) {
 			criteria.andJobNameEqualTo(jobName);
 		}
-		criteria.andCompanyIdEqualTo(companyId);
+		criteria.andCompanyIdEqualTo(companyId+"");
 		List<Job> jobList = jobMapper.selectByExample(example);
 		if (jobList != null && !jobList.isEmpty()) {
 			return jobList.get(0);

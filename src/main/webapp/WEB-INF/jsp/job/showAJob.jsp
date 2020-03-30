@@ -8,7 +8,7 @@
     <title>职位列表</title>
 </head>
 <body>
-<%@include file="../user/head.jsp" %>
+<%@include file="../company/head.jsp" %>
 
 <!-- 首页图片 Start -->
 <div class="page-heading-section section bg-parallax" data-bg-image="${path}/assets/images/bg/bg-1.jpg"
@@ -85,25 +85,6 @@
             <!-- 右边 Start -->
             <div class="col-lg-4 col-12 mb-5">
                 <div class="sidebar-wrap">
-                    <!-- 右1 Start -->
-                    <div class="sidebar-widget">
-                        <div class="inner">
-                            <div class="row m-n2">
-                                <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                    <a href="#" class="d-block btn btn-outline-secondary"><i
-                                            class="fa fa-heart-o mr-1"></i>
-                                        <trans>收藏</trans>
-                                    </a>
-                                </div>
-                                <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                    <a href="#" class="d-block btn btn-primary">
-                                        <trans>投递简历</trans>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 右1 End -->
 
                     <!-- 右2 Start -->
                     <div class="sidebar-widget">
@@ -156,7 +137,7 @@
 <!-- 职位列表 End -->
 
 
-<%@include file="../user/foot.jsp" %>
+<%@include file="../company/foot.jsp" %>
 
 <script type="text/javascript">
     function search() {

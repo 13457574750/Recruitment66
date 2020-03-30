@@ -5,7 +5,7 @@ public class Job {
 
     private String jobName;
 
-    private Double jobSalary;
+    private String jobSalary;
 
     private String jobAddress;
 
@@ -17,7 +17,7 @@ public class Job {
 
     private String jobReleaseTime;
 
-    private Integer jobNumber;
+    private String jobNumber;
 
     private String jobWelfare;
 
@@ -25,10 +25,7 @@ public class Job {
 
     private String jobRequirements;
 
-    private String companyName;
-
-    private Integer companyId;
-
+    private String companyId;
 
 
     private Company company;
@@ -38,7 +35,6 @@ public class Job {
     public void setCompany(Company company) {
         this.company = company;
     }
-
 
     public Integer getJobId() {
         return jobId;
@@ -56,12 +52,12 @@ public class Job {
         this.jobName = jobName == null ? null : jobName.trim();
     }
 
-    public Double getJobSalary() {
+    public String getJobSalary() {
         return jobSalary;
     }
 
-    public void setJobSalary(Double jobSalary) {
-        this.jobSalary = jobSalary;
+    public void setJobSalary(String jobSalary) {
+        this.jobSalary = jobSalary == null ? null : jobSalary.trim();
     }
 
     public String getJobAddress() {
@@ -104,12 +100,12 @@ public class Job {
         this.jobReleaseTime = jobReleaseTime == null ? null : jobReleaseTime.trim();
     }
 
-    public Integer getJobNumber() {
+    public String getJobNumber() {
         return jobNumber;
     }
 
-    public void setJobNumber(Integer jobNumber) {
-        this.jobNumber = jobNumber;
+    public void setJobNumber(String jobNumber) {
+        this.jobNumber = jobNumber == null ? null : jobNumber.trim();
     }
 
     public String getJobWelfare() {
@@ -136,19 +132,11 @@ public class Job {
         this.jobRequirements = jobRequirements == null ? null : jobRequirements.trim();
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName == null ? null : companyName.trim();
-    }
-
-    public Integer getCompanyId() {
+    public String getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId == null ? null : companyId.trim();
     }
 }

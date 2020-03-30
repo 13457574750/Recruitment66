@@ -7,7 +7,6 @@ import org.soft.recruitment.model.User;
 import org.soft.recruitment.service.ICompanyService;
 import org.soft.recruitment.service.IJobService;
 import org.soft.recruitment.service.IUserService;
-import org.soft.recruitment.util.EncodingTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -117,7 +116,7 @@ public class UserController {
      */
     @RequestMapping("findUserByUserRealName")
     public String findUserByUserRealName(String userRealName, Model model) {
-        User user = userService.findUserByUserRealName(EncodingTool.encodeStr(userRealName));
+        User user = userService.findUserByUserRealName(userRealName);
         if (user != null) {
             model.addAttribute("user", user);
             return "/user/findUserByUserRealName";
@@ -329,6 +328,44 @@ public class UserController {
         return "redirect:/admin/user";
 
     }
+
+    /**
+     * 查询出所有职位信息
+     * jobInfoExt 职位详细信息对象
+     * @param jobName
+     * @param jobAddress
+     * @param companyName
+     * @param model
+     * @return
+     */
+    @RequestMapping("findAllJob")
+    public String findAllJob(String jobName,String jobAddress,String companyName,Model model){
+        List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
+        model.addAttribute("jobList", jobList);
+        return "/user/allJob";
+    }
+
+    /**
+     * 浏览单个工作的的详细信息
+     * @param model
+     * @param jobId
+     * @return
+     */
+    @RequestMapping("showAJob")
+    public String showAJob(Model model, Integer jobId, Integer companyId) {
+        Job job = jobService.findJobByJobId(jobId);
+        if (job != null) {
+            model.addAttribute("job", job);
+        }
+
+        Company company = companyService.findCompanyByCompanyId(companyId);
+        if (company != null) {
+            model.addAttribute("company", company);
+        }
+
+        return "/user/showAJob";
+    }
+
     /**
      * 退出登录
      *

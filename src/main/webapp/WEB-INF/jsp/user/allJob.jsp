@@ -8,7 +8,7 @@
     <title>职位列表</title>
 </head>
 <body>
-<%@include file="../company/head.jsp" %>
+<%@include file="../user/head.jsp" %>
 
 <!-- 首页图片 Start -->
 <div class="page-heading-section section bg-parallax" data-bg-image="${path}/assets/images/bg/bg-1.jpg"
@@ -18,7 +18,7 @@
 <!-- 职位列表 Start -->
 <div class="section section-padding">
     <div class="container">
-        <form action="${path}/job/findAllJob" id="searchForm" method="post">
+        <form action="${path}/user/findAllJob" id="searchForm" method="post">
 
         <div class="row mb-n5">
 
@@ -29,7 +29,7 @@
                 <div class="job-list-toolbar">
                     <p><trans>显示34项结果中的1-10项</trans></p>
                     <p><trans>按下列顺序分类：</trans><select>
-                        <option><trans>最新</trans></option>
+                        <option><trans>最近</trans></option>
                         <option><trans>最热</trans></option>
                     </select>
                     </p>
@@ -40,7 +40,7 @@
                 <div class="job-list-wrap">
                     <c:forEach items="${jobList}" var="job">
 
-                    <a href="${path}/job/showAJob?jobId=${job.jobId}&&companyId=${job.company.companyId}" class="job-list">
+                    <a href="${path}/user/showAJob?jobId=${job.jobId}&&companyId=${job.company.companyId}&&userId=${sessionScope.currUser.userId}" class="job-list">
                         <div class="company-logo col-auto">
                             <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
                         </div>
@@ -78,7 +78,7 @@
 
             <!-- 右边 Start -->
             <div class="col-lg-4 col-12 mb-5">
-                <form action="${path}/job/findAllJob" method="post">
+                <form action="${path}/user/findAllJob" method="post">
 
                 <div class="sidebar-wrap">
                     <!-- 右1 Start -->
@@ -136,7 +136,7 @@
 <!-- 职位列表 End -->
 
 
-<%@include file="../company/foot.jsp" %>
+<%@include file="../user/foot.jsp" %>
 
 <script type="text/javascript">
     function search() {
