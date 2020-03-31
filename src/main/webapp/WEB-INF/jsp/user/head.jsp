@@ -232,7 +232,7 @@
             success:function(data){
                 if("success"==data.str){
                     alert("登录成功，请先完善个人简历信息");
-                    var url="${pageContext.request.contextPath}/user/updateResume?userId=${sessionScope.currUser.userId}";
+                    var url="${pageContext.request.contextPath}/user/showResume?userId=${sessionScope.currUser.userId}";
                     window.location.href=url;
                 }else{
                     alert("登录失败,请输入正确的用户名和密码");

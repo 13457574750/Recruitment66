@@ -82,7 +82,7 @@
                     <!-- 左3 End -->
                 </div>
                 <!--  左边 End -->
-                <button  type="button" href="javascript:void(0)" onclick="updateUser('${user.userId}')">修改</button>
+                <button  type="button" href="javascript:void(0)" onclick="updateUser('${sessionScope.currUser.userId}')">修改</button>
             </div>
 
             <!-- 右边 Start -->

@@ -25,7 +25,6 @@
             <th>公司ID</th>
             <th>公司名称</th>
             <th>公司头像</th>
-
             <th>工作ID</th>
             <th>工作名称</th>
             <th>工作地址</th>
@@ -34,19 +33,16 @@
             <th>学历</th>
             <th>发布时间</th>
             <th>类型</th>
-
             <th>用户真名</th>
-
             <th>投递时间</th>
             <th>操作</th>
         </tr>
         <c:forEach items="${applyList_}" var="applyList_">
-            <tr class="table table-hover" value="${applyList_.applyId}">
+            <tr>
 
                 <td>${applyList_.job.companyId}</td>
                 <td>${applyList_.companyName}</td>
                 <td>${applyList_.companyCreateTime}</td>
-
                 <td>${applyList_.job.jobId}</td>
                 <td>${applyList_.job.jobName}</td>
                 <td>${applyList_.job.jobAddress }</td>
@@ -55,10 +51,8 @@
                 <td>${applyList_.job.jobEducation}</td>
                 <td>${applyList_.job.jobType}</td>
                 <td>${applyList_.job.jobReleaseTime}</td>
-
                 <td>${applyList_.userRealName}</td>
-
-                <td><fmt:formatDate value="${applyList_.applyReleaseTime}" pattern="yyyy-MM-dd"/></td>
+                <td>${applyList_.applyReleaseTime}</td>
                 <td>
                     <a href="${path}/apply/deleteApply?applyId=${applyList_.applyId}& userId=${sessionScope.currUser.userId}" onclick="return confirm('确定要删除吗？');"
                        class="btn btn-default">删除</a></td>

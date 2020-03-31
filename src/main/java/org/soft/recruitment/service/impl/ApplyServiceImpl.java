@@ -25,11 +25,14 @@ public class ApplyServiceImpl implements IApplyService {
      * @param userRealName
      * @return
      */
-    public Apply findAllApply(String userRealName) {
+    public Apply findAllApply(String userRealName, String jobId) {
         ApplyExample example = new ApplyExample();
         Criteria criteria = example.createCriteria();
         if (StringUtils.isNotBlank(userRealName)) {
             criteria.andUserRealNameEqualTo(userRealName);
+        }
+        if (StringUtils.isNotBlank(jobId)) {
+            criteria.andJobIdEqualTo(jobId);
         }
         List<Apply> applyList = applyMapper.selectByExample(example);
         if (applyList != null && applyList.size() > 0) {
@@ -51,7 +54,7 @@ public class ApplyServiceImpl implements IApplyService {
             criteria.andCompanyNameEqualTo(companyName);
         }
         List<Apply> applyList_ = applyMapper.selectByExample(example);
-        if (applyList_ != null && !applyList_.isEmpty()) {
+        if (applyList_ != null && applyList_.size()> 0) {
             return applyList_;
         }
         return null;
@@ -70,7 +73,7 @@ public class ApplyServiceImpl implements IApplyService {
             criteria.andUserRealNameEqualTo(userRealName);
         }
         List<Apply> applyList_ = applyMapper.selectByExample(example);
-        if (applyList_ != null && !applyList_.isEmpty()) {
+        if (applyList_ != null && applyList_.size()> 0) {
             return applyList_;
         }
         return null;

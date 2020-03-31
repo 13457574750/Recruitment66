@@ -384,7 +384,5 @@
 <%@include file="../user/foot.jsp"%>
 
 </body>
-<!-- Main Activation JS -->
-<script type="text/javascript" src="${path}/assets/js/main.js"></script>
 
 </html>

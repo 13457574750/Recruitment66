@@ -69,8 +69,8 @@ public class ApplyController {
     @ResponseBody
     public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName, Integer jobId) {
         Message message = new Message();
-        Apply apply = applyService.findAllApply(userRealName);
-        if(userRealName==null || userRealName==""){
+        Apply apply = applyService.findAllApply(userRealName, String.valueOf(jobId));
+        if (userRealName == null || userRealName.isEmpty()) {
             message.setStr("请先登录!");
             return message;
         }
@@ -84,19 +84,17 @@ public class ApplyController {
             apply_.setJobId(String.valueOf(jobId));
 
             int result = applyService.insertApply(apply_);
-
             if (result == 1) {
-                message.setStr("投递成功！");
+                message.setStr("投递成功!");
                 return message;
             } else {
-                message.setStr("不好意思，投递失败！");
+                message.setStr("投递失败!");
                 return message;
             }
         } else {
-            message.setStr("请不要重复投递！");
+            message.setStr("请不要重复投递!");
             return message;
         }
-
     }
 
     /**

@@ -212,15 +212,12 @@
             dataType: "json",
             success: function (data) {
                 if("请先登录!"== data.str){
-                    alert(data.str);
-                }
-                else if ("投递成功！" == data.str) {
-                    alert(data.str);
+                    alert("请先登录!");
+                } else if ("投递成功!" == data.str) {
+                    alert("投递成功!");
                     history.go(-1);
-                } else if ("请不要重复投递！" == data.str) {
-                    alert("data.str");
-                } else {
-                    alert("投递失败！");
+                } else if ("请不要重复投递!" == data.str) {
+                    alert("请不要重复投递！");
                 }
             }
         });

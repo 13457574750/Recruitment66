@@ -19,7 +19,7 @@
 
 <!-- 简历 Start -->
 <div class="section section-padding">
-    <form id="userForm" action="${pageContext.request.contextPath }/user/saveResume" method="post" onsubmit="return submitForm();">
+    <form id="userForm" action="${pageContext.request.contextPath }/user/saveResume?userId=${sessionScope.currUser.userId}" method="post" onsubmit="return submitForm();">
         <div class="container">
 
             <div class="row mb-n5">
