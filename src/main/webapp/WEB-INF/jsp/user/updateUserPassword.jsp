@@ -98,6 +98,8 @@
 
 <%@include file="../user/foot.jsp" %>
 
+
+</body>
 <script type="text/javascript">
     function submitForm() {
         alert("保存成功");
@@ -117,5 +119,4 @@
         }
     }
 </script>
-</body>
 </html>

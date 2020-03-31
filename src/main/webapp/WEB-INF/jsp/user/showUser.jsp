@@ -73,11 +73,12 @@
 
 <%@include file="../user/foot.jsp"%>
 
+
+</body>
 <script type="text/javascript">
     function updateUser(userId) {
         var url = "${path}/user/updateUserPassword?userId=" + userId;
         window.location.href = url;
     }
 </script>
-</body>
 </html>

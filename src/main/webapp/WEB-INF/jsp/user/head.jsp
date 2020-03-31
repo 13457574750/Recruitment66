@@ -194,7 +194,7 @@
     </div>
 </div>
 <!-- 登录注册弹窗 End -->
-
+</body>
 <!-- Main Activation JS -->
 <script type="text/javascript" src="${path}/assets/js/main.js"></script>
 
@@ -231,8 +231,8 @@
             dataType:"json",
             success:function(data){
                 if("success"==data.str){
-                    alert("登录成功，请完善个人简历信息");
-                    var url="${pageContext.request.contextPath}/user/userIndex?userId=${sessionScope.currUser.userId}";
+                    alert("登录成功，请先完善个人简历信息");
+                    var url="${pageContext.request.contextPath}/user/updateResume?userId=${sessionScope.currUser.userId}";
                     window.location.href=url;
                 }else{
                     alert("登录失败,请输入正确的用户名和密码");
@@ -292,8 +292,6 @@
         });
     }
 </script>
+<!-- 登录注册脚本 End -->
 
-<!-- 登录注册End -->
-
-</body>
 </html>

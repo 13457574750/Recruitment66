@@ -75,5 +75,6 @@ return false;
     </table>
 </div>
 
+href="${path}/user/showAJob?jobId=${job.jobId}&companyId=${job.company.companyId}&userId=${sessionScope.currUser.userId}"
 
 <%--List<Apply> findAllApply();--%>

@@ -26,22 +26,30 @@
                 <div class="job-list-details">
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
-                            <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
-                            <input type="hidden" id="userRealName" value="${sessionScope.currUser.userRealName}">
-                            <input type="hidden" id="companyId" value="${company.companyId}">
-                            <input type="hidden" id="companyName" value="${company.companyName}">
+                            <%-- 接收数据--%>
+                            <input type="hidden" id="companyId" name="companyId" value="${company.companyId}">
+                            <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
                             <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
+
                             <input type="hidden" id="jobId" value="${job.jobId}">
-                            <input type="hidden" id="jobName" value="${job.jobName}">
+                            <input type="hidden" id="jobName" name="jobName" value="${job.jobName}">
                             <input type="hidden" id="jobAddress" value="${job.jobAddress}">
                             <input type="hidden" id="jobSalary" value="${job.jobSalary}">
+                            <input type="hidden" id="jobEr" value="${job.jobEr}">
+                            <input type="hidden" id="jobEducation" value="${job.jobEducation}">
                             <input type="hidden" id="jobReleaseTime" value="${job.jobReleaseTime}">
-                            <a href="${path}/user/showACompany?jobId=${job.jobId}&&companyId=${job.company.companyId}&&?userId=${sessionScope.currUser.userId}"><img
+                            <input type="hidden" id="jobType" value="${job.jobType}">
+
+                            <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
+                            <input type="hidden" id="userRealName" name="userRealName" value="${sessionScope.currUser.userRealName}">
+
+
+                            <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.company.companyId}&?userId=${sessionScope.currUser.userId}"><img
                                     src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
                             <span class="salary-range">${job.jobSalary}</span>
-                            <span class="badge badge-success"><trans id="jobType">${job.jobType}</trans></span>
+                            <span class="badge badge-success"><trans>${job.jobType}</trans></span>
                         </div>
                         <div class="content col">
                             <ul class="meta">
@@ -62,10 +70,10 @@
                                     <trans>${job.jobAddress}</trans>
                                 </strong></li>
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                    <trans id="jobEr">${job.jobEr}</trans>
+                                    <trans>${job.jobEr}</trans>
                                 </strong></li>
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                    <trans id="jobEducation">${job.jobEducation}</trans>
+                                    <trans>${job.jobEducation}</trans>
                                 </strong></li>
                             </ul>
                         </div>
@@ -75,14 +83,14 @@
                             <trans>职位福利</trans>
                         </h6>
                         <p>
-                            <trans id="jobWelfare">${job.jobWelfare}</trans>
+                            <trans>${job.jobWelfare}</trans>
                         </p>
                         <h6 class="mb-3 mt-4">
                             <trans>职位内容</trans>
                         </h6>
                         <ul>
                             <li>
-                                <trans id="jobContent">${job.jobContent}</trans>
+                                <trans>${job.jobContent}</trans>
                             </li>
                         </ul>
                         <h6 class="mb-3 mt-4">
@@ -90,7 +98,7 @@
                         </h6>
                         <ul>
                             <li>
-                                <trans id="jobRequirements">${job.jobRequirements}</trans>
+                                <trans>${job.jobRequirements}</trans>
                             </li>
                         </ul>
                     </div>
@@ -186,7 +194,7 @@
 <script type="text/javascript">
     // 投递简历
     function touDi() {
-        var applyReleaseTime=new Date();//收藏时间
+        var applyReleaseTime = new Date();//收藏时间
         var companyName = document.getElementById("companyName").value;
         var companyCreateTime = document.getElementById("companyCreateTime").value;
         var userRealName = document.getElementById("userRealName").value;
@@ -203,11 +211,14 @@
             type: "POST",
             dataType: "json",
             success: function (data) {
-                    if ("投递成功！" == data.str) {
+                if("请先登录!"== data.str){
+                    alert(data.str);
+                }
+                else if ("投递成功！" == data.str) {
                     alert(data.str);
                     history.go(-1);
                 } else if ("请不要重复投递！" == data.str) {
-                    alert("请不要重复投递！");
+                    alert("data.str");
                 } else {
                     alert("投递失败！");
                 }

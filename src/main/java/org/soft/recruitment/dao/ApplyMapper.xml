@@ -243,7 +243,7 @@
     app.company_Create_Time,
     app.user_Real_Name,
     app.job_Id,
-    j.job_Id
+    j.job_Id,
 
     from apply app
     inner join job j

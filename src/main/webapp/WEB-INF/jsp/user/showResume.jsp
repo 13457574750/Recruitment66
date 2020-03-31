@@ -134,11 +134,12 @@
 <!-- 简历 End -->
 <%@include file="../user/foot.jsp" %>
 
-<script type="text/javascript">
-   function updateUser(userId) {
-   var url = "${path}/user/updateResume?userId=" + userId;
-   window.location.href = url;
-   }
-</script>
+
 </body>
+<script type="text/javascript">
+    function updateUser(userId) {
+        var url = "${path}/user/updateResume?userId=" + userId;
+        window.location.href = url;
+    }
+</script>
 </html>

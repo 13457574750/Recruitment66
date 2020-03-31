@@ -68,11 +68,15 @@ public class ApplyController {
     @ResponseBody
     public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName, Integer jobId) {
         Message message = new Message();
+        if(userRealName==null || userRealName.isEmpty()){
+            message.setStr("请先登录!");
+            return message;
+        }
         Apply apply = applyService.findAllApply(userRealName);
         if (apply == null) {
             //插入职位具体数据
             Apply apply_ = new Apply();
-            apply_.setCompanyName(applyReleaseTime);
+            apply_.setApplyReleaseTime(applyReleaseTime);
             apply_.setCompanyName(companyName);
             apply_.setCompanyCreateTime(companyCreateTime);
             apply_.setUserRealName(userRealName);
@@ -91,7 +95,6 @@ public class ApplyController {
             message.setStr("请不要重复投递！");
             return message;
         }
-
     }
 
     /**
