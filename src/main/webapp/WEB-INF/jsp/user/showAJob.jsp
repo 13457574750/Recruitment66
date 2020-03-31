@@ -227,39 +227,39 @@
     }
 
     <!--收藏职位-->
-    function saveJob() {
-        var jobName_ = $("#jobName").val();//职位名称
-        var jobAddress_ = $("#jobAddress").val();//职位地址
-        var jobSalary_ = $("#jobSalary").val();//职位薪资
-        var realname_ = $("#userRealName").val();//真实名字
-        var saveTime = new Date();//收藏时间
-        var companyName_ = $("#companyName").val();//公司的名字
-        $.ajax({
-            url: "${pageContext.request.contextPath}/favorite/favorite",//收藏
-            data: {
-                jobName: jobName_,
-                jobAddress: jobAddress_,
-                jobSalary: jobSalary_,
-                userRealName: realname_,
-                saveTime: saveTime,
-                companyName: companyName_
-            },//给服务器的参数
-            type: "POST",
-            dataType: "json",
-            success: function (data) {
-                if ("您还没有登录！" == data.str) {
-                    alert("您还没有登录，请登录！");
-                    return false;
-                } else if ("收藏成功！" == data.str) {
-                    alert(data.str);
-                    history.go(-1);
-                } else if ("请不要重复收藏！" == data.str) {
-                    alert("请不要重复收藏！");
-                } else {
-                    alert("插入数据失败！");
-                }
-            }
-        });
-    }
+    <%--function saveJob() {--%>
+    <%--    var jobName_ = $("#jobName").val();//职位名称--%>
+    <%--    var jobAddress_ = $("#jobAddress").val();//职位地址--%>
+    <%--    var jobSalary_ = $("#jobSalary").val();//职位薪资--%>
+    <%--    var realname_ = $("#userRealName").val();//真实名字--%>
+    <%--    var saveTime = new Date();//收藏时间--%>
+    <%--    var companyName_ = $("#companyName").val();//公司的名字--%>
+    <%--    $.ajax({--%>
+    <%--        url: "${pageContext.request.contextPath}/favorite/favorite",//收藏--%>
+    <%--        data: {--%>
+    <%--            jobName: jobName_,--%>
+    <%--            jobAddress: jobAddress_,--%>
+    <%--            jobSalary: jobSalary_,--%>
+    <%--            userRealName: realname_,--%>
+    <%--            saveTime: saveTime,--%>
+    <%--            companyName: companyName_--%>
+    <%--        },//给服务器的参数--%>
+    <%--        type: "POST",--%>
+    <%--        dataType: "json",--%>
+    <%--        success: function (data) {--%>
+    <%--            if ("您还没有登录！" == data.str) {--%>
+    <%--                alert("您还没有登录，请登录！");--%>
+    <%--                return false;--%>
+    <%--            } else if ("收藏成功！" == data.str) {--%>
+    <%--                alert(data.str);--%>
+    <%--                history.go(-1);--%>
+    <%--            } else if ("请不要重复收藏！" == data.str) {--%>
+    <%--                alert("请不要重复收藏！");--%>
+    <%--            } else {--%>
+    <%--                alert("插入数据失败！");--%>
+    <%--            }--%>
+    <%--        }--%>
+    <%--    });--%>
+    <%--}--%>
 </script>
 </html>

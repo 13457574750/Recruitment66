@@ -51,7 +51,7 @@
                     <div class="job-list-wrap mt-5" id="target" >
 <%--                        <c:forEach items="${jobList}" var="job">--%>
 
-                            <a href="${path}/job/showAJob?jobId=${job.jobId}&companyId=${job.company.companyId}" class="job-list">
+                            <a href="${path}/user/showAJob?jobId=${job.jobId}&companyId=${job.company.companyId}" class="job-list">
                                 <div class="company-logo col-auto">
                                     <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
                                 </div>

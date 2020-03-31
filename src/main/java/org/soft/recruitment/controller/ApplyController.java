@@ -9,6 +9,7 @@ import org.soft.recruitment.model.Apply;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.service.IApplyService;
+import org.soft.recruitment.util.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -68,11 +69,11 @@ public class ApplyController {
     @ResponseBody
     public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName, Integer jobId) {
         Message message = new Message();
-        if(userRealName==null || userRealName.isEmpty()){
+        Apply apply = applyService.findAllApply(userRealName);
+        if(userRealName==null || userRealName==""){
             message.setStr("请先登录!");
             return message;
         }
-        Apply apply = applyService.findAllApply(userRealName);
         if (apply == null) {
             //插入职位具体数据
             Apply apply_ = new Apply();
@@ -95,6 +96,7 @@ public class ApplyController {
             message.setStr("请不要重复投递！");
             return message;
         }
+
     }
 
     /**

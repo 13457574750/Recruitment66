@@ -32,7 +32,7 @@ public class ApplyServiceImpl implements IApplyService {
             criteria.andUserRealNameEqualTo(userRealName);
         }
         List<Apply> applyList = applyMapper.selectByExample(example);
-        if (applyList != null && applyList.isEmpty()) {
+        if (applyList != null && applyList.size() > 0) {
             return applyList.get(0);
         }
         return null;
