@@ -28,6 +28,4 @@ public interface ApplyMapper {
 
     int updateByPrimaryKey(Apply record);
 
-    List<Apply> findAllApply();
-
 }

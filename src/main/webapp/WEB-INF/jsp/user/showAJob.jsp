@@ -27,6 +27,7 @@
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
                             <%-- 接收数据--%>
+                            <p>
                             <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
                             <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
 
@@ -40,14 +41,15 @@
                             <input type="hidden" id="jobType" value="${job.jobType}">
 
                             <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
-                            <input type="hidden" id="userRealName" name="userRealName" value="${sessionScope.currUser.userRealName}">
+                            <input type="hidden" id="userRealName" name="userRealName"
+                                   value="${sessionScope.currUser.userRealName}">
 
-
+                            </p>
                             <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.company.companyId}&?userId=${sessionScope.currUser.userId}"><img
                                     src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
-                            <span class="salary-range">${job.jobSalary}</span>
+                            <span class="salary-range">$${job.jobSalary}</span>
                             <span class="badge badge-success"><trans>${job.jobType}</trans></span>
                         </div>
                         <div class="content col">
@@ -114,8 +116,8 @@
                         <div class="inner">
                             <div class="row m-n2">
                                 <div class="col-xl-auto col-lg-12 col-sm-auto col-12 p-2">
-                                    <a href="#" class="d-block btn btn-outline-secondary"><i
-                                            class="fa fa-heart-o mr-1"></i>
+                                    <a type="button" class="d-block btn btn-outline-secondary" onclick="shouCang()">
+                                        <i class="fa fa-heart-o mr-1"></i>
                                         <trans>收藏</trans>
                                     </a>
                                 </div>
@@ -224,7 +226,7 @@
             type: "POST",
             dataType: "json",
             success: function (data) {
-                if("请先登录!"== data.str){
+                if ("请先登录!" == data.str) {
                     alert("请先登录!");
                 } else if ("投递成功!" == data.str) {
                     alert("投递成功!");
@@ -236,40 +238,50 @@
         });
     }
 
-    <!--收藏职位-->
-    <%--function saveJob() {--%>
-    <%--    var jobName_ = $("#jobName").val();//职位名称--%>
-    <%--    var jobAddress_ = $("#jobAddress").val();//职位地址--%>
-    <%--    var jobSalary_ = $("#jobSalary").val();//职位薪资--%>
-    <%--    var realname_ = $("#userRealName").val();//真实名字--%>
-    <%--    var saveTime = new Date();//收藏时间--%>
-    <%--    var companyName_ = $("#companyName").val();//公司的名字--%>
-    <%--    $.ajax({--%>
-    <%--        url: "${pageContext.request.contextPath}/favorite/favorite",//收藏--%>
-    <%--        data: {--%>
-    <%--            jobName: jobName_,--%>
-    <%--            jobAddress: jobAddress_,--%>
-    <%--            jobSalary: jobSalary_,--%>
-    <%--            userRealName: realname_,--%>
-    <%--            saveTime: saveTime,--%>
-    <%--            companyName: companyName_--%>
-    <%--        },//给服务器的参数--%>
-    <%--        type: "POST",--%>
-    <%--        dataType: "json",--%>
-    <%--        success: function (data) {--%>
-    <%--            if ("您还没有登录！" == data.str) {--%>
-    <%--                alert("您还没有登录，请登录！");--%>
-    <%--                return false;--%>
-    <%--            } else if ("收藏成功！" == data.str) {--%>
-    <%--                alert(data.str);--%>
-    <%--                history.go(-1);--%>
-    <%--            } else if ("请不要重复收藏！" == data.str) {--%>
-    <%--                alert("请不要重复收藏！");--%>
-    <%--            } else {--%>
-    <%--                alert("插入数据失败！");--%>
-    <%--            }--%>
-    <%--        }--%>
-    <%--    });--%>
-    <%--}--%>
+    //收藏简历
+    function shouCang() {
+        var favoriteReleaseTime = new Date();//收藏时间
+        var companyName = document.getElementById("companyName").value;
+        var companyCreateTime = document.getElementById("companyCreateTime").value;
+        var userRealName = document.getElementById("userRealName").value;
+        var jobId = document.getElementById("jobId").value;
+        var jobName = document.getElementById("jobName").value;
+        var jobAddress = document.getElementById("jobAddress").value;
+        var jobSalary = document.getElementById("jobSalary").value;
+        var jobEr = document.getElementById("jobEr").value;
+        var jobEducation = document.getElementById("jobEducation").value;
+        var jobType = document.getElementById("jobType").value;
+        var jobReleaseTime = document.getElementById("jobReleaseTime").value;
+        $.ajax({
+            url: "${path}/favorites/addFavorites",
+            data: {
+                favoriteReleaseTime: favoriteReleaseTime,
+                companyName: companyName,
+                companyCreateTime: companyCreateTime,
+                userRealName: userRealName,
+                jobId: jobId,
+                jobName: jobName,
+                jobAddress: jobAddress,
+                jobSalary: jobSalary,
+                jobEr: jobEr,
+                jobEducation: jobEducation,
+                jobType: jobType,
+                jobReleaseTime: jobReleaseTime
+            },//给服务器的参数
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                if ("请先登录!" == data.str) {
+                    alert("请先登录!");
+                } else if ("收藏成功!" == data.str) {
+                    alert("收藏成功!");
+                    history.go(-1);
+                } else if ("请不要重复收藏!" == data.str) {
+                    alert("请不要重复收藏！");
+                }
+            }
+        });
+    }
+
 </script>
 </html>

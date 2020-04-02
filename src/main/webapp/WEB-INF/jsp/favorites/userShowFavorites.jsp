@@ -24,21 +24,22 @@
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                 <!-- 工作列表 Start -->
                 <div class="job-list-wrap">
-                    <c:forEach items="${applyList_}" var="applyList_">
-                            <a class="job-list">
-<%--                               onclick="show('${applyList_.job.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',--%>
-<%--                                       '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',--%>
-<%--                                       '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">--%>
-                                <div class="company-logo col-auto">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
-                                </div>
+                    <c:forEach items="${favoritesList_}" var="favoritesList_">
+                        <a class="job-list">
+<%--                        <a class="job-list"--%>
+<%--                           onclick="show('${favoritesList_.job.companyId}','${favoritesList_.companyName}','${favoritesList_.companyCreateTime}','${favoritesList_.jobId}',--%>
+<%--                                   '${favoritesList_.jobName}','${favoritesList_.jobAddress}','${favoritesList_.jobSalary}','${favoritesList_.jobEr}','${favoritesList_.jobEducation}',--%>
+<%--                                   '${favoritesList_.jobReleaseTime}','${favoritesList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">--%>
+                            <div class="company-logo col-auto">
+                                <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                            </div>
                             <div class="salary-type col-auto order-sm-3">
-                                <span class="salary-range">$${applyList_.jobSalary}</span>
-                                <span class="badge badge-success"><trans>${applyList_.jobType}</trans></span>
+                                <span class="salary-range">$${favoritesList_.jobSalary}</span>
+                                <span class="badge badge-success"><trans>${favoritesList_.jobType}</trans></span>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="badge badge-danger"
-                                      href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
+                                      href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList_.favoriteId}& userId=${sessionScope.currUser.userId}"
                                       onclick="return confirm('确定要删除吗？');"
                                 ><trans>删除</trans></span>
                             </div>
@@ -46,25 +47,25 @@
                                 <ul class="meta">
                                     <li>
                                         <h6 class="title">
-                                            <trans>${applyList_.jobName}</trans>
+                                            <trans>${favoritesList_.jobName}</trans>
                                         </h6>
                                     </li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>发布时间：${applyList_.jobReleaseTime}</trans>
+                                        <trans>发布时间：${favoritesList_.jobReleaseTime}</trans>
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>${applyList_.companyName}</trans>
+                                        <trans>${favoritesList_.companyName}</trans>
                                     </strong></li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>${applyList_.jobAddress}</trans>
+                                        <trans>${favoritesList_.jobAddress}</trans>
                                     </strong></li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>${applyList_.jobEr}</trans>
+                                        <trans>${favoritesList_.jobEr}</trans>
                                     </strong></li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>${applyList_.jobEducation}</trans>
+                                        <trans>${favoritesList_.jobEducation}</trans>
                                     </strong></li>
                                 </ul>
                             </div>

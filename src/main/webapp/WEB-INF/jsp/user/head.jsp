@@ -112,7 +112,7 @@
                                 <li><a href="${path}/user/showUser?userId=${sessionScope.currUser.userId}" target="_parent">我的信息</a></li>
                                 <li><a href="${path}/user/updateUserPassword?userId=${sessionScope.currUser.userId}" target="_parent">修改密码</a></li>
                                 <li><a href="${path}/user/showResume?userId=${sessionScope.currUser.userId}" target="_parent">个人简历</a></li>
-                                <li><a href="${path}/user/showUser?userId=${sessionScope.currUser.userId}" target="_parent">收藏夹</a></li>
+                                <li><a href="${path}/favorites/userShowFavorites?userId=${sessionScope.currUser.userId}" target="_parent">收藏夹</a></li>
                                 <li><a href="${path}/apply/userShowApply?userId=${sessionScope.currUser.userId}" target="_parent">投递箱</a></li>
                                 <li><a href="${path}/user/exit" target="_parent">退出</a></li>
                             </ul>
