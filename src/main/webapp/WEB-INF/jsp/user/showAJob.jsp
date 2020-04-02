@@ -28,25 +28,25 @@
                         <div class="company-logo col-auto">
                             <%-- 接收数据--%>
                             <p>
-                            <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
-                            <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
+                                <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
+                                <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
 
-                            <input type="hidden" id="jobId" value="${job.jobId}">
-                            <input type="hidden" id="jobName" name="jobName" value="${job.jobName}">
-                            <input type="hidden" id="jobAddress" value="${job.jobAddress}">
-                            <input type="hidden" id="jobSalary" value="${job.jobSalary}">
-                            <input type="hidden" id="jobEr" value="${job.jobEr}">
-                            <input type="hidden" id="jobEducation" value="${job.jobEducation}">
-                            <input type="hidden" id="jobReleaseTime" value="${job.jobReleaseTime}">
-                            <input type="hidden" id="jobType" value="${job.jobType}">
+                                <input type="hidden" id="jobId" value="${job.jobId}">
+                                <input type="hidden" id="jobName" name="jobName" value="${job.jobName}">
+                                <input type="hidden" id="jobAddress" value="${job.jobAddress}">
+                                <input type="hidden" id="jobSalary" value="${job.jobSalary}">
+                                <input type="hidden" id="jobEr" value="${job.jobEr}">
+                                <input type="hidden" id="jobEducation" value="${job.jobEducation}">
+                                <input type="hidden" id="jobReleaseTime" value="${job.jobReleaseTime}">
+                                <input type="hidden" id="jobType" value="${job.jobType}">
 
-                            <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
-                            <input type="hidden" id="userRealName" name="userRealName"
-                                   value="${sessionScope.currUser.userRealName}">
+                                <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
+                                <input type="hidden" id="userRealName" name="userRealName"
+                                       value="${sessionScope.currUser.userRealName}">
 
                             </p>
-                            <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.company.companyId}&?userId=${sessionScope.currUser.userId}"><img
-                                    src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}"><img
+                                        src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
                             <span class="salary-range">$${job.jobSalary}</span>
@@ -187,12 +187,11 @@
 
 </body>
 <script type="text/javascript">
+
     function search() {
         $("#searchForm").submit();
     }
-</script>
 
-<script type="text/javascript">
     // 投递简历
     function touDi() {
         var applyReleaseTime = new Date();//收藏时间
@@ -278,10 +277,11 @@
                     history.go(-1);
                 } else if ("请不要重复收藏!" == data.str) {
                     alert("请不要重复收藏！");
+                } else {
+                    alert("请不要重复收藏！");
                 }
             }
         });
     }
-
 </script>
 </html>

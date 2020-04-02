@@ -27,8 +27,10 @@
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a href="${path}/user/showACompany?jobId=${applyList_.jobId}&companyId=${applyList_.job.companyId}&?userId=${sessionScope.currUser.userId}"><img
-                                        src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                <a onclick="show('${applyList_.job.company.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',
+                                        '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',
+                                        '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">$${applyList_.jobSalary}</span>
@@ -96,4 +98,15 @@
 
 <%@include file="../user/foot.jsp" %>
 </body>
+<script type="text/javascript">
+    //加载参数并传递数据给url
+    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
+                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
+        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
+            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
+            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
+            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
+        window.location.href = url;
+    }
+</script>
 </html>

@@ -27,8 +27,10 @@
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a href="${path}/user/showACompany?jobId=${favoritesList_.jobId}&companyId=${favoritesList_.job.companyId}&?userId=${sessionScope.currUser.userId}"><img
-                                        src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                <a onclick="show('${favoritesList_.job.companyId}','${favoritesList_.companyName}','${favoritesList_.companyCreateTime}','${favoritesList_.jobId}',
+                                        '${favoritesList_.jobName}','${favoritesList_.jobAddress}','${favoritesList_.jobSalary}','${favoritesList_.jobEr}','${favoritesList_.jobEducation}',
+                                        '${favoritesList_.jobReleaseTime}','${favoritesList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">$${favoritesList_.jobSalary}</span>
@@ -79,7 +81,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <form action="#">
-                                <button type="button" class="btn btn-primary w-100">⬅我的投递记录</button>
+                                <button type="button" class="btn btn-primary w-100">⬅我的收藏记录</button>
                             </form>
                         </div>
                     </div>
@@ -96,4 +98,15 @@
 
 <%@include file="../user/foot.jsp" %>
 </body>
+<script type="text/javascript">
+    //加载参数并传递数据给url
+    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
+                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
+        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
+            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
+            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
+            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
+        window.location.href = url;
+    }
+</script>
 </html>

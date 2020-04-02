@@ -32,7 +32,7 @@ public class FavoritesServiceImpl implements IFavoritesService {
             criteria.andUserRealNameEqualTo(userRealName);
         }
         if (StringUtils.isNotBlank(jobId)){
-            criteria.andJobAddressEqualTo(jobId);
+            criteria.andJobIdEqualTo(jobId);
         }
 
         List<Favorites> favoritesList = favoritesMapper.selectByExample(example);

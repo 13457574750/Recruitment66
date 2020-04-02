@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
     <title>投递箱</title>
@@ -26,9 +26,9 @@
                 <div class="job-list-wrap">
                     <c:forEach items="${applyList_}" var="applyList_">
                         <a class="job-list">
-                            <%--                               onclick="show('${applyList_.job.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',--%>
-                            <%--                                       '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',--%>
-                            <%--                                       '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">--%>
+                            onclick="show('${applyList_.job.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',
+                            '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',
+                            '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
                             <div class="company-logo col-auto">
                                 <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
                             </div>
@@ -37,9 +37,10 @@
                                 <span class="badge badge-success"><trans>${applyList_.jobType}</trans></span>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
-                                <span  class="btn btn-default"
-                                ><trans><a href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
-                                           onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
+                                <span class="btn btn-default"
+                                ><trans><a
+                                        href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
+                                        onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
@@ -99,15 +100,15 @@
 
 <%@include file="../user/foot.jsp" %>
 </body>
-<%--<script type="text/javascript">--%>
-<%--    //加载参数并传递数据给url--%>
-<%--    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,--%>
-<%--                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {--%>
-<%--        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="--%>
-    <%--            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="--%>
-    <%--            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="--%>
-    <%--            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;--%>
-<%--        window.location.href = url;--%>
-<%--    }--%>
-<%--</script>--%>
+<script type="text/javascript">
+    //加载参数并传递数据给url
+    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
+                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
+        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
+            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
+            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
+            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
+        window.location.href = url;
+    }
+</script>
 </html>
