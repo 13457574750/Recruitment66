@@ -9,58 +9,106 @@
     <title>投递箱</title>
 </head>
 <body>
-<%@include file="../user/head.jsp"%>
+<%@include file="../user/head.jsp" %>
 <!-- 首页图片 Start -->
 <div class="page-heading-section section bg-parallax" data-bg-image="${path}/assets/images/bg/bg-1.jpg"
      data-overlay="50"></div>
 <!-- 首页图片 End -->
 
 <!-- 主体内容 Start -->
-<div id="tableAll">
-    <table class="table table-hover table-bordered" border="1">
-        <tr class="info">
-            <h3>投递记录</h3>
-        </tr>
-        <tr>
-            <th>公司名称</th>
-            <th>公司头像</th>
-            <th>工作ID</th>
-            <th>工作名称</th>
-            <th>工作地址</th>
-            <th>薪资</th>
-            <th>经验</th>
-            <th>学历</th>
-            <th>发布时间</th>
-            <th>类型</th>
-            <th>用户真名</th>
-            <th>投递时间</th>
-            <th>操作</th>
-        </tr>
-        <c:forEach items="${applyList_}" var="applyList_">
-            <tr>
+<div class="section section-padding">
+    <div class="container">
+        <div class="row mb-n5">
 
-                <td>${applyList_.companyName}</td>
-                <td>${applyList_.companyCreateTime}</td>
-                <td>${applyList_.job.jobId}</td>
-                <td>${applyList_.job.jobName}</td>
-                <td>${applyList_.job.jobAddress }</td>
-                <td>${applyList_.job.jobSalary}</td>
-                <td>${applyList_.job.jobEr}</td>
-                <td>${applyList_.job.jobEducation}</td>
-                <td>${applyList_.job.jobReleaseTime}</td>
-                <td>${applyList_.job.jobType}</td>
-                <td>${applyList_.userRealName}</td>
-                <td>${applyList_.applyReleaseTime}</td>
-                <td>
-                    <a href="${path}/apply/deleteApply?applyId=${applyList_.applyId}& userId=${sessionScope.currUser.userId}" onclick="return confirm('确定要删除吗？');"
-                       class="btn btn-default">删除</a></td>
-            </tr>
-        </c:forEach>
-    </table>
+            <!-- 左边 Start -->
+            <div class="col-lg-8 col-12 mb-5 pr-lg-5">
+                <!-- 工作列表 Start -->
+                <div class="job-list-wrap">
+                    <c:forEach items="${applyList_}" var="applyList_">
+                            <a class="job-list"
+                               onclick="show('${applyList_.job.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',
+                                       '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',
+                                       '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                <div class="company-logo col-auto">
+                                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                                </div>
+                            <div class="salary-type col-auto order-sm-3">
+                                <span class="salary-range">$${applyList_.jobSalary}</span>
+                                <span class="badge badge-success"><trans>${applyList_.jobType}</trans></span>
+                            </div>
+                            <div class="salary-type col-auto order-sm-3">
+                                <span class="badge badge-danger"
+                                      href="${path}/apply/deleteApply?applyId=${applyList_.applyId}& userId=${sessionScope.currUser.userId}"
+                                      onclick="return confirm('确定要删除吗？');"
+                                ><trans>删除</trans></span>
+                            </div>
+                            <div class="content col">
+                                <ul class="meta">
+                                    <li>
+                                        <h6 class="title">
+                                            <trans>${applyList_.jobName}</trans>
+                                        </h6>
+                                    </li>
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <trans>发布时间：${applyList_.jobReleaseTime}</trans>
+                                    </strong></li>
+                                </ul>
+                                <ul class="meta">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <trans>${applyList_.companyName}</trans>
+                                    </strong></li>
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <trans>${applyList_.jobAddress}</trans>
+                                    </strong></li>
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <trans>${applyList_.jobEr}</trans>
+                                    </strong></li>
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <trans>${applyList_.jobEducation}</trans>
+                                    </strong></li>
+                                </ul>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
+                <!-- 工作列表 End -->
+            </div>
+            <!-- 左边 End -->
+            <!-- 右边 Start -->
+            <div class="col-lg-4 col-12 mb-5">
+
+                <div class="sidebar-wrap">
+
+                    <!-- 右3 Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <form action="#">
+                                <button type="button" class="btn btn-primary w-100">⬅我的投递记录</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 右3 End -->
+                </div>
+            </div>
+            <!-- 右边 End -->
+
+        </div>
+    </div>
 </div>
 <!-- 主体内容 End -->
 
 
-<%@include file="../user/foot.jsp"%>
+<%@include file="../user/foot.jsp" %>
 </body>
+<script type="text/javascript">
+    //加载参数并传递数据给url
+    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
+                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
+        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
+            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
+            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
+            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
+        window.location.href = url;
+    }
+</script>
 </html>
