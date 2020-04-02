@@ -22,7 +22,6 @@
             <h3>投递记录</h3>
         </tr>
         <tr>
-            <th>公司ID</th>
             <th>公司名称</th>
             <th>公司头像</th>
             <th>工作ID</th>
@@ -40,7 +39,6 @@
         <c:forEach items="${applyList_}" var="applyList_">
             <tr>
 
-                <td>${applyList_.job.companyId}</td>
                 <td>${applyList_.companyName}</td>
                 <td>${applyList_.companyCreateTime}</td>
                 <td>${applyList_.job.jobId}</td>
@@ -49,8 +47,8 @@
                 <td>${applyList_.job.jobSalary}</td>
                 <td>${applyList_.job.jobEr}</td>
                 <td>${applyList_.job.jobEducation}</td>
-                <td>${applyList_.job.jobType}</td>
                 <td>${applyList_.job.jobReleaseTime}</td>
+                <td>${applyList_.job.jobType}</td>
                 <td>${applyList_.userRealName}</td>
                 <td>${applyList_.applyReleaseTime}</td>
                 <td>

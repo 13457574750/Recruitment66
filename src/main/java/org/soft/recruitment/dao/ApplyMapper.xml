@@ -4,17 +4,22 @@
   <resultMap id="BaseResultMap" type="org.soft.recruitment.model.Apply" >
     <id column="apply_Id" property="applyId" jdbcType="INTEGER" />
     <result column="apply_Release_Time" property="applyReleaseTime" jdbcType="VARCHAR" />
+    <result column="job_Id" property="jobId" jdbcType="VARCHAR" />
+    <result column="job_Name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_Address" property="jobAddress" jdbcType="VARCHAR" />
+    <result column="job_Salary" property="jobSalary" jdbcType="VARCHAR" />
+    <result column="job_ER" property="jobEr" jdbcType="VARCHAR" />
+    <result column="job_Education" property="jobEducation" jdbcType="VARCHAR" />
+    <result column="job_Release_Time" property="jobReleaseTime" jdbcType="VARCHAR" />
+    <result column="job_Type" property="jobType" jdbcType="VARCHAR" />
     <result column="company_Name" property="companyName" jdbcType="VARCHAR" />
     <result column="company_Create_Time" property="companyCreateTime" jdbcType="VARCHAR" />
     <result column="user_Real_Name" property="userRealName" jdbcType="VARCHAR" />
-    <result column="job_Id" property="jobId" jdbcType="VARCHAR" />
-
 
     <association property="job" resultMap="org.soft.recruitment.dao.JobMapper.BaseResultMap">
       <id column="job_Id" property="jobId"/>
       <result column="job_Name" property="jobName"/>
     </association>
-
 
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -76,8 +81,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    apply_Id, apply_Release_Time, company_Name, company_Create_Time, user_Real_Name, 
-    job_Id
+    apply_Id, apply_Release_Time, job_Id, job_Name, job_Address, job_Salary, job_ER, 
+    job_Education, job_Release_Time, job_Type, company_Name, company_Create_Time, user_Real_Name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.ApplyExample" >
     select
@@ -110,12 +115,16 @@
     </if>
   </delete>
   <insert id="insert" parameterType="org.soft.recruitment.model.Apply" >
-    insert into apply (apply_Id, apply_Release_Time, company_Name, 
-      company_Create_Time, user_Real_Name, job_Id
-      )
-    values (#{applyId,jdbcType=INTEGER}, #{applyReleaseTime,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
-      #{companyCreateTime,jdbcType=VARCHAR}, #{userRealName,jdbcType=VARCHAR}, #{jobId,jdbcType=VARCHAR}
-      )
+    insert into apply (apply_Id, apply_Release_Time, job_Id, 
+      job_Name, job_Address, job_Salary, 
+      job_ER, job_Education, job_Release_Time, 
+      job_Type, company_Name, company_Create_Time, 
+      user_Real_Name)
+    values (#{applyId,jdbcType=INTEGER}, #{applyReleaseTime,jdbcType=VARCHAR}, #{jobId,jdbcType=VARCHAR}, 
+      #{jobName,jdbcType=VARCHAR}, #{jobAddress,jdbcType=VARCHAR}, #{jobSalary,jdbcType=VARCHAR}, 
+      #{jobEr,jdbcType=VARCHAR}, #{jobEducation,jdbcType=VARCHAR}, #{jobReleaseTime,jdbcType=VARCHAR}, 
+      #{jobType,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, #{companyCreateTime,jdbcType=VARCHAR}, 
+      #{userRealName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.soft.recruitment.model.Apply" >
     insert into apply
@@ -126,6 +135,30 @@
       <if test="applyReleaseTime != null" >
         apply_Release_Time,
       </if>
+      <if test="jobId != null" >
+        job_Id,
+      </if>
+      <if test="jobName != null" >
+        job_Name,
+      </if>
+      <if test="jobAddress != null" >
+        job_Address,
+      </if>
+      <if test="jobSalary != null" >
+        job_Salary,
+      </if>
+      <if test="jobEr != null" >
+        job_ER,
+      </if>
+      <if test="jobEducation != null" >
+        job_Education,
+      </if>
+      <if test="jobReleaseTime != null" >
+        job_Release_Time,
+      </if>
+      <if test="jobType != null" >
+        job_Type,
+      </if>
       <if test="companyName != null" >
         company_Name,
       </if>
@@ -135,9 +168,6 @@
       <if test="userRealName != null" >
         user_Real_Name,
       </if>
-      <if test="jobId != null" >
-        job_Id,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="applyId != null" >
@@ -145,6 +175,30 @@
       </if>
       <if test="applyReleaseTime != null" >
         #{applyReleaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAddress != null" >
+        #{jobAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jobSalary != null" >
+        #{jobSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="jobEr != null" >
+        #{jobEr,jdbcType=VARCHAR},
+      </if>
+      <if test="jobEducation != null" >
+        #{jobEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="jobReleaseTime != null" >
+        #{jobReleaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jobType != null" >
+        #{jobType,jdbcType=VARCHAR},
       </if>
       <if test="companyName != null" >
         #{companyName,jdbcType=VARCHAR},
@@ -154,9 +208,6 @@
       </if>
       <if test="userRealName != null" >
         #{userRealName,jdbcType=VARCHAR},
-      </if>
-      <if test="jobId != null" >
-        #{jobId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -175,6 +226,30 @@
       <if test="record.applyReleaseTime != null" >
         apply_Release_Time = #{record.applyReleaseTime,jdbcType=VARCHAR},
       </if>
+      <if test="record.jobId != null" >
+        job_Id = #{record.jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobName != null" >
+        job_Name = #{record.jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobAddress != null" >
+        job_Address = #{record.jobAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobSalary != null" >
+        job_Salary = #{record.jobSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobEr != null" >
+        job_ER = #{record.jobEr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobEducation != null" >
+        job_Education = #{record.jobEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobReleaseTime != null" >
+        job_Release_Time = #{record.jobReleaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobType != null" >
+        job_Type = #{record.jobType,jdbcType=VARCHAR},
+      </if>
       <if test="record.companyName != null" >
         company_Name = #{record.companyName,jdbcType=VARCHAR},
       </if>
@@ -183,9 +258,6 @@
       </if>
       <if test="record.userRealName != null" >
         user_Real_Name = #{record.userRealName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.jobId != null" >
-        job_Id = #{record.jobId,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -196,10 +268,17 @@
     update apply
     set apply_Id = #{record.applyId,jdbcType=INTEGER},
       apply_Release_Time = #{record.applyReleaseTime,jdbcType=VARCHAR},
+      job_Id = #{record.jobId,jdbcType=VARCHAR},
+      job_Name = #{record.jobName,jdbcType=VARCHAR},
+      job_Address = #{record.jobAddress,jdbcType=VARCHAR},
+      job_Salary = #{record.jobSalary,jdbcType=VARCHAR},
+      job_ER = #{record.jobEr,jdbcType=VARCHAR},
+      job_Education = #{record.jobEducation,jdbcType=VARCHAR},
+      job_Release_Time = #{record.jobReleaseTime,jdbcType=VARCHAR},
+      job_Type = #{record.jobType,jdbcType=VARCHAR},
       company_Name = #{record.companyName,jdbcType=VARCHAR},
       company_Create_Time = #{record.companyCreateTime,jdbcType=VARCHAR},
-      user_Real_Name = #{record.userRealName,jdbcType=VARCHAR},
-      job_Id = #{record.jobId,jdbcType=VARCHAR}
+      user_Real_Name = #{record.userRealName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,6 +289,30 @@
       <if test="applyReleaseTime != null" >
         apply_Release_Time = #{applyReleaseTime,jdbcType=VARCHAR},
       </if>
+      <if test="jobId != null" >
+        job_Id = #{jobId,jdbcType=VARCHAR},
+      </if>
+      <if test="jobName != null" >
+        job_Name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAddress != null" >
+        job_Address = #{jobAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="jobSalary != null" >
+        job_Salary = #{jobSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="jobEr != null" >
+        job_ER = #{jobEr,jdbcType=VARCHAR},
+      </if>
+      <if test="jobEducation != null" >
+        job_Education = #{jobEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="jobReleaseTime != null" >
+        job_Release_Time = #{jobReleaseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="jobType != null" >
+        job_Type = #{jobType,jdbcType=VARCHAR},
+      </if>
       <if test="companyName != null" >
         company_Name = #{companyName,jdbcType=VARCHAR},
       </if>
@@ -219,19 +322,23 @@
       <if test="userRealName != null" >
         user_Real_Name = #{userRealName,jdbcType=VARCHAR},
       </if>
-      <if test="jobId != null" >
-        job_Id = #{jobId,jdbcType=VARCHAR},
-      </if>
     </set>
     where apply_Id = #{applyId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.Apply" >
     update apply
     set apply_Release_Time = #{applyReleaseTime,jdbcType=VARCHAR},
+      job_Id = #{jobId,jdbcType=VARCHAR},
+      job_Name = #{jobName,jdbcType=VARCHAR},
+      job_Address = #{jobAddress,jdbcType=VARCHAR},
+      job_Salary = #{jobSalary,jdbcType=VARCHAR},
+      job_ER = #{jobEr,jdbcType=VARCHAR},
+      job_Education = #{jobEducation,jdbcType=VARCHAR},
+      job_Release_Time = #{jobReleaseTime,jdbcType=VARCHAR},
+      job_Type = #{jobType,jdbcType=VARCHAR},
       company_Name = #{companyName,jdbcType=VARCHAR},
       company_Create_Time = #{companyCreateTime,jdbcType=VARCHAR},
-      user_Real_Name = #{userRealName,jdbcType=VARCHAR},
-      job_Id = #{jobId,jdbcType=VARCHAR}
+      user_Real_Name = #{userRealName,jdbcType=VARCHAR}
     where apply_Id = #{applyId,jdbcType=INTEGER}
   </update>
 
@@ -239,14 +346,21 @@
     select
     app.apply_Id,
     app.apply_Release_Time,
+    app.job_Id,
+    app.job_Name,
+    app.job_Address,
+    app.job_Salary,
+    app.job_ER,
+    app.job_Education,
+    app.job_ReleaseTime,
+    app.job_Type,
     app.company_Name,
     app.company_Create_Time,
     app.user_Real_Name,
-    app.job_Id,
     j.job_Id,
 
     from apply app
     inner join job j
     on app.job_Id=j.job_Id
-  </select>
+</select>
 </mapper>

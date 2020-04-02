@@ -27,7 +27,6 @@
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
                             <%-- 接收数据--%>
-                            <input type="hidden" id="companyId" name="companyId" value="${company.companyId}">
                             <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
                             <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
 
@@ -199,6 +198,13 @@
         var companyCreateTime = document.getElementById("companyCreateTime").value;
         var userRealName = document.getElementById("userRealName").value;
         var jobId = document.getElementById("jobId").value;
+        var jobName = document.getElementById("jobName").value;
+        var jobAddress = document.getElementById("jobAddress").value;
+        var jobSalary = document.getElementById("jobSalary").value;
+        var jobEr = document.getElementById("jobEr").value;
+        var jobEducation = document.getElementById("jobEducation").value;
+        var jobType = document.getElementById("jobType").value;
+        var jobReleaseTime = document.getElementById("jobReleaseTime").value;
         $.ajax({
             url: "${path}/apply/addApply",
             data: {
@@ -206,7 +212,14 @@
                 companyName: companyName,
                 companyCreateTime: companyCreateTime,
                 userRealName: userRealName,
-                jobId: jobId
+                jobId: jobId,
+                jobName: jobName,
+                jobAddress: jobAddress,
+                jobSalary: jobSalary,
+                jobEr: jobEr,
+                jobEducation: jobEducation,
+                jobType: jobType,
+                jobReleaseTime: jobReleaseTime
             },//给服务器的参数
             type: "POST",
             dataType: "json",

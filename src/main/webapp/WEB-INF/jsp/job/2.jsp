@@ -77,4 +77,28 @@ return false;
 
 href="${path}/user/showAJob?jobId=${job.jobId}&companyId=${job.company.companyId}&userId=${sessionScope.currUser.userId}"
 
-<%--List<Apply> findAllApply();--%>
+<association property="job" resultMap="org.soft.recruitment.dao.JobMapper.BaseResultMap">
+    <id column="job_Id" property="jobId"/>
+    <result column="job_Name" property="jobName"/>
+</association>
+<select id="findAllApply" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    app.apply_Id,
+    app.apply_Release_Time,
+    app.company_Name,
+    app.company_Create_Time,
+    app.user_Real_Name,
+    app.job_Id,
+    j.job_Id,
+
+    from apply app
+    inner join job j
+    on app.job_Id=j.job_Id
+</select>
+List<Apply> findAllApply();
+
+private Job job;
+
+public Job getJob() { return job; }
+
+public void setJob(Job job) { this.job = job; }

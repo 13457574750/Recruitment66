@@ -9,7 +9,6 @@ import org.soft.recruitment.model.Apply;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.service.IApplyService;
-import org.soft.recruitment.util.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -67,7 +66,9 @@ public class ApplyController {
      */
     @RequestMapping("/addApply")
     @ResponseBody
-    public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName, Integer jobId) {
+    public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName,
+                            Integer jobId, String jobName, String jobAddress, String jobSalary, String jobEr, String jobEducation,
+                            String jobReleaseTime, String jobType) {
         Message message = new Message();
         Apply apply = applyService.findAllApply(userRealName, String.valueOf(jobId));
         if (userRealName == null || userRealName.isEmpty()) {
@@ -78,10 +79,17 @@ public class ApplyController {
             //插入职位具体数据
             Apply apply_ = new Apply();
             apply_.setApplyReleaseTime(applyReleaseTime);
+            apply_.setJobId(String.valueOf(jobId));
+            apply_.setJobName(jobName);
+            apply_.setJobAddress(jobAddress);
+            apply_.setJobSalary(jobSalary);
+            apply_.setJobEr(jobEr);
+            apply_.setJobEducation(jobEducation);
+            apply_.setJobReleaseTime(jobReleaseTime);
+            apply_.setJobType(jobType);
             apply_.setCompanyName(companyName);
             apply_.setCompanyCreateTime(companyCreateTime);
             apply_.setUserRealName(userRealName);
-            apply_.setJobId(String.valueOf(jobId));
 
             int result = applyService.insertApply(apply_);
             if (result == 1) {
