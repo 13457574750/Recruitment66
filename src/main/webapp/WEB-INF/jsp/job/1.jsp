@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+        <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
     <title>投递箱</title>
@@ -22,22 +22,24 @@
 
             <!-- 左边 Start -->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <c:forEach items="${applyList_}" var="applyList_">
-
-                    <div class="job-list-details">
-                        <div class="job-details-head row mx-0">
+                <!-- 工作列表 Start -->
+                <div class="job-list-wrap">
+                    <c:forEach items="${applyList_}" var="applyList_">
+                        <a class="job-list">
+                            <%--                               onclick="show('${applyList_.job.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',--%>
+                            <%--                                       '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',--%>
+                            <%--                                       '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">--%>
                             <div class="company-logo col-auto">
-                                <a href="${path}/user/showACompany?jobId=${applyList_.jobId}&companyId=${applyList_.job.companyId}&?userId=${sessionScope.currUser.userId}"><img
-                                        src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">$${applyList_.jobSalary}</span>
                                 <span class="badge badge-success"><trans>${applyList_.jobType}</trans></span>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
-                            <span class="badge badge-danger"><trans><a
-                                    href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
-                                    onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
+                                <span  class="btn btn-default"
+                                ><trans><a href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
+                                           onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
@@ -51,23 +53,24 @@
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                         <trans>${applyList_.companyName}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                         <trans>${applyList_.jobAddress}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                         <trans>${applyList_.jobEr}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                         <trans>${applyList_.jobEducation}</trans>
                                     </strong></li>
                                 </ul>
                             </div>
-                        </div>
-                    </div>
-                </c:forEach>
+                        </a>
+                    </c:forEach>
+                </div>
+                <!-- 工作列表 End -->
             </div>
             <!-- 左边 End -->
             <!-- 右边 Start -->
@@ -96,4 +99,15 @@
 
 <%@include file="../user/foot.jsp" %>
 </body>
+<%--<script type="text/javascript">--%>
+<%--    //加载参数并传递数据给url--%>
+<%--    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,--%>
+<%--                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {--%>
+<%--        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="--%>
+    <%--            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="--%>
+    <%--            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="--%>
+    <%--            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;--%>
+<%--        window.location.href = url;--%>
+<%--    }--%>
+<%--</script>--%>
 </html>

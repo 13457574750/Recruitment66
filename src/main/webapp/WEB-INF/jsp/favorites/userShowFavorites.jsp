@@ -22,26 +22,22 @@
 
             <!-- 左边 Start -->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <!-- 工作列表 Start -->
-                <div class="job-list-wrap">
-                    <c:forEach items="${favoritesList_}" var="favoritesList_">
-                        <a class="job-list">
-<%--                        <a class="job-list"--%>
-<%--                           onclick="show('${favoritesList_.job.companyId}','${favoritesList_.companyName}','${favoritesList_.companyCreateTime}','${favoritesList_.jobId}',--%>
-<%--                                   '${favoritesList_.jobName}','${favoritesList_.jobAddress}','${favoritesList_.jobSalary}','${favoritesList_.jobEr}','${favoritesList_.jobEducation}',--%>
-<%--                                   '${favoritesList_.jobReleaseTime}','${favoritesList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">--%>
+                <c:forEach items="${favoritesList_}" var="favoritesList_">
+
+                    <div class="job-list-details">
+                        <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                                <a href="${path}/user/showACompany?jobId=${favoritesList_.jobId}&companyId=${favoritesList_.job.companyId}&?userId=${sessionScope.currUser.userId}"><img
+                                        src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">$${favoritesList_.jobSalary}</span>
                                 <span class="badge badge-success"><trans>${favoritesList_.jobType}</trans></span>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
-                                <span class="badge badge-danger"
-                                      href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList_.favoriteId}& userId=${sessionScope.currUser.userId}"
-                                      onclick="return confirm('确定要删除吗？');"
-                                ><trans>删除</trans></span>
+                            <span class="badge badge-danger"><trans><a
+                                    href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList_.favoriteId}&userId=${sessionScope.currUser.userId}"
+                                    onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
@@ -55,24 +51,23 @@
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                         <trans>${favoritesList_.companyName}</trans>
                                     </strong></li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                         <trans>${favoritesList_.jobAddress}</trans>
                                     </strong></li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                         <trans>${favoritesList_.jobEr}</trans>
                                     </strong></li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                         <trans>${favoritesList_.jobEducation}</trans>
                                     </strong></li>
                                 </ul>
                             </div>
-                        </a>
-                    </c:forEach>
-                </div>
-                <!-- 工作列表 End -->
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
             <!-- 左边 End -->
             <!-- 右边 Start -->
@@ -101,15 +96,4 @@
 
 <%@include file="../user/foot.jsp" %>
 </body>
-<%--<script type="text/javascript">--%>
-<%--    //加载参数并传递数据给url--%>
-<%--    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,--%>
-<%--                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {--%>
-<%--        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="--%>
-<%--            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="--%>
-<%--            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="--%>
-<%--            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;--%>
-<%--        window.location.href = url;--%>
-<%--    }--%>
-<%--</script>--%>
 </html>
