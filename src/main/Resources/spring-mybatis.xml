@@ -16,23 +16,23 @@
     <!-- dbcp连接池配置  -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <!--数据库驱动 -->
-        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="driverClassName" value="${jdbc.driver}"/>
         <!--连接数据库的url -->
-        <property name="url" value="${jdbc.url}" />
+        <property name="url" value="${jdbc.url}"/>
         <!--连接数据库的用户名 -->
-        <property name="username" value="${jdbc.username}" />
+        <property name="username" value="${jdbc.username}"/>
         <!--连接数据库的密码 -->
-        <property name="password" value="${jdbc.password}" />
+        <property name="password" value="${jdbc.password}"/>
         <!--初始化连接数 -->
-        <property name="initialSize" value="${jdbc.initialSize}" />
+        <property name="initialSize" value="${jdbc.initialSize}"/>
         <!--最大连接数 -->
-        <property name="maxActive" value="${jdbc.maxActive}" />
+        <property name="maxActive" value="${jdbc.maxActive}"/>
         <!--最大空闲连接 -->
-        <property name="maxIdle" value="${jdbc.maxIdle}" />
+        <property name="maxIdle" value="${jdbc.maxIdle}"/>
         <!-- 连接池最小空闲 -->
-        <property name="minIdle" value="${jdbc.minIdle}" />
+        <property name="minIdle" value="${jdbc.minIdle}"/>
         <!-- 获取连接最大等待时间 -->
-        <property name="maxWait" value="${jdbc.maxWait}" />
+        <property name="maxWait" value="${jdbc.maxWait}"/>
 
     </bean>
 
@@ -44,6 +44,23 @@
         <property name="mapperLocations" value="classpath:org/soft/recruitment/dao/*.xml"/>
         <!--  加载mybatis的全局配置文件 -->
         <property name="configLocation" value="classpath:mybatis.xml"/>
+        <!-- 传入PageHelper的插件 -->
+        <property name="plugins">
+            <array>
+                <!-- 传入插件的对象 -->
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <props>
+                            <!--指明数据库类型-->
+                            <prop key="helperDialect">mysql</prop>
+                            <!--开启合理化分页，首页和尾页的逻辑判断不会使得下一页超出索引范围-->
+                            <prop key="reasonable">true</prop>
+
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!-- 事务管理器，依赖于数据源 -->

@@ -2,6 +2,8 @@ package org.soft.recruitment.controller;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
+import javafx.print.PageRange;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;

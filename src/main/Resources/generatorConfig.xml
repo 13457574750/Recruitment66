@@ -53,7 +53,8 @@
 <!--            <table schema="" tableName="company"></table>-->
 <!--            <table schema="" tableName="job"></table>-->
 <!--            <table schema="" tableName="apply"></table>-->
-            <table schema="" tableName="favorites"></table>
+<!--            <table schema="" tableName="favorites"></table>-->
+            <table schema="" tableName="test"></table>
 
 
     </context>

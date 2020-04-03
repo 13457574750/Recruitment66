@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.soft.recruitment.dao.TestMapper" >
+  <resultMap id="BaseResultMap" type="org.soft.recruitment.model.Test" >
+    <id column="test_Id" property="testId" jdbcType="INTEGER" />
+    <result column="test_Name" property="testName" jdbcType="VARCHAR" />
+    <result column="test_Sex" property="testSex" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    test_Id, test_Name, test_Sex
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.TestExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test
+    where test_Id = #{testId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test
+    where test_Id = #{testId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.soft.recruitment.model.TestExample" >
+    delete from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.soft.recruitment.model.Test" >
+    insert into test (test_Id, test_Name, test_Sex
+      )
+    values (#{testId,jdbcType=INTEGER}, #{testName,jdbcType=VARCHAR}, #{testSex,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.soft.recruitment.model.Test" >
+    insert into test
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="testId != null" >
+        test_Id,
+      </if>
+      <if test="testName != null" >
+        test_Name,
+      </if>
+      <if test="testSex != null" >
+        test_Sex,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="testId != null" >
+        #{testId,jdbcType=INTEGER},
+      </if>
+      <if test="testName != null" >
+        #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="testSex != null" >
+        #{testSex,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.soft.recruitment.model.TestExample" resultType="java.lang.Integer" >
+    select count(*) from test
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update test
+    <set >
+      <if test="record.testId != null" >
+        test_Id = #{record.testId,jdbcType=INTEGER},
+      </if>
+      <if test="record.testName != null" >
+        test_Name = #{record.testName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.testSex != null" >
+        test_Sex = #{record.testSex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update test
+    set test_Id = #{record.testId,jdbcType=INTEGER},
+      test_Name = #{record.testName,jdbcType=VARCHAR},
+      test_Sex = #{record.testSex,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.soft.recruitment.model.Test" >
+    update test
+    <set >
+      <if test="testName != null" >
+        test_Name = #{testName,jdbcType=VARCHAR},
+      </if>
+      <if test="testSex != null" >
+        test_Sex = #{testSex,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where test_Id = #{testId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.Test" >
+    update test
+    set test_Name = #{testName,jdbcType=VARCHAR},
+      test_Sex = #{testSex,jdbcType=VARCHAR}
+    where test_Id = #{testId,jdbcType=INTEGER}
+  </update>
+  <select id="findAll" resultMap="BaseResultMap">
+  	select * from test
+  </select>
+</mapper>
