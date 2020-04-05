@@ -3,7 +3,6 @@ package org.soft.recruitment.controller;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
-import javafx.print.PageRange;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;
@@ -14,6 +13,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,9 +38,13 @@ public class JobController {
 	 * @return
 	 */
 	@RequestMapping("findAllJob")
-	public String findAllJob(String jobName,String jobAddress,String companyName,Model model){
-		List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
-		model.addAttribute("jobList", jobList);
+	public String findAllJob( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+							  @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+							  String jobName, String jobAddress, String companyName, Model model){
+		List<Job> jobList = jobService.findAllJob(page,size, jobName,jobAddress,companyName);
+		//分页
+		PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+		model.addAttribute("pageInfo", pageInfo);
 		return "/job/allJob";
 	}
 

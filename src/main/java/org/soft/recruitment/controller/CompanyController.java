@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -130,9 +131,11 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany(Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
+    public String showACompany( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                                @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
         Company company = companyService.findCompanyByCompanyId(companyId);
-        List<Job> jobList = jobService.findAllJob(jobName, jobAddress, companyName);
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
         model.addAttribute("jobList", jobList);
         if (company != null) {
             model.addAttribute("company", company);

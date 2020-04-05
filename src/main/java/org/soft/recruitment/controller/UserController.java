@@ -1,9 +1,7 @@
 package org.soft.recruitment.controller;
 
-import org.soft.recruitment.model.Company;
-import org.soft.recruitment.model.Job;
-import org.soft.recruitment.model.Message;
-import org.soft.recruitment.model.User;
+import com.github.pagehelper.PageInfo;
+import org.soft.recruitment.model.*;
 import org.soft.recruitment.service.ICompanyService;
 import org.soft.recruitment.service.IJobService;
 import org.soft.recruitment.service.IUserService;
@@ -12,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -286,11 +285,11 @@ public class UserController {
      * @return
      */
     @RequestMapping("findAllCompany")
-    public String findAllCompany(String companyName,Model model,String jobName, String jobAddress) {
+    public String findAllCompany(int page, int size, String companyName,String jobName, String jobAddress,Model model) {
         List<Company> companyList = companyService.findAllCompany(companyName);
         model.addAttribute("companyList", companyList);
 
-        List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
+        List<Job> jobList = jobService.findAllJob(page, size, jobName,jobAddress,companyName);
         model.addAttribute("jobList", jobList);
         return "/user/allCompany";
     }
@@ -331,7 +330,6 @@ public class UserController {
 
     /**
      * 查询出所有职位信息
-     * jobInfoExt 职位详细信息对象
      * @param jobName
      * @param jobAddress
      * @param companyName
@@ -339,9 +337,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("findAllJob")
-    public String findAllJob(String jobName,String jobAddress,String companyName,Model model){
-        List<Job> jobList = jobService.findAllJob(jobName,jobAddress,companyName);
-        model.addAttribute("jobList", jobList);
+    public String findAllJob( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                              @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                              String jobName,String jobAddress,String companyName,Model model){
+        List<Job> jobList = jobService.findAllJob(page, size, jobName,jobAddress,companyName);
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/user/allJob";
     }
 

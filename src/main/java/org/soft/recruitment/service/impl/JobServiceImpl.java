@@ -4,11 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang.StringUtils;
 import org.soft.recruitment.dao.JobMapper;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.JobExample;
 import org.soft.recruitment.model.JobExample.Criteria;
+import org.soft.recruitment.model.UserExample;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,13 +32,14 @@ public class JobServiceImpl implements IJobService {
 	 * @param companyName
 	 * @return
 	 */
-	public List<Job> findAllJob(String jobName, String jobAddress, String companyName) {
+	public List<Job> findAllJob(int page, int size, String jobName, String jobAddress, String companyName) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("jobName", jobName);
 		map.put("jobAddress", jobAddress);
 		map.put("companyName", companyName);
-		List<Job> jobList = jobMapper.findAllJob(map);
-		return jobList;
+
+		PageHelper.startPage(page, size);
+		return jobMapper.findAllJob(map);
 	}
 
 

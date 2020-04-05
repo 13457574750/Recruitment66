@@ -23,14 +23,14 @@ public class TestController {
 
     //采用分页代码方法
     @RequestMapping("test")
-    public String findAll(@RequestParam(value = "page", required = true, defaultValue = "1") int page, @RequestParam(value =
-            "size", required = true, defaultValue = "5") int size, Model model) {
+    public String findAll(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                          @RequestParam(value = "size", required = true, defaultValue = "5") int size, Model model) {
         List<Test> testList = testService.findAllTest(page, size);
 
         //PageInfo就是一个分页Bean
         PageInfo<Test> pageInfo = new PageInfo<>(testList);
         model.addAttribute("pageInfo",pageInfo);
-		model.addAttribute("testList", testList);
+//		model.addAttribute("testList", testList);
 		return "/test/test";
 
     }

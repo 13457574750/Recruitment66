@@ -46,7 +46,7 @@
 
                     <!-- 工作列表 Start -->
                     <div class="job-list-wrap">
-                        <c:forEach items="${jobList}" var="job">
+                        <c:forEach items="${pageInfo.list}" var="job">
 
                             <a class="job-list"
                                onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
@@ -92,12 +92,13 @@
 
                     <!-- 分页 Start -->
                     <ul class="pagination pagination-center mt-5">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-left"></i></a></li>
+<%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=1&size=${pageInfo.pageSize}">首页</a></li>--%>
+                        <c:forEach begin="1" end="4" var="pageNum">
+                            <li class="page-item "><a class="page-link" href="${path}/user/findAllJob?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+                        </c:forEach>
+<%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pages}&size=${pageInfo.pageSize}">尾页</a></li>--%>
+                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-right"></i></a></li>
                     </ul>
                     <!-- 分页 End -->
                 </div>
