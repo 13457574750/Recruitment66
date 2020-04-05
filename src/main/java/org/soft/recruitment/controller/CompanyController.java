@@ -119,7 +119,7 @@ public class CompanyController {
      */
     @RequestMapping("findAllCompany")
     public String findAllCompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
-                                 @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                 @RequestParam(value = "size", required = true, defaultValue = "6") int size,
                                  String companyName, Model model) {
         List<Company> companyList = companyService.findAllCompany(page,size,companyName);
         //分页

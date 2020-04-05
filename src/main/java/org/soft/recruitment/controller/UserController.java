@@ -300,15 +300,17 @@ public class UserController {
      */
     @RequestMapping("findAllCompany")
     public String findAllCompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
-                                 @RequestParam(value = "size", required = true, defaultValue = "5") int size,
-                                 String companyName, String jobName, String jobAddress, Model model) {
+                                 @RequestParam(value = "size", required = true, defaultValue = "6") int size,
+                                 String companyName, String jobName, String jobAddress,Integer jobId, Model model) {
         List<Company> companyList = companyService.findAllCompany(page, size, companyName);
         //分页
         PageInfo<Company> pageInfo = new PageInfo<>(companyList);
         model.addAttribute("pageInfo", pageInfo);
 
-        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
-        model.addAttribute("jobList", jobList);
+        Job job = jobService.findJobByJobId(jobId);
+        if (job != null) {
+            model.addAttribute("job", job);
+        }
         return "/user/allCompany";
     }
 
