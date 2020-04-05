@@ -82,7 +82,6 @@
                     <!-- 左3 End -->
                 </div>
                 <!--  左边 End -->
-                <button  type="button" href="javascript:void(0)" onclick="updateUser('${sessionScope.currUser.userId}')">修改</button>
             </div>
 
             <!-- 右边 Start -->
@@ -101,7 +100,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">求职状态</h6>
-                                <p>${user.userState}</p>
+                            <p>${user.userState}</p>
                         </div>
                     </div>
                     <!-- 右2 End -->
@@ -123,6 +122,15 @@
                         </div>
                     </div>
                     <!-- 右4 End -->
+                    <!-- 右5 Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <button class="btn btn-primary w-100" type="button" href="javascript:void(0)"
+                                    onclick="updateUser('${sessionScope.currUser.userId}')">修改
+                            </button>
+                        </div>
+                    </div>
+                    <!-- 右5 End -->
                 </div>
             </div>
             <!-- 右边 End -->

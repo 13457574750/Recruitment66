@@ -14,7 +14,7 @@ public interface IFavoritesService {
     List<Favorites> findFavoritesByUserRealName(String userRealName);
 
     //增加收藏记录
-    int insertFavorites(Favorites favorites);
+    int insertFavorites(Favorites favorites_);
 
     //删除申请记录
     void deleteFavorites(Integer favoriteId);

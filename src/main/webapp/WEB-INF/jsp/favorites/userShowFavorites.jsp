@@ -22,48 +22,48 @@
 
             <!-- 左边 Start -->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <c:forEach items="${favoritesList_}" var="favoritesList_">
+                <c:forEach items="${favoritesList}" var="favoritesList">
 
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a onclick="show('${favoritesList_.job.companyId}','${favoritesList_.companyName}','${favoritesList_.companyCreateTime}','${favoritesList_.jobId}',
-                                        '${favoritesList_.jobName}','${favoritesList_.jobAddress}','${favoritesList_.jobSalary}','${favoritesList_.jobEr}','${favoritesList_.jobEducation}',
-                                        '${favoritesList_.jobReleaseTime}','${favoritesList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                <a onclick="show('${favoritesList.job.companyId}','${favoritesList.companyName}','${favoritesList.companyCreateTime}','${favoritesList.jobId}',
+                                        '${favoritesList.jobName}','${favoritesList.jobAddress}','${favoritesList.jobSalary}','${favoritesList.jobEr}','${favoritesList.jobEducation}',
+                                        '${favoritesList.jobReleaseTime}','${favoritesList.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
                                     <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
-                                <span class="salary-range">$${favoritesList_.jobSalary}</span>
-                                <span class="badge badge-success"><trans>${favoritesList_.jobType}</trans></span>
+                                <span class="salary-range">$${favoritesList.jobSalary}</span>
+                                <span class="badge badge-success"><trans>${favoritesList.jobType}</trans></span>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
-                                    href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList_.favoriteId}&userId=${sessionScope.currUser.userId}"
+                                    href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList.favoriteId}&userId=${sessionScope.currUser.userId}"
                                     onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
                                     <li>
                                         <h6 class="title">
-                                            <trans>${favoritesList_.jobName}</trans>
+                                            <trans>${favoritesList.jobName}</trans>
                                         </h6>
                                     </li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>发布时间：${favoritesList_.jobReleaseTime}</trans>
+                                        <trans>发布时间：${favoritesList.jobReleaseTime}</trans>
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${favoritesList_.companyName}</trans>
+                                        <trans>${favoritesList.companyName}</trans>
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${favoritesList_.jobAddress}</trans>
+                                        <trans>${favoritesList.jobAddress}</trans>
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${favoritesList_.jobEr}</trans>
+                                        <trans>${favoritesList.jobEr}</trans>
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${favoritesList_.jobEducation}</trans>
+                                        <trans>${favoritesList.jobEducation}</trans>
                                     </strong></li>
                                 </ul>
                             </div>

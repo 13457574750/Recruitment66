@@ -19,7 +19,9 @@
 
 <!-- 简历 Start -->
 <div class="section section-padding">
-    <form id="userForm" action="${pageContext.request.contextPath }/user/saveResume?userId=${sessionScope.currUser.userId}" method="post" onsubmit="return submitForm();">
+    <form id="userForm"
+          action="${pageContext.request.contextPath }/user/saveResume?userId=${sessionScope.currUser.userId}"
+          method="post" onsubmit="return submitForm();">
         <div class="container">
 
             <div class="row mb-n5">
@@ -29,13 +31,14 @@
                         <td><input type="hidden" name="userId" value="${user.userId}"/></td>
                         <td><input type="hidden" name="userLoginName" value="${user.userLoginName}"/></td>
                         <td><input type="hidden" name="userLoginPassword" value="${user.userLoginPassword}"/></td>
+                        <td><input type="hidden" name="userRealName" value="${user.userRealName}"/></td>
 
                         <!-- 左1 Start -->
                         <div class="col-12">
                             <div class="blog blog-single">
                                 <div class="content">
-                                    <h6 class="title"><p class="mdi mdi-emoticon-excited">姓名
-                                        <input type="text" name="userRealName" value="${user.userRealName}"></h6>
+                                    <h6 class="title"><p class="mdi mdi-emoticon-excited">${user.userRealName}
+                                        </h6>
                                     <div class="desc">
                                         <div class="basic-info">
                                             <p class="mdi mdi-school">学校名称
@@ -145,15 +148,20 @@
                         </div>
                     </div>
                     <!-- 右4 End -->
+                    <!-- 右5 Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <button class="btn btn-primary w-100"><a type="button"
+                                       href="${pageContext.request.contextPath}/user/showResume?userId=${user.userId}"
+                                       onclick="submitForm();">保存</a></button>
+                        </div>
+                    </div>
+                    <!-- 右5 End -->
                 </div>
             </div>
             <!-- 右边 End -->
 
 
-        </div>
-        <div class="btn-group">
-            <button><a type="button" href="${pageContext.request.contextPath}/user/showResume?userId=${user.userId}"
-               onclick="submitForm();">保存</a></button>
         </div>
     </form>
 </div>

@@ -25,25 +25,6 @@
                 <!-- 左边 Start -->
                 <div class="col-lg-8 col-12 mb-5 pr-lg-5">
 
-                    <!-- 左1--工作列表头 Start -->
-                    <div class="job-list-toolbar">
-                        <p>
-                            <trans>显示34项结果中的1-10项</trans>
-                        </p>
-                        <p>
-                            <trans>按下列顺序分类：</trans>
-                            <select>
-                                <option>
-                                    <trans>最近</trans>
-                                </option>
-                                <option>
-                                    <trans>最热</trans>
-                                </option>
-                            </select>
-                        </p>
-                    </div>
-                    <!-- 左1--工作列表头 End -->
-
                     <!-- 工作列表 Start -->
                     <div class="job-list-wrap">
                         <c:forEach items="${pageInfo.list}" var="job">

@@ -27,8 +27,8 @@ public class FavoritesController {
      */
     @RequestMapping("userShowFavorites")
     public String userShowFavorites(String userRealName, Model model) {
-        List<Favorites> favoritesList_ = favoritesService.findFavoritesByUserRealName(userRealName);
-        model.addAttribute("favoritesList_", favoritesList_);
+        List<Favorites> favoritesList = favoritesService.findFavoritesByUserRealName(userRealName);
+        model.addAttribute("favoritesList", favoritesList);
         return "/favorites/userShowFavorites";
     }
 
@@ -39,11 +39,11 @@ public class FavoritesController {
                                 Integer jobId, String jobName, String jobAddress, String jobSalary, String jobEr, String jobEducation,
                                 String jobReleaseTime, String jobType) {
         Message message = new Message();
-        Favorites favorites = favoritesService.findAllFavorites(userRealName, String.valueOf(jobId));
         if (userRealName == null || userRealName.isEmpty()) {
             message.setStr("请先登录!");
             return message;
         }
+        Favorites favorites = favoritesService.findAllFavorites(userRealName, String.valueOf(jobId));
         if (favorites == null) {
             //插入职位具体数据
             Favorites favorites_ = new Favorites();

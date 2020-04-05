@@ -53,21 +53,20 @@ public class FavoritesServiceImpl implements IFavoritesService {
         if(StringUtils.isNotBlank(userRealName)){
             criteria.andUserRealNameEqualTo(userRealName);
         }
-
-        List<Favorites> favoritesList_ = favoritesMapper.selectByExample(example);
-        if(favoritesList_ != null && favoritesList_.size() > 0){
-            return favoritesList_;
+        List<Favorites> favoritesList = favoritesMapper.selectByExample(example);
+        if(favoritesList != null && favoritesList.size() > 0){
+            return favoritesList;
         }
         return null;
     }
 
     /**
      * 新增收藏记录
-     * @param favorites
+     * @param favorites_
      * @return
      */
-    public int insertFavorites(Favorites favorites) {
-        int results = favoritesMapper.insert(favorites);
+    public int insertFavorites(Favorites favorites_) {
+        int results = favoritesMapper.insert(favorites_);
         return results;
     }
 
