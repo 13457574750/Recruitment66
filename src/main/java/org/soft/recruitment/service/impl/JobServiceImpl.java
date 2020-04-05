@@ -10,7 +10,6 @@ import org.soft.recruitment.dao.JobMapper;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.JobExample;
 import org.soft.recruitment.model.JobExample.Criteria;
-import org.soft.recruitment.model.UserExample;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

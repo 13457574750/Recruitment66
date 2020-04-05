@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang.StringUtils;
 import org.soft.recruitment.dao.CompanyMapper;
 import org.soft.recruitment.model.Company;
@@ -79,11 +80,11 @@ public class CompanyServiceImpl implements ICompanyService {
      *
      * @return
      */
-    public List<Company> findAllCompany(String companyName) {
+    public List<Company> findAllCompany(int page, int size, String companyName) {
         Map<String, Object> map = new HashMap<>();
         map.put("companyName", companyName);
-        List<Company> companyList = companyMapper.findAllCompany(map);
-        return companyList;
+        PageHelper.startPage(page, size);
+        return companyMapper.findAllCompany(map);
     }
 
     /**

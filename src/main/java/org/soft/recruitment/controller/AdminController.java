@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
@@ -183,8 +184,10 @@ public class AdminController {/*管理员所能使用的功能*/
      * @return
      */
     @RequestMapping("company")
-    public String company(String companyName, Model model) {
-        List<Company> companyList = companyService.findAllCompany(companyName);
+    public String company(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                          @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                          String companyName, Model model) {
+        List<Company> companyList = companyService.findAllCompany(page, size, companyName);
         model.addAttribute("companyList", companyList);
         return "/admin/company";
     }

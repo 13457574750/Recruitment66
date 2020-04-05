@@ -26,7 +26,7 @@
                 <!-- 企业列表 Start -->
 
                 <div class="company-list-wrap row">
-                    <c:forEach items="${companyList}" var="company">
+                    <c:forEach items="${pageInfo.list}" var="company">
                     <!-- 1 -->
                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
 <%--                        <c:forEach items="" var="job">--%>
@@ -44,16 +44,17 @@
                         </c:forEach>
                 </div>
                 <!-- 企业列表 Start -->
-                <!-- 分页按钮 Start -->
+                <!-- 分页 Start -->
                 <ul class="pagination pagination-center mt-5">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="${path}/user/findAllCompany?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-left"></i></a></li>
+                    <%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllCompany?page=1&size=${pageInfo.pageSize}">首页</a></li>--%>
+                    <c:forEach begin="1" end="4" var="pageNum">
+                        <li class="page-item "><a class="page-link" href="${path}/user/findAllCompany?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+                    </c:forEach>
+                    <%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllCompany?page=${pageInfo.pages}&size=${pageInfo.pageSize}">尾页</a></li>--%>
+                    <li class="page-item"><a class="page-link" href="${path}/user/findAllCompany?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
-                <!-- 分页按钮 End -->
+                <!-- 分页 End -->
             </div>
             <!-- 左边 End -->
 

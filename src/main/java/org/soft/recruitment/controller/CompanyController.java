@@ -1,5 +1,6 @@
 package org.soft.recruitment.controller;
 
+import com.github.pagehelper.PageInfo;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;
@@ -117,9 +118,13 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("findAllCompany")
-    public String findAllCompany(String companyName, Model model) {
-        List<Company> companyList = companyService.findAllCompany(companyName);
-        model.addAttribute("companyList", companyList);
+    public String findAllCompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                                 @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                 String companyName, Model model) {
+        List<Company> companyList = companyService.findAllCompany(page,size,companyName);
+        //分页
+        PageInfo<Company> pageInfo = new PageInfo<>(companyList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/company/allCompany";
     }
 

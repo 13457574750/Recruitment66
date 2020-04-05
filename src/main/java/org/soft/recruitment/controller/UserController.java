@@ -56,6 +56,7 @@ public class UserController {
 
     /**
      * 用户登录
+     *
      * @param request
      * @param userLoginName
      * @param userLoginPassword
@@ -93,8 +94,10 @@ public class UserController {
         }
         return "/user/updateUserPassword";
     }
+
     /**
      * 保存密码功能
+     *
      * @param userId
      * @param user
      * @return
@@ -126,6 +129,7 @@ public class UserController {
 
     /**
      * 根据用户ID查询用户
+     *
      * @param userId
      * @param model
      * @return
@@ -179,6 +183,7 @@ public class UserController {
 
     /**
      * 跳转到用户简历修改界面
+     *
      * @param model
      * @param userId
      * @return
@@ -194,6 +199,7 @@ public class UserController {
 
     /**
      * 修改界面的保存功能
+     *
      * @param userId
      * @param user
      * @return
@@ -203,6 +209,7 @@ public class UserController {
         userService.updateUser(userId, user);
         return "redirect:/user/showResume";//重定向
     }
+
     /**
      * 保存用户信息
      *
@@ -219,61 +226,68 @@ public class UserController {
 
     /**
      * 跳转到用户首页
+     *
      * @param model
      * @return
      */
     @RequestMapping("userIndex")
-    public String userIndex(Model model){
+    public String userIndex(Model model) {
         return "/user/userIndex";
     }
 
     /**
      * 跳转到底部导航
+     *
      * @param model
      * @return
      */
     @RequestMapping("foot")
-    public String foot(Model model){
+    public String foot(Model model) {
         return "/user/foot";
     }
+
     /**
      * 跳转到顶部部导航
+     *
      * @param model
      * @return
      */
     @RequestMapping("head")
-    public String head(Model model){
+    public String head(Model model) {
         return "/user/head";
     }
 
     /**
      * 跳转到博客
+     *
      * @param model
      * @return
      */
     @RequestMapping("blog")
-    public String blog(Model model){
+    public String blog(Model model) {
         return "/user/blog";
     }
 
     /**
      * 跳转到关于我们
+     *
      * @param model
      * @return
      */
     @RequestMapping("aboutUs")
-    public String aboutUs(Model model){
+    public String aboutUs(Model model) {
         return "/user/aboutUs";
     }
 
 
     /**
      * 跳转到联系我们
+     *
      * @param model
      * @return
      */
     @RequestMapping("contactUs")
-    public String contactUs(Model model){
+    public String contactUs(Model model) {
         return "/user/contactUs";
     }
 
@@ -285,31 +299,35 @@ public class UserController {
      * @return
      */
     @RequestMapping("findAllCompany")
-    public String findAllCompany(int page, int size, String companyName,String jobName, String jobAddress,Model model) {
-        List<Company> companyList = companyService.findAllCompany(companyName);
-        model.addAttribute("companyList", companyList);
+    public String findAllCompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                                 @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                 String companyName, String jobName, String jobAddress, Model model) {
+        List<Company> companyList = companyService.findAllCompany(page, size, companyName);
+        //分页
+        PageInfo<Company> pageInfo = new PageInfo<>(companyList);
+        model.addAttribute("pageInfo", pageInfo);
 
-        List<Job> jobList = jobService.findAllJob(page, size, jobName,jobAddress,companyName);
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
         model.addAttribute("jobList", jobList);
         return "/user/allCompany";
     }
 
     /**
      * 浏览单个企业的详细信息
+     *
      * @param model
      * @param companyId
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany(Model model, Integer companyId,Integer jobId) {
-        Job job = jobService.findJobByJobId(jobId);
-        if (job != null) {
-            model.addAttribute("job", job);
-        }
-
+    public String showACompany(Model model, Integer companyId, Integer jobId) {
         Company company = companyService.findCompanyByCompanyId(companyId);
         if (company != null) {
             model.addAttribute("company", company);
+        }
+        Job job = jobService.findJobByJobId(jobId);
+        if (job != null) {
+            model.addAttribute("job", job);
         }
         return "/user/showACompany";
     }
@@ -317,6 +335,7 @@ public class UserController {
 
     /**
      * 根据ID删除用户
+     *
      * @param userId
      * @return
      */
@@ -330,6 +349,7 @@ public class UserController {
 
     /**
      * 查询出所有职位信息
+     *
      * @param jobName
      * @param jobAddress
      * @param companyName
@@ -337,10 +357,10 @@ public class UserController {
      * @return
      */
     @RequestMapping("findAllJob")
-    public String findAllJob( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
-                              @RequestParam(value = "size", required = true, defaultValue = "5") int size,
-                              String jobName,String jobAddress,String companyName,Model model){
-        List<Job> jobList = jobService.findAllJob(page, size, jobName,jobAddress,companyName);
+    public String findAllJob(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                             @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                             String jobName, String jobAddress, String companyName, Model model) {
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
         PageInfo<Job> pageInfo = new PageInfo<>(jobList);
         model.addAttribute("pageInfo", pageInfo);
         return "/user/allJob";
@@ -348,6 +368,7 @@ public class UserController {
 
     /**
      * 浏览单个工作的的详细信息
+     *
      * @param model
      * @param jobId
      * @return

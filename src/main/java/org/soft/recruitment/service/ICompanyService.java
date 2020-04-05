@@ -19,7 +19,7 @@ public interface ICompanyService {
 	public void deleteCompany(Integer companyId);
 
 	//查询所有公司,增加查询条件公司名
-	public List<Company> findAllCompany(String companyName);
+	public List<Company> findAllCompany(int page, int size, String companyName);
 
 	//根据公司ID查询公司
 	public  Company findCompanyByCompanyId(Integer companyId);
