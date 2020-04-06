@@ -14,7 +14,7 @@ public interface IApplyService {
     List<Apply> findApplyByCompanyName(String companyName);
 
     //根据用户真名查询所有申请记录(投递箱)
-    List<Apply> findApplyByUserRealName(String userRealName);
+    List<Apply> findApplyByUserRealName(int page, int size, String userRealName);
 
     //增加申请记录
     int insertApply(Apply apply);

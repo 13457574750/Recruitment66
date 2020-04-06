@@ -22,7 +22,7 @@
 
             <!-- 左边 Start -->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <c:forEach items="${applyList_}" var="applyList_">
+                <c:forEach items="${pageInfo.list}" var="applyList_">
 
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
@@ -70,6 +70,21 @@
                         </div>
                     </div>
                 </c:forEach>
+                <!-- 分页 Start -->
+                <ul class="pagination pagination-center mt-5">
+                    <li class="page-item"><a class="page-link"
+                                             href="${path}/apply/userShowApply?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                            class="fa fa-angle-left"></i></a></li>
+                    <c:forEach begin="1" end="4" var="pageNum">
+                        <li class="page-item "><a class="page-link"
+                                                  href="${path}/apply/userShowApply?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item"><a class="page-link"
+                                             href="${path}/apply/userShowApply?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                            class="fa fa-angle-right"></i></a></li>
+                </ul>
+                <!-- 分页 End -->
             </div>
             <!-- 左边 End -->
             <!-- 右边 Start -->

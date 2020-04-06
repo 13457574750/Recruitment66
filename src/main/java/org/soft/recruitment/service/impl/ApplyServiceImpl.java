@@ -1,5 +1,7 @@
 package org.soft.recruitment.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.soft.recruitment.dao.ApplyMapper;
 import org.soft.recruitment.model.Apply;
@@ -66,17 +68,20 @@ public class ApplyServiceImpl implements IApplyService {
      * @param userRealName
      * @return
      */
-    public List<Apply> findApplyByUserRealName(String userRealName) {
+    public List<Apply> findApplyByUserRealName(int page, int size, String userRealName) {
+        PageHelper.startPage(page,size);
+
         ApplyExample example = new ApplyExample();
         Criteria criteria = example.createCriteria();
         if (StringUtils.isNotBlank(userRealName)) {
             criteria.andUserRealNameEqualTo(userRealName);
         }
         List<Apply> applyList_ = applyMapper.selectByExample(example);
+        PageInfo<Apply> pageInfo = new PageInfo<>(applyList_);
         if (applyList_ != null && applyList_.size()> 0) {
             return applyList_;
         }
-        return null;
+        return pageInfo.getList();
     }
 
     /**

@@ -5,12 +5,15 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.github.pagehelper.PageInfo;
 import org.soft.recruitment.model.Apply;
 import org.soft.recruitment.model.Company;
+import org.soft.recruitment.model.Favorites;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.service.IApplyService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import org.springframework.ui.Model;
@@ -47,10 +50,13 @@ public class ApplyController {
      * @return
      */
     @RequestMapping("userShowApply")
-    public String userShowApply(String userRealName, Model model) {
-        List<Apply> applyList_ = applyService.findApplyByUserRealName(userRealName);
-        model.addAttribute("applyList_", applyList_);
-
+    public String userShowApply(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                                @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                String userRealName, Model model) {
+        List<Apply> applyList_ = applyService.findApplyByUserRealName(page, size, userRealName);
+        //分页
+        PageInfo<Apply> pageInfo = new PageInfo<>(applyList_);
+        model.addAttribute("pageInfo", pageInfo);
         return "/apply/userShowApply";
     }
 
