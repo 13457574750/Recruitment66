@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
-    <title>职位列表</title>
+    <title>职位详细</title>
 </head>
 <body>
 <%@include file="../company/head.jsp" %>
@@ -26,17 +26,43 @@
                 <div class="job-list-details">
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
-                            <a href="${path}/user/showACompany?jobId=${job.jobId}&&companyId=${job.company.companyId}"><img
+                            <%-- 接收数据--%>
+                            <p>
+                                <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
+                                <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
+
+                                <input type="hidden" id="jobId" value="${job.jobId}">
+                                <input type="hidden" id="jobName" name="jobName" value="${job.jobName}">
+                                <input type="hidden" id="jobAddress" value="${job.jobAddress}">
+                                <input type="hidden" id="jobSalary" value="${job.jobSalary}">
+                                <input type="hidden" id="jobEr" value="${job.jobEr}">
+                                <input type="hidden" id="jobEducation" value="${job.jobEducation}">
+                                <input type="hidden" id="jobReleaseTime" value="${job.jobReleaseTime}">
+                                <input type="hidden" id="jobType" value="${job.jobType}">
+
+                                <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
+                                <input type="hidden" id="userRealName" name="userRealName"
+                                       value="${sessionScope.currUser.userRealName}">
+
+                            </p>
+                            <a href="${path}/company/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}"><img
                                     src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
-                            <span class="salary-range">${job.jobSalary}</span>
-                            <span class="badge badge-success"><trans style="">${job.jobType}</trans></span>
+                            <span class="salary-range">$${job.jobSalary}</span>
+                            <span class="badge badge-success"><trans>${job.jobType}</trans></span>
                         </div>
                         <div class="content col">
-                            <h5 class="title">
-                                <trans>${job.jobName}</trans>
-                            </h5>
+                            <ul class="meta">
+                                <li>
+                                    <h6 class="title">
+                                        <trans>${job.jobName}</trans>
+                                    </h6>
+                                </li>
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <trans>发布时间：${job.jobReleaseTime}</trans>
+                                </strong></li>
+                            </ul>
                             <ul class="meta">
                                 <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                     <trans>${company.companyName}</trans>
@@ -119,9 +145,9 @@
                                     <trans>${job.jobAddress}</trans>
                                 </li>
                                 <li><strong>
-                                    <trans >薪酬：</trans>
+                                    <trans>薪酬：</trans>
                                 </strong>
-                                    <trans >$${job.jobSalary}</trans>
+                                    <trans>$${job.jobSalary}</trans>
                                 </li>
                             </ul>
                         </div>
@@ -137,11 +163,11 @@
 <!-- 职位列表 End -->
 
 
-<%@include file="../company/foot.jsp" %>
+<%@include file="../user/foot.jsp" %>
 
 </body>
-
 <script type="text/javascript">
+
     function search() {
         $("#searchForm").submit();
     }
