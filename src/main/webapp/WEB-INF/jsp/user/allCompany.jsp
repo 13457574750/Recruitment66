@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh-CN">
 <head>
-    <title>关于我们</title>
+    <title>公司列表</title>
 </head>
 <body>
 <%@include file="../user/head.jsp"%>
@@ -24,20 +24,18 @@
             <!-- 左边 Start-->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                 <!-- 企业列表 Start -->
-
+                <input type="hidden" name="jobName" value="${job.jobName}">
                 <div class="company-list-wrap row">
                     <c:forEach items="${pageInfo.list}" var="company">
                     <!-- 1 -->
                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
-<%--                        <c:forEach items="" var="job">--%>
-                        <a href="${path}/user/showACompany?companyId=${company.companyId}&jobId=${job.jobId}" class="company-list">
+                        <a href="${path}/user/showACompany?companyId=${company.companyId}&jobId=${job.jobId}&jonName=${job.jobName}" class="company-list">
                             <span class="company-logo"><img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
                             <h6 class="title">${company.companyName}</h6>
                             <span>${company.companyType}/${company.companyIndustry}/${company.companyNumber}人</span></br>
                             <span>${company.companyProfile}</span></br>
                             <span><i class="fa fa-map-o"></i>${company.companyAddress}</span>
                         </a>
-<%--                        </c:forEach>--%>
 
                     </div>
                     <!-- 1 -->
@@ -73,6 +71,20 @@
                     </div>
                     <!-- 搜索 End -->
 
+                    <!-- 右4 Start -->
+                    <div class="sidebar-widget">
+                        <div class="inner">
+                            <h6 class="title">
+                                <trans>重置条件</trans>
+                            </h6>
+                            <form action="#">
+                                <button type="button" class="btn btn-primary w-100" onclick="search()">重置
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- 右4 End -->
+
                     <!-- 2 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">
@@ -95,16 +107,6 @@
 
 </body>
 <script type="text/javascript">
-    //加载参数并传递数据给url
-    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
-                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
-        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
-            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
-            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
-            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
-        window.location.href = url;
-    }
-
     function search() {
         $("#searchForm").submit();
     }

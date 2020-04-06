@@ -88,7 +88,6 @@
 
                 <!-- 右边 Start -->
                 <div class="col-lg-4 col-12 mb-5">
-                    <form action="${path}/user/findAllJob" method="post">
 
                         <div class="sidebar-wrap">
                             <!-- 右1 Start -->
@@ -144,7 +143,6 @@
                             </div>
                             <!-- 右4 End -->
                         </div>
-                    </form>
                 </div>
                 <!-- 右边 End -->
 

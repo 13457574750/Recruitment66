@@ -322,15 +322,17 @@ public class UserController {
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany(Model model, Integer companyId, Integer jobId) {
+    public String showACompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                               @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                               Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
         Company company = companyService.findCompanyByCompanyId(companyId);
         if (company != null) {
             model.addAttribute("company", company);
         }
-        Job job = jobService.findJobByJobId(jobId);
-        if (job != null) {
-            model.addAttribute("job", job);
-        }
+
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/user/showACompany";
     }
 

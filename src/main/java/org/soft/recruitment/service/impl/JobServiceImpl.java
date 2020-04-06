@@ -80,4 +80,5 @@ public class JobServiceImpl implements IJobService {
 		int result = jobMapper.insert(job);
 		return result;
 	}
+
 }
