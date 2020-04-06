@@ -135,6 +135,8 @@
 <!-- 主体内容 End -->
 
 <%@include file="../company/foot.jsp"%>
+
+</body>
 <script type="text/javascript">
     function check(){
 
@@ -193,12 +195,11 @@
                     return false;
                 }else{
                     alert("发布失败");
-                  return false;
+                    return false;
                 }
             }
         });
     }
 </script>
 
-</body>
 </html>

@@ -139,10 +139,11 @@
 
 <%@include file="../company/foot.jsp" %>
 
+</body>
+
 <script type="text/javascript">
     function search() {
         $("#searchForm").submit();
     }
 </script>
-</body>
 </html>
