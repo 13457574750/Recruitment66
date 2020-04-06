@@ -18,15 +18,15 @@
 
 <div class="section section-padding">
     <div class="container">
+        <form action="${path}/company/findAllCompany" id="searchForm" method="post">
 
         <div class="row mb-n5">
 
             <!-- 左边 Start-->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                 <!-- 企业列表 Start -->
-
                 <div class="company-list-wrap row">
-                    <c:forEach items="${companyList}" var="company">
+                    <c:forEach items="${pageInfo.list}" var="company">
                     <!-- 1 -->
                     <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
                         <a href="${path}/company/showACompany?companyId=${company.companyId}" class="company-list" value="${company.companyId}">
@@ -41,51 +41,61 @@
                     </c:forEach>
                 </div>
                 <!-- 企业列表 Start -->
-                <!-- 分页按钮 Start -->
+                <!-- 分页 Start -->
                 <ul class="pagination pagination-center mt-5">
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
+                    <li class="page-item"><a class="page-link" href="${path}/company/findAllCompany?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-left"></i></a></li>
+                    <c:forEach begin="1" end="4" var="pageNum">
+                        <li class="page-item "><a class="page-link" href="${path}/company/findAllCompany?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+                    </c:forEach>
+                    <li class="page-item"><a class="page-link" href="${path}/company/findAllCompany?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-right"></i></a></li>
                 </ul>
-                <!-- 分页按钮 End -->
+                <!-- 分页 End -->
             </div>
             <!-- 左边 End -->
 
             <!-- 右边 Start-->
             <div class="col-lg-4 col-12 mb-5">
-                <div class="sidebar-wrap">
-                    <!-- 搜索 Start -->
-                    <div class="sidebar-widget">
-                        <div class="inner">
-                            <h6 class="title"><trans oldtip="Search Company" newtip="搜索公司">搜索公司</trans></h6>
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-12 mb-3"><input type="text" placeholder="Keyword"></div>
-                                    <div class="col-12 mb-3">
-                                        <input class="btn btn-primary w-100" type="submit" value="搜索">
-                                    </div>
-                                </div>
-                            </form>
+                <form action="${path}/company/findAllCompany" method="post">
+                    <div class="sidebar-wrap">
+                        <!-- 搜索 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title"><trans>搜索公司</trans></h6>
+                                <form action="#">
+                                    <input type="text" name="companyName" placeholder="请输入要搜索的公司">
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                    <!-- 搜索 End -->
+                        <!-- 搜索 End -->
 
-                    <!-- 2 Start -->
-                    <div class="sidebar-widget">
-                        <div class="inner">
-                            <a class="banner" target="_blank"><img src="${path}/assets/images/banner/banner-1.jpg" alt="Banner"></a>
+                        <!-- 右4 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title">
+                                    <trans>重置条件</trans>
+                                </h6>
+                                <form action="#">
+                                    <button type="button" class="btn btn-primary w-100" onclick="search()">重置
+                                    </button>
+                                </form>
+                            </div>
                         </div>
+                        <!-- 右4 End -->
+
+                        <!-- 2 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <a class="banner" target="_blank"><img src="${path}/assets/images/banner/banner-1.jpg" alt="Banner"></a>
+                            </div>
+                        </div>
+                        <!-- 2 End -->
                     </div>
-                    <!-- 2 End -->
-                </div>
+                </form>
             </div>
             <!-- 右边 End -->
 
         </div>
-
+        </form>
     </div>
 </div>
 
@@ -93,4 +103,9 @@
 <%@include file="../company/foot.jsp"%>
 
 </body>
+<script type="text/javascript">
+    function search() {
+        $("#searchForm").submit();
+    }
+</script>
 </html>

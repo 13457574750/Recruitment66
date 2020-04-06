@@ -42,17 +42,17 @@
 
                 <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
                     <ul>
-                        <li class="has-children"><a href="${path}/company/companyIndex" target="_parent">首页</a></li>
-                        <li class="has-children"><a href="${path}/job/findAllJob" target="_parent">职位</a>
+                        <li class="has-children"><a href="${path}/company/companyIndex?companyId=${sessionScope.currCompany.companyId}" target="_parent">首页</a></li>
+                        <li class="has-children"><a href="${path}/job/findAllJob?companyId=${sessionScope.currCompany.companyId}" target="_parent">职位</a>
                             <ul class="sub-menu">
                                 <li><a href="${path}/job/addPost?companyId=${sessionScope.currCompany.companyId}" target="_parent">发布职位</a></li>
                             </ul>
                         </li>
-                        <li><a href="${path}/company/findAllCompany" target="_parent">公司</a></li>
-                        <li><a href="${path}/company/blog" target="_parent">博客</a></li>
-                        <li><a href="${path}/company/aboutUs" target="_parent">关于我们</a>
+                        <li><a href="${path}/company/findAllCompany?companyId=${sessionScope.currCompany.companyId}" target="_parent">公司</a></li>
+                        <li><a href="${path}/company/blog?companyId=${sessionScope.currCompany.companyId}" target="_parent">博客</a></li>
+                        <li><a href="${path}/company/aboutUs?companyId=${sessionScope.currCompany.companyId}" target="_parent">关于我们</a>
                             <ul class="sub-menu">
-                                <li><a href="${path}/company/contactUs" target="_parent">联系我们</a></li>
+                                <li><a href="${path}/company/contactUs?companyId=${sessionScope.currCompany.companyId}" target="_parent">联系我们</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -95,18 +95,18 @@
 
             <nav id="main-menu" class="main-menu col-lg-auto order-lg-2">
                 <ul>
-                    <li class="has-children"><a href="${path}/company/companyIndex" target="_parent">首页</a></li>
-                    <li class="has-children"><a href="${path}/job/findAllJob" target="_parent">职位</a>
+                    <li class="has-children"><a href="${path}/company/companyIndex?companyId=${sessionScope.currCompany.companyId}" target="_parent">首页</a></li>
+                    <li class="has-children"><a href="${path}/job/findAllJob?companyId=${sessionScope.currCompany.companyId}" target="_parent">职位</a>
                         <ul class="sub-menu">
                             <li><a href="${path}/job/addPost?companyId=${sessionScope.currCompany.companyId}" target="_parent">发布职位</a></li>
                         </ul>
                     </li>
 
-                    <li><a href="${path}/company/findAllCompany" target="_parent">公司</a></li>
-                    <li><a href="${path}/company/blog" target="_parent">博客</a></li>
-                    <li><a href="${path}/company/aboutUs" target="_parent">关于我们</a>
+                    <li><a href="${path}/company/findAllCompany?companyId=${sessionScope.currCompany.companyId}" target="_parent">公司</a></li>
+                    <li><a href="${path}/company/blog?companyId=${sessionScope.currCompany.companyId}" target="_parent">博客</a></li>
+                    <li><a href="${path}/company/aboutUs?companyId=${sessionScope.currCompany.companyId}" target="_parent">关于我们</a>
                         <ul class="sub-menu">
-                            <li><a href="${path}/company/contactUs" target="_parent">联系我们</a></li>
+                            <li><a href="${path}/company/contactUs?companyId=${sessionScope.currCompany.companyId}" target="_parent">联系我们</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -222,6 +222,8 @@
 </div>
 <!-- 登录注册弹窗 End -->
 
+</body>
+
 <!-- Main Activation JS -->
 <script type="text/javascript" src="${path}/assets/js/main.js"></script>
 
@@ -327,5 +329,4 @@
 </script>
 
 <!-- 登录注册End -->
-</body>
 </html>

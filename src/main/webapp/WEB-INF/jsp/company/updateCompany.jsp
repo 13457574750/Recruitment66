@@ -147,11 +147,12 @@
 
 <%@include file="../company/foot.jsp" %>
 
+</body>
+
 <script language="javascript">
     function submitForm() {
         alert("保存成功");
         document.getElementById("companyForm").submit();
     }
 </script>
-</body>
 </html>

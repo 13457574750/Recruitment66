@@ -160,6 +160,8 @@
 
 <%@include file="../company/foot.jsp" %>
 
+</body>
+
 <script language="javascript">
     function loadPage(href) {
         $("#test").load(href);
@@ -172,5 +174,4 @@
         window.location.href = url;
     }
 </script>
-</body>
 </html>

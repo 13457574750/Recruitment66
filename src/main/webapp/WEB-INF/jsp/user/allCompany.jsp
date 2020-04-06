@@ -18,7 +18,7 @@
 
 <div class="section section-padding">
     <div class="container">
-
+        <form action="${path}/user/findAllCompany" id="searchForm" method="post">
         <div class="row mb-n5">
 
             <!-- 左边 Start-->
@@ -58,7 +58,6 @@
 
             <!-- 右边 Start-->
             <div class="col-lg-4 col-12 mb-5">
-                <form action="${path}/user/findAllCompany" method="post">
                 <div class="sidebar-wrap">
                     <!-- 搜索 Start -->
                     <div class="sidebar-widget">
@@ -93,12 +92,11 @@
                     </div>
                     <!-- 2 End -->
                 </div>
-                </form>
             </div>
             <!-- 右边 End -->
 
         </div>
-
+        </form>
     </div>
 </div>
 

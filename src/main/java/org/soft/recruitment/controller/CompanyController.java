@@ -110,6 +110,7 @@ public class CompanyController {
         companyService.updateCompany(companyId, company);
         return "redirect:/company/updateCompanyPassword";//重定向
     }
+    
 
     /**
      * 浏览所有企业
@@ -140,11 +141,13 @@ public class CompanyController {
                                 @RequestParam(value = "size", required = true, defaultValue = "5") int size,
                                 Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
         Company company = companyService.findCompanyByCompanyId(companyId);
-        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
-        model.addAttribute("jobList", jobList);
         if (company != null) {
             model.addAttribute("company", company);
         }
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
+        //分页
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/company/showACompany";
     }
 

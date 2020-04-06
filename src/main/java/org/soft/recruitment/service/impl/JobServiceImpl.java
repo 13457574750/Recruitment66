@@ -32,12 +32,12 @@ public class JobServiceImpl implements IJobService {
 	 * @return
 	 */
 	public List<Job> findAllJob(int page, int size, String jobName, String jobAddress, String companyName) {
+		PageHelper.startPage(page, size);
 		Map<String, Object> map = new HashMap<>();
 		map.put("jobName", jobName);
 		map.put("jobAddress", jobAddress);
 		map.put("companyName", companyName);
 
-		PageHelper.startPage(page, size);
 		return jobMapper.findAllJob(map);
 	}
 

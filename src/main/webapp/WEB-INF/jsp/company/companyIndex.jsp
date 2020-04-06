@@ -381,9 +381,9 @@
 <div class="section section-padding"></div>
 <!-- 底部空白区 End -->
 
-<%@include file="../company/foot.jsp"%>
-<!-- Main Activation JS -->
-<script type="text/javascript" src="${path}/assets/js/main.js"></script>
 
 </body>
+
+<%@include file="../company/foot.jsp"%>
+
 </html>
