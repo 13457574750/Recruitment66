@@ -1,11 +1,13 @@
 package org.soft.recruitment.controller;
 
+import com.github.pagehelper.PageInfo;
 import org.soft.recruitment.model.Favorites;
 import org.soft.recruitment.model.Message;
 import org.soft.recruitment.service.IFavoritesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -26,9 +28,13 @@ public class FavoritesController {
      * @return
      */
     @RequestMapping("userShowFavorites")
-    public String userShowFavorites(String userRealName, Model model) {
-        List<Favorites> favoritesList = favoritesService.findFavoritesByUserRealName(userRealName);
-        model.addAttribute("favoritesList", favoritesList);
+    public String userShowFavorites( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                                     @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                     String userRealName, Model model) {
+        List<Favorites> favoritesList = favoritesService.findFavoritesByUserRealName(page, size, userRealName);
+        //分页
+        PageInfo<Favorites> pageInfo = new PageInfo<>(favoritesList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/favorites/userShowFavorites";
     }
 

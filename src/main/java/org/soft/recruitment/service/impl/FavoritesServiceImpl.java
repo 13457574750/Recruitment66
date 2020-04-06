@@ -1,5 +1,7 @@
 package org.soft.recruitment.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.soft.recruitment.dao.FavoritesMapper;
 import org.soft.recruitment.model.Favorites;
@@ -47,17 +49,20 @@ public class FavoritesServiceImpl implements IFavoritesService {
      * @param userRealName
      * @return
      */
-    public List<Favorites> findFavoritesByUserRealName(String userRealName) {
+    public List<Favorites> findFavoritesByUserRealName(int page, int size, String userRealName) {
+        PageHelper.startPage(page, size);
         FavoritesExample example = new FavoritesExample();
         Criteria criteria = example.createCriteria();
         if(StringUtils.isNotBlank(userRealName)){
             criteria.andUserRealNameEqualTo(userRealName);
         }
         List<Favorites> favoritesList = favoritesMapper.selectByExample(example);
+        PageInfo<Favorites> pageInfo = new PageInfo<>(favoritesList);
         if(favoritesList != null && favoritesList.size() > 0){
             return favoritesList;
         }
-        return null;
+
+        return pageInfo.getList();
     }
 
     /**

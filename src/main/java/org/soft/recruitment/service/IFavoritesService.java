@@ -11,7 +11,7 @@ public interface IFavoritesService {
     Favorites findAllFavorites(String userRealName, String jobId);
 
     //根据用户真名查询所有收藏记录(收藏夹)
-    List<Favorites> findFavoritesByUserRealName(String userRealName);
+    List<Favorites> findFavoritesByUserRealName(int page, int size, String userRealName);
 
     //增加收藏记录
     int insertFavorites(Favorites favorites_);
