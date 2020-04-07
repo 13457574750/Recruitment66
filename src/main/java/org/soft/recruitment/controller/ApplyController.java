@@ -123,4 +123,17 @@ public class ApplyController {
         // 重定向到投递记录界面
         return "redirect:/apply/userShowApply";
     }
+
+    /**
+     * 根据ID删除职位投递记录
+     *
+     * @param applyId
+     * @return
+     */
+    @RequestMapping("deleteApply2")
+    public String deleteApply2(Integer applyId) {
+        applyService.deleteApply(applyId);
+        // 重定向到投递记录界面
+        return "redirect:/apply/userShowApply";
+    }
 }

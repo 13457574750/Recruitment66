@@ -38,7 +38,7 @@
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
-                                    href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
+                                    href="${path}/apply/deleteApply2?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
                                     onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
