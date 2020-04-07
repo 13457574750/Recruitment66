@@ -172,11 +172,6 @@
         $("#" + divId).toggle();
     }
 
-    function search() {
-        $("#searchForm").submit();
-        return false;
-    }
-
     function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
                   jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
         var url = "${path}/job/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
