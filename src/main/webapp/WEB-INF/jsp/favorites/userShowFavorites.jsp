@@ -39,7 +39,7 @@
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
                                     href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList.favoriteId}&userId=${sessionScope.currUser.userId}"
-                                    onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
+                                    onclick="return confirm('确定要取消吗？');">取消收藏</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
