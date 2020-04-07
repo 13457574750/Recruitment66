@@ -55,13 +55,15 @@ public class JobController {
 	 * @return
 	 */
 	@RequestMapping("showAJob")
-	public String showAJob(Model model, Integer jobId, Integer companyId) {
+	public String showAJob(@RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
+						   @RequestParam(value = "size", required = true, defaultValue = "6") Integer size,
+						   Model model, Integer jobId, Integer companyId) {
 		Job job = jobService.findJobByJobId(jobId);
 		if (job != null) {
 			model.addAttribute("job", job);
 		}
 
-		Company company = companyService.findCompanyByCompanyId(companyId);
+		Company company = companyService.findCompanyByCompanyId(page, size, companyId);
 		if (company != null) {
 			model.addAttribute("company", company);
 		}

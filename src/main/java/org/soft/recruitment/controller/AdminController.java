@@ -199,8 +199,9 @@ public class AdminController {/*管理员所能使用的功能*/
      * @return
      */
     @RequestMapping("companyUpdate")
-    public String companyUpdate(Model model, Integer companyId) {
-        Company company = companyService.findCompanyByCompanyId(companyId);
+    public String companyUpdate(@RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
+                                @RequestParam(value = "size", required = true, defaultValue = "6") Integer size,Model model, Integer companyId) {
+        Company company = companyService.findCompanyByCompanyId(page, size, companyId);
         if (company != null) {
             model.addAttribute("company", company);
         }

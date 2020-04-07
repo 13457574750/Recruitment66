@@ -22,7 +22,7 @@ public interface ICompanyService {
 	public List<Company> findAllCompany(int page, int size, String companyName);
 
 	//根据公司ID查询公司
-	public  Company findCompanyByCompanyId(Integer companyId);
+	public  Company findCompanyByCompanyId(Integer page, Integer size, Integer companyId);
 
 	//查询公司登录名（校验登录名是否存在）
 	public int findCompanyByCompanyLoginName(String companyLoginName);

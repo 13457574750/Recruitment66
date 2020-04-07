@@ -44,33 +44,60 @@
                             <trans>${company.companyProfile}</trans>
                         </li>
                     </ul>
-                    <p><h6 style="text-align: center"><a class="button" name="companyName" value="${company.companyName}" onclick="$('#target').toggle();">招聘职位</a></h6></p>
                     <!-- 左1 Start -->
+                    <button type="button" class="btn btn-primary w-100"
+                            onclick="$('#target').toggle();this.disabled='disabled';">招聘职位
+                    </button>
 
                     <!-- 左2 Start -->
-                    <div class="job-list-wrap mt-5" id="target" >
-                        <%--                        <c:forEach items="${jobList}" var="job">--%>
+                    <div class="job-list-wrap mt-5" id="target" style="display: none">
+                        <form action="${path}/job/findAllJob" id="searchForm" method="post">
+                            <c:forEach items="${pageInfo.list}" var="job">
+                                <a class="job-list"
+                                   onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
+                                           '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
+                                           '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                    <div class="company-logo col-auto">
+                                        <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                                    </div>
+                                    <div class="salary-type col-auto order-sm-3">
+                                        <span class="salary-range">$${job.jobSalary}</span>
+                                        <span class="badge badge-success"><trans>${job.jobType}</trans></span>
+                                    </div>
+                                    <div class="content col">
+                                        <ul class="meta">
+                                            <li>
+                                                <h6 class="title">
+                                                    <trans>${job.jobName}</trans>
+                                                </h6>
+                                            </li>
+                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                                <trans>发布时间：${job.jobReleaseTime}</trans>
+                                            </strong></li>
+                                        </ul>
+                                        <ul class="meta">
+                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                                <trans>${job.company.companyName}</trans>
+                                            </strong></li>
+                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                                <trans>${job.jobAddress}</trans>
+                                            </strong></li>
+                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                                <trans>${job.jobEr}</trans>
+                                            </strong></li>
+                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                                <trans>${job.jobEducation}</trans>
+                                            </strong></li>
+                                        </ul>
+                                    </div>
+                                </a>
 
-                        <a href="${path}/job/showAJob?jobId=${job.jobId}&&companyId=${job.company.companyId}" class="job-list">
-                            <div class="company-logo col-auto">
-                                <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
-                            </div>
-                            <div class="salary-type col-auto order-sm-3">
-                                <span class="salary-range">$${job.jobSalary}</span>
-                                <span class="badge badge-success"><trans>${job.jobType}</trans></span>
-                            </div>
-                            <div class="content col">
-                                <h6 class="title"><trans>${job.jobName}</trans></h6>
-                                <ul class="meta">
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${company.companyName}</trans></strong></li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobAddress}</trans></strong></li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEr}</trans></strong></li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i><trans>${job.jobEducation}</trans></strong></li>
-                                </ul>
-                            </div>
-                        </a>
-                        <%--                        </c:forEach>--%>
-
+                            </c:forEach>
+                            <input type="hidden" name="companyName" value="小米" placeholder="请输入要搜索的公司">
+                            <button type="button" class="btn btn-primary w-100" value="小米"
+                                    onclick="search();">搜索
+                            </button>
+                        </form>
                     </div>
                     <!-- 左2 Start -->
 
@@ -142,7 +169,8 @@
                         <div class="inner">
                             <form action="#">
                                 <div class="row">
-                                        <input class="btn btn-primary w-100" type="button" href="javascript:void(0)" onclick="updateCompany('${company.companyId}')" value="修改">
+                                    <input class="btn btn-primary w-100" type="button" href="javascript:void(0)"
+                                           onclick="updateCompany('${company.companyId}')" value="修改">
                                 </div>
                             </form>
                         </div>
@@ -166,9 +194,11 @@
     function loadPage(href) {
         $("#test").load(href);
     }
+
     function toggler(divId) {
         $("#" + divId).toggle();
     }
+
     function updateCompany(companyId) {
         var url = "${path}/company/updateCompany?companyId=" + companyId;
         window.location.href = url;

@@ -93,7 +93,8 @@ public class CompanyServiceImpl implements ICompanyService {
      * @param companyId
      * @return
      */
-    public Company findCompanyByCompanyId(Integer companyId) {
+    public Company findCompanyByCompanyId(Integer page, Integer size, Integer companyId) {
+        PageHelper.startPage(page, size);
         Company company = companyMapper.selectByPrimaryKey(companyId);
         return company;
     }
