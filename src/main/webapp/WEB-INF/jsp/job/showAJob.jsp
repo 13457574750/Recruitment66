@@ -166,10 +166,4 @@
 <%@include file="../user/foot.jsp" %>
 
 </body>
-<script type="text/javascript">
-
-    function search() {
-        $("#searchForm").submit();
-    }
-</script>
 </html>

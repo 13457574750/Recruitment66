@@ -188,10 +188,6 @@
 </body>
 <script type="text/javascript">
 
-    function search() {
-        $("#searchForm").submit();
-    }
-
     // 投递简历
     function touDi() {
         var applyReleaseTime = new Date();//收藏时间
