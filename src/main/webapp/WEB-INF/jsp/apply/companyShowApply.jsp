@@ -73,15 +73,15 @@
                 <!-- 分页 Start -->
                 <ul class="pagination pagination-center mt-5">
                     <li class="page-item"><a class="page-link"
-                                             href="${path}/apply/userShowApply?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                             href="${path}/apply/companyShowApply?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
                             class="fa fa-angle-left"></i></a></li>
                     <c:forEach begin="1" end="4" var="pageNum">
                         <li class="page-item "><a class="page-link"
-                                                  href="${path}/apply/userShowApply?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                                  href="${path}/apply/companyShowApply?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
                         </li>
                     </c:forEach>
                     <li class="page-item"><a class="page-link"
-                                             href="${path}/apply/userShowApply?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                             href="${path}/apply/companyShowApply?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
                             class="fa fa-angle-right"></i></a></li>
                 </ul>
                 <!-- 分页 End -->
@@ -96,7 +96,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <form action="#">
-                                <button type="button" class="btn btn-primary w-100">⬅我的投递记录</button>
+                                <button type="button" class="btn btn-primary w-100">⬅企业信箱</button>
                             </form>
                         </div>
                     </div>

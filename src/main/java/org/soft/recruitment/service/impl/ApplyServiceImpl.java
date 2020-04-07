@@ -49,17 +49,20 @@ public class ApplyServiceImpl implements IApplyService {
      * @param companyName
      * @return
      */
-    public List<Apply> findApplyByCompanyName(String companyName) {
+    public List<Apply> findApplyByCompanyName(int page, int size, String companyName) {
+        PageHelper.startPage(page,size);
+
         ApplyExample example = new ApplyExample();
         Criteria criteria = example.createCriteria();
         if (StringUtils.isNotBlank(companyName)) {
             criteria.andCompanyNameEqualTo(companyName);
         }
         List<Apply> applyList_ = applyMapper.selectByExample(example);
+        PageInfo<Apply> pageInfo = new PageInfo<>(applyList_);
         if (applyList_ != null && applyList_.size()> 0) {
             return applyList_;
         }
-        return null;
+        return pageInfo.getList();
     }
 
     /**

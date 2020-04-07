@@ -33,11 +33,15 @@ public class ApplyController {
      * @return
      */
     @RequestMapping("companyShowApply")
-    public String companyShowApply(String companyName, Model model, HttpServletRequest request) {
+    public String companyShowApply(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                                   @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                                   String companyName, Model model, HttpServletRequest request) {
         Company currCompany = (Company) request.getSession().getAttribute("currCompany");
         if (currCompany != null) {
-            List<Apply> applyList = applyService.findApplyByCompanyName(companyName);
-            model.addAttribute("applyList", applyList);
+            List<Apply> applyList_ = applyService.findApplyByCompanyName(page,size,companyName);
+            //分页
+            PageInfo<Apply> pageInfo = new PageInfo<>(applyList_);
+            model.addAttribute("pageInfo", pageInfo);
         }
         return "/apply/companyShowApply";
     }
