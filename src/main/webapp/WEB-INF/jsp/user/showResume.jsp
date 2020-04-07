@@ -34,8 +34,8 @@
                                     <div class="basic-info">
                                         <p class="mdi mdi-school">${user.userUniversity} / ${user.userEducation}
                                             / ${user.userMajor} / ${user.userSex} / ${user.userBirthday}</p>
-                                        <span class="mdi mdi-cellphone">${user.userPhone}</span> <span
-                                            class="mdi mdi-email-outline">${user.userEmail}</span>
+                                        <span class="mdi mdi-cellphone">${user.userPhone}</span>
+                                        <span class="mdi mdi-email-outline">${user.userEmail}</span>
                                     </div>
                                 </div>
                                 <hr class="divider_type_3 m_bottom_30">
