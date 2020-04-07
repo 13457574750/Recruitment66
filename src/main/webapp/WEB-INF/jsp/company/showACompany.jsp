@@ -55,7 +55,7 @@
                     <form action="${path}/job/findAllJob" id="searchForm" method="post">
                         <c:forEach items="${pageInfo.list}" var="job">
                             <a class="job-list"
-                               onclick="show('${sessionScope.currCompany.companyId}','${sessionScope.currCompany.companyName}','${sessionScope.currCompany.companyCreateTime}','${job.jobId}',
+                               onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
                                        '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
                                        '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
                                 <div class="company-logo col-auto">
