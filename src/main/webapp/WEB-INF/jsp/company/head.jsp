@@ -129,7 +129,7 @@
                                     <a href="${path}/apply/companyShowApply?companyId=${sessionScope.currCompany.companyId}"
                                        target="_parent">简历箱</a></li>
                                 <li><a href="${path}/job/addPost?companyId=${sessionScope.currCompany.companyId}"
-                                       target="_parent">添加职位</a></li>
+                                       target="_parent">发布职位</a></li>
                                 <li><a href="${path}/company/exit" target="_parent">退出</a></li>
                             </ul>
                         </li>
