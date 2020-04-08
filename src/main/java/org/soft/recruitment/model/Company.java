@@ -1,5 +1,7 @@
 package org.soft.recruitment.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Company {
     private Integer companyId;
 
@@ -30,6 +32,21 @@ public class Company {
     private String companyRegisterCapital;
 
     private String companyCreateTime;
+
+
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    private MultipartFile file;
+
+
+
 
     public Integer getCompanyId() {
         return companyId;

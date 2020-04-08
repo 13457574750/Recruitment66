@@ -29,8 +29,9 @@
 
                     <h5 class="mb-3">
                          <span class="company-logo">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
-                        <trans>关于${company.companyName}</trans>
+                                    <img src="${path}/images/${company.companyCreateTime}" width="70px"
+                                         height="70px"></span>
+                        <trans>${company.companyName}</trans>
                     </h5>
                     <p>
                         <trans>
@@ -125,7 +126,8 @@
                             <div class="sidebar-company">
                                 <h6 class="title">
                                 <span class="company-logo">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
+                                    <img src="${path}/images/${company.companyCreateTime}" width="70px"
+                                         height="70px"></span>
                                     <trans>${company.companyName}</trans>
                                 </h6>
                                 <ul>
@@ -203,6 +205,7 @@
         var url = "${path}/company/updateCompany?companyId=" + companyId;
         window.location.href = url;
     }
+
     function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
                   jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
         var url = "${path}/job/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="

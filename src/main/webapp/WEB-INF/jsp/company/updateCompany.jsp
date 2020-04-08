@@ -110,10 +110,9 @@
                             </div>
 
                             <div class="col-md-6 col-12 mb-3">
-                                <label for="companyRegisterCapital">LOGO</label>
-                                <input type="file" name="companyCreateTime" id="companyCreateTime"
-                                       value="${company.companyCreateTime}"
-                                       placeholder="请选择公司Logo">
+                                <label for="companyRegisterCapital">更换公司LOGO</label>
+                                <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px">
+                                <input type="file" name="file" accept="image/*">
                             </div>
 
                             <div class="col-12 mb-3">

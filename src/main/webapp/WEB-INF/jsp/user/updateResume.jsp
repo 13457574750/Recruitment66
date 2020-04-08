@@ -155,7 +155,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">更换头像</h6>
-                            <p><input class="form-control" type="file" name="file" accept="image/*"></p>
+                            <p><input type="file" name="file" accept="image/*"></p>
                         </div>
                     </div>
                     <!-- 右4 End -->
