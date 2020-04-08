@@ -19,4 +19,8 @@ public class TestServiceImpl implements ITestService {
         PageHelper.startPage(page, size);
         return testMapper.findAll();
     }
+
+    public void adds(Test test) {
+        testMapper.add(test);
+    }
 }

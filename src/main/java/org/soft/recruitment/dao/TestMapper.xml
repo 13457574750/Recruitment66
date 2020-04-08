@@ -181,4 +181,8 @@
   <select id="findAll" resultMap="BaseResultMap">
   	select * from test
   </select>
+
+  <insert id="add" parameterType="org.soft.recruitment.model.Test">
+    insert into test(test_Name,test_Sex) value (#{testName},#{testSex})
+  </insert>
 </mapper>

@@ -31,9 +31,10 @@
 
                             <a class="testList-list">
                                 <div class="salary-type col-auto order-sm-3">
-                                    <span class="salary-range">$${testList.testId}</span>
-                                    <span class="salary-range">$${testList.testName}</span>
-                                    <span class="salary-range">$${testList.testSex}</span>
+                                    <img src="${path}/images/${testList.testName}" width="200px" height="180px">
+                                    <span class="salary-range">${testList.testId}</span>
+                                    <span class="salary-range">${testList.testName}</span>
+                                    <span class="salary-range">${testList.testSex}</span>
                                 </div>
                             </a>
                         </c:forEach>
@@ -54,6 +55,11 @@
                 </div>
                 <!-- 左边 End -->
 
+                <form action="${path}/test/add" method="post" enctype="multipart/form-data">
+                    <label>名字图片：</label><input type="file" name="file" accept="image/*"><br>
+                    <label>性别：</label><input type="text" name="testSex"><br>
+                    <input type="submit">
+                </form>
             </div>
     </div>
 </div>

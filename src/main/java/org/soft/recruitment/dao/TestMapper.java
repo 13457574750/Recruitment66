@@ -30,4 +30,5 @@ public interface TestMapper {
 
     List<Test> findAll();
 
+    void add(Test test);
 }

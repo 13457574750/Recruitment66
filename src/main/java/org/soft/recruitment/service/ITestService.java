@@ -9,5 +9,7 @@ import java.util.List;
 public interface ITestService {
 
     List<Test> findAllTest(int page, int size);
+
+    void adds(Test test);
 }
 
