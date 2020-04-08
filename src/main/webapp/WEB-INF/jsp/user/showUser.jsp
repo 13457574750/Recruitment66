@@ -60,6 +60,9 @@
                                     </div>
                                 </div>
                                 <hr class="divider_type_3 m_bottom_30">
+                                <button class="btn btn-primary w-100" type="button" href="javascript:void(0)"
+                                        onclick="updateUser('${sessionScope.currUser.userId}')">修改
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -77,7 +80,7 @@
 </body>
 <script type="text/javascript">
     function updateUser(userId) {
-        var url = "${path}/user/updateUserPassword?userId=" + userId;
+        var url = "${path}/user/updateResume?userId=" + userId;
         window.location.href = url;
     }
 </script>
