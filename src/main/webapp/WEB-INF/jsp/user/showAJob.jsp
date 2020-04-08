@@ -45,8 +45,8 @@
                                        value="${sessionScope.currUser.userRealName}">
 
                             </p>
-                            <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}"><img
-                                    src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                            <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}">
+                                <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
                             <span class="salary-range">$${job.jobSalary}</span>

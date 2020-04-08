@@ -30,7 +30,7 @@
                                 <a onclick="show('${applyList_.job.company.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',
                                         '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',
                                         '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                                    <img src="${path}/images/${applyList_.companyCreateTime}" width="70px" height="70px"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">$${applyList_.jobSalary}</span>

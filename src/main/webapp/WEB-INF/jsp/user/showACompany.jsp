@@ -29,7 +29,7 @@
 
                     <h5 class="mb-3">
                          <span class="company-logo">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
+                                   <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></span>
                         <trans>关于${company.companyName}</trans>
                     </h5>
                     <p>
@@ -59,7 +59,7 @@
                                        '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
                                        '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
                                 <div class="company-logo col-auto">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                                    <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px">
                                 </div>
                                 <div class="salary-type col-auto order-sm-3">
                                     <span class="salary-range">$${job.jobSalary}</span>
@@ -114,7 +114,7 @@
                             <div class="sidebar-company">
                                 <h6 class="title">
                                 <span class="company-logo">
-                                    <img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
+                                   <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></span>
                                     <trans>${company.companyName}</trans>
                                 </h6>
                                 <ul>
