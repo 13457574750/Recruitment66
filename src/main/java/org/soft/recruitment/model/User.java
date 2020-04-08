@@ -1,5 +1,7 @@
 package org.soft.recruitment.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
     private Integer userId;
 
@@ -32,6 +34,19 @@ public class User {
     private String userState;
 
     private String userCreateTime;
+
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    private MultipartFile file;
+
+
 
     public Integer getUserId() {
         return userId;

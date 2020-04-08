@@ -118,7 +118,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">注册时间</h6>
-                            <p>${user.userCreateTime}</p>
+                            <p><img src="${path}/images/${user.userCreateTime}"></p>
                         </div>
                     </div>
                     <!-- 右4 End -->

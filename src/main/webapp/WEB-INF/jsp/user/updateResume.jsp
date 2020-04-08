@@ -21,7 +21,7 @@
 <div class="section section-padding">
     <form id="userForm"
           action="${pageContext.request.contextPath }/user/saveResume?userId=${sessionScope.currUser.userId}"
-          method="post" onsubmit="return submitForm();">
+          method="post" onsubmit="return submitForm();" enctype="multipart/form-data">
         <div class="container">
 
             <div class="row mb-n5">
@@ -143,8 +143,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">注册时间</h6>
-                            <p><input class="form-control" type="date" name="userCreateTime"
-                                      value="${user.userCreateTime}"></p>
+                            <p><input class="form-control" type="file" name="file" accept="image/*"></p>
                         </div>
                     </div>
                     <!-- 右4 End -->
