@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="blog blog-single">
                             <div class="content">
-                                <h6 class="title"><p class="mdi mdi-emoticon-excited">${user.userRealName}</h6>
+                                <h6 class="title"><img src="${path}/images/${user.userCreateTime}" width="70px" height="70px">${user.userRealName}</h6>
                                 <div class="desc">
                                     <div class="basic-info">
                                         <p class="mdi mdi-school">${user.userUniversity} / ${user.userEducation}
@@ -114,14 +114,6 @@
                     </div>
                     <!-- 右3 End -->
 
-                    <!-- 右4 Start -->
-                    <div class="sidebar-widget">
-                        <div class="inner">
-                            <h6 class="title"><p class="mdi mdi-emoticon-excited">注册时间</h6>
-                            <p><img src="${path}/images/${user.userCreateTime}"></p>
-                        </div>
-                    </div>
-                    <!-- 右4 End -->
                     <!-- 右5 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">

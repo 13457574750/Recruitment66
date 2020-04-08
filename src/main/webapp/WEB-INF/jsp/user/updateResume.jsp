@@ -37,7 +37,7 @@
                         <div class="col-12">
                             <div class="blog blog-single">
                                 <div class="content">
-                                    <h6 class="title"><p class="mdi mdi-emoticon-excited">${user.userRealName}
+                                    <h6 class="title"><img src="${path}/images/${user.userCreateTime}" width="70px" height="70px">${user.userRealName}</h6>
                                         </h6>
                                     <div class="desc">
                                         <div class="basic-info">
@@ -119,7 +119,14 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">期望薪资</h6>
-                            <p><input type="text" name="userWantMoney" value="${user.userWantMoney}"></p>
+                            <select id="userWantMoney" name="userWantMoney" placeholder="请选择月薪范围">
+                                <option value="${user.userWantMoney}">${user.userWantMoney}元</option>
+                                <option value="10000">10000元</option>
+                                <option value="30000">30000元</option>
+                                <option value="50000">50000元</option>
+                                <option value="100000">100000元</option>
+                                <option value="500000">500000元</option>
+                            </select>
                         </div>
                     </div>
                     <!-- 右1 End -->
@@ -127,7 +134,12 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">求职状态</h6>
-                            <p><input type="text" name="userState" value="${user.userState}"></p>
+                            <select id="userState" name="userState" placeholder="请选择月薪范围">
+                                <option value="${user.userState}">${user.userState}</option>
+                                <option value="一周内就职">一周内就职</option>
+                                <option value="一个月内就职">一个月内就职</option>
+                                <option value="半年内就职">半年内就职</option>
+                            </select>
                         </div>
                     </div>
                     <!-- 右2 End -->
@@ -142,7 +154,7 @@
                     <!-- 右4 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">
-                            <h6 class="title"><p class="mdi mdi-emoticon-excited">注册时间</h6>
+                            <h6 class="title"><p class="mdi mdi-emoticon-excited">更换头像</h6>
                             <p><input class="form-control" type="file" name="file" accept="image/*"></p>
                         </div>
                     </div>
