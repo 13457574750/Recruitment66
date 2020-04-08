@@ -48,21 +48,21 @@
                                             <trans>${favoritesList.jobName}</trans>
                                         </h6>
                                     </li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
                                         <trans>发布时间：${favoritesList.jobReleaseTime}</trans>
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
                                         <trans>${favoritesList.companyName}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                         <trans>${favoritesList.jobAddress}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
                                         <trans>${favoritesList.jobEr}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="mdi mdi-library"></i>
                                         <trans>${favoritesList.jobEducation}</trans>
                                     </strong></li>
                                 </ul>

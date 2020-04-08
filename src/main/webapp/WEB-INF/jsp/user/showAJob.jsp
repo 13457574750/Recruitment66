@@ -45,8 +45,8 @@
                                        value="${sessionScope.currUser.userRealName}">
 
                             </p>
-                                <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}"><img
-                                        src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
+                            <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}"><img
+                                    src="${path}/assets/images/companies/company-1.png" alt="Company Logo"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
                             <span class="salary-range">$${job.jobSalary}</span>
@@ -59,21 +59,21 @@
                                         <trans>${job.jobName}</trans>
                                     </h6>
                                 </li>
-                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
                                     <trans>发布时间：${job.jobReleaseTime}</trans>
                                 </strong></li>
                             </ul>
                             <ul class="meta">
-                                <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
                                     <trans>${company.companyName}</trans>
                                 </strong></li>
-                                <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                     <trans>${job.jobAddress}</trans>
                                 </strong></li>
-                                <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
                                     <trans>${job.jobEr}</trans>
                                 </strong></li>
-                                <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                <li><strong class="text-primary"><i class="mdi mdi-library"></i>
                                     <trans>${job.jobEducation}</trans>
                                 </strong></li>
                             </ul>

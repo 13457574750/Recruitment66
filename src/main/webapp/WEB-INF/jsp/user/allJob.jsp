@@ -47,21 +47,21 @@
                                                 <trans>${job.jobName}</trans>
                                             </h6>
                                         </li>
-                                        <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
                                             <trans>发布时间：${job.jobReleaseTime}</trans>
                                         </strong></li>
                                     </ul>
                                     <ul class="meta">
-                                        <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
                                             <trans>${job.company.companyName}</trans>
                                         </strong></li>
                                         <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                             <trans>${job.jobAddress}</trans>
                                         </strong></li>
-                                        <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
                                             <trans>${job.jobEr}</trans>
                                         </strong></li>
-                                        <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                        <li><strong class="text-primary"><i class="mdi mdi-library"></i>
                                             <trans>${job.jobEducation}</trans>
                                         </strong></li>
                                     </ul>
@@ -73,13 +73,19 @@
 
                     <!-- 分页 Start -->
                     <ul class="pagination pagination-center mt-5">
-                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-left"></i></a></li>
-<%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=1&size=${pageInfo.pageSize}">首页</a></li>--%>
+                        <li class="page-item"><a class="page-link"
+                                                 href="${path}/user/findAllJob?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                class="fa fa-angle-left"></i></a></li>
+                        <%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=1&size=${pageInfo.pageSize}">首页</a></li>--%>
                         <c:forEach begin="1" end="4" var="pageNum">
-                            <li class="page-item "><a class="page-link" href="${path}/user/findAllJob?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+                            <li class="page-item "><a class="page-link"
+                                                      href="${path}/user/findAllJob?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                            </li>
                         </c:forEach>
-<%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pages}&size=${pageInfo.pageSize}">尾页</a></li>--%>
-                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-right"></i></a></li>
+                        <%--                        <li class="page-item"><a class="page-link" href="${path}/user/findAllJob?page=${pageInfo.pages}&size=${pageInfo.pageSize}">尾页</a></li>--%>
+                        <li class="page-item"><a class="page-link"
+                                                 href="${path}/user/findAllJob?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                class="fa fa-angle-right"></i></a></li>
                     </ul>
                     <!-- 分页 End -->
                 </div>
@@ -89,60 +95,60 @@
                 <!-- 右边 Start -->
                 <div class="col-lg-4 col-12 mb-5">
 
-                        <div class="sidebar-wrap">
-                            <!-- 右1 Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">
-                                        <trans>搜索职位</trans>
-                                    </h6>
-                                    <form action="#">
-                                        <input type="text" name="jobName" placeholder="请输入要搜索的职位名称">
-                                    </form>
-                                </div>
+                    <div class="sidebar-wrap">
+                        <!-- 右1 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title">
+                                    <trans>搜索职位</trans>
+                                </h6>
+                                <form action="#">
+                                    <input type="text" name="jobName" placeholder="请输入要搜索的职位名称">
+                                </form>
                             </div>
-                            <!-- 右1 End -->
-
-                            <!-- 右2 Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">
-                                        <trans>搜索位置</trans>
-                                    </h6>
-                                    <form action="#">
-                                        <input type="text" name="jobAddress" placeholder="请输入要搜索的工作地点">
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- 右2 End -->
-
-                            <!-- 右3 Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">
-                                        <trans>搜索公司</trans>
-                                    </h6>
-                                    <form action="#">
-                                        <input type="text" name="companyName" placeholder="请输入要搜索的公司">
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- 右3 End -->
-
-                            <!-- 右4 Start -->
-                            <div class="sidebar-widget">
-                                <div class="inner">
-                                    <h6 class="title">
-                                        <trans>重置条件</trans>
-                                    </h6>
-                                    <form action="#">
-                                        <button type="button" class="btn btn-primary w-100" onclick="search()">重置
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- 右4 End -->
                         </div>
+                        <!-- 右1 End -->
+
+                        <!-- 右2 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title">
+                                    <trans>搜索位置</trans>
+                                </h6>
+                                <form action="#">
+                                    <input type="text" name="jobAddress" placeholder="请输入要搜索的工作地点">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- 右2 End -->
+
+                        <!-- 右3 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title">
+                                    <trans>搜索公司</trans>
+                                </h6>
+                                <form action="#">
+                                    <input type="text" name="companyName" placeholder="请输入要搜索的公司">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- 右3 End -->
+
+                        <!-- 右4 Start -->
+                        <div class="sidebar-widget">
+                            <div class="inner">
+                                <h6 class="title">
+                                    <trans>重置条件</trans>
+                                </h6>
+                                <form action="#">
+                                    <button type="button" class="btn btn-primary w-100" onclick="search()">重置
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- 右4 End -->
+                    </div>
                 </div>
                 <!-- 右边 End -->
 

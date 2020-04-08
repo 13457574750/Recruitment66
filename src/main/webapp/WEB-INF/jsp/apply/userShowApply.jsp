@@ -48,21 +48,21 @@
                                             <trans>${applyList_.jobName}</trans>
                                         </h6>
                                     </li>
-                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                    <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
                                         <trans>发布时间：${applyList_.jobReleaseTime}</trans>
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
                                         <trans>${applyList_.companyName}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
                                         <trans>${applyList_.jobAddress}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
                                         <trans>${applyList_.jobEr}</trans>
                                     </strong></li>
-                                    <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                    <li><strong class="text-primary"><i class="mdi mdi-library"></i>
                                         <trans>${applyList_.jobEducation}</trans>
                                     </strong></li>
                                 </ul>
