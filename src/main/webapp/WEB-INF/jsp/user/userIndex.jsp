@@ -161,24 +161,24 @@
                 <h2 class="title">名企</h2>
             </div>
 
-            <!-- Company List Wrap Start -->
+            <!-- 名企列表 Start -->
             <div class="company-slider row">
                 <button class="slick-prev slick-arrow" style=""><i class="fa fa-angle-left"></i></button>
-                <!-- Company List Start -->
+
                 <c:forEach items="${pageInfoCompany.list}" var="company">
                     <div class="col">
                         <a href="${path}/company/showACompany?companyId=${company.companyId}" class="feature-company"
                            value="${company.companyId}">
-                        <span class="company-logo"><img src="${path}/images/${company.companyCreateTime}" width="70px"
-                                                        height="70px"></span>
+                        <span class="company-logo">
+                            <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></span>
                             <h6 class="title">${company.companyName}</h6>
                         </a>
                     </div>
                 </c:forEach>
-                <!-- Company List Start -->
+
                 <button class="slick-next slick-arrow" style=""><i class="fa fa-angle-right"></i></button>
             </div>
-            <!-- Company List Wrap Start -->
+            <!-- 名企列表 Start -->
 
         </div>
     </form>
