@@ -143,6 +143,7 @@ public class UserServiceImpl implements IUserService {
      * @param userId
      * @param user
      */
+    @Override
     public void updateUser(Integer userId, User user) {
         user.setUserId(userId);
         userMapper.updateByPrimaryKey(user);
