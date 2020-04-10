@@ -15,7 +15,7 @@
 
 <body>
 <%@include file="../user/head.jsp"%>
-
+<iframe style="display: none" src="${path}/user/findAllJob"></iframe>
 <!-- 首页图片 Start -->
 <div class="slider-section section">
     <div class="slide-item bg-parallax" data-bg-image="${path}/assets/images/slider/slider-1.jpg" data-overlay="50">
@@ -33,21 +33,20 @@
     <div class="container">
         <div class="job-search-wrap">
 
-            <!-- Job Search Form Start -->
+            <!-- 搜索 Start -->
             <div class="job-search-form">
                 <form action="#">
                     <div class="row mb-n4">
-
                         <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
-                            <input type="text" style="width: 150%;" placeholder="软件工程师">
+                            <input type="text" name="jobName" style="width: 150%;" placeholder="软件工程师">
                         </div>
                         <div class="col-lg-auto col-sm-6 col-5 flex-grow-1 mb-4">
-                            <button style="float: right;" class="btn btn-primary">搜索</button>
+                            <button type="button" style="float: right;" class="btn btn-primary" onclick="search()">搜索</button>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- Job Search Form End -->
+            <!-- 搜索 End -->
 
         </div>
     </div>
@@ -62,109 +61,54 @@
             <p>以下是网站上列出的最新工作.</p>
         </div>
 
-        <!-- Job List Wrap Start -->
+        <!-- 工作列表 Start -->
         <div class="job-list-wrap">
+            <c:forEach items="${pageInfo.list}" var="job">
 
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">${Salary}</span>
-                    <span class="badge badge-success">Full Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Full Stack Backend Developer</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Envato</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-2.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$7000 - $13000</span>
-                    <span class="badge badge-warning">Part Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Product UI & UX Expert</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Astha</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-3.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$5000 - $8000</span>
-                    <span class="badge badge-danger">Freelance</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Full Stack Backend Developer</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Github</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-4.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$7000 - $13000</span>
-                    <span class="badge badge-success">Full Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Product UI & UX Expert</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Medicore</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-5.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$5000 - $8000</span>
-                    <span class="badge badge-success">Full Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Full Stack Backend Developer</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">GreenSoul</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
+                <a class="job-list"
+                   onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
+                           '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
+                           '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                    <div class="company-logo col-auto">
+                        <img src="${path}/images/${job.company.companyCreateTime}" width="70px" height="70px">
+                    </div>
+                    <div class="salary-type col-auto order-sm-3">
+                        <span class="salary-range">$${job.jobSalary}</span>
+                        <span class="badge badge-success"><trans>${job.jobType}</trans></span>
+                    </div>
+                    <div class="content col">
+                        <ul class="meta">
+                            <li>
+                                <h6 class="title">
+                                    <trans>${job.jobName}</trans>
+                                </h6>
+                            </li>
+                            <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
+                                <trans>发布时间：${job.jobReleaseTime}</trans>
+                            </strong></li>
+                        </ul>
+                        <ul class="meta">
+                            <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
+                                <trans>${job.company.companyName}</trans>
+                            </strong></li>
+                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                <trans>${job.jobAddress}</trans>
+                            </strong></li>
+                            <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
+                                <trans>${job.jobEr}</trans>
+                            </strong></li>
+                            <li><strong class="text-primary"><i class="mdi mdi-library"></i>
+                                <trans>${job.jobEducation}</trans>
+                            </strong></li>
+                        </ul>
+                    </div>
+                </a>
+            </c:forEach>
         </div>
-        <!-- Job List Wrap Start -->
+        <!-- 工作列表 End -->
 
         <div class="text-center mt-4 mt-lg-5">
-            <a href="job-list.html" class="btn btn-primary">查看所有职位</a>
+            <a href="${path}/user/findAllJob" class="btn btn-primary">查看所有职位</a>
         </div>
 
     </div>
@@ -384,5 +328,19 @@
 <%@include file="../user/foot.jsp"%>
 
 </body>
+<script type="text/javascript">
+    //加载参数并传递数据给url
+    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
+                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
+        var url = "${path}/user/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
+            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
+            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
+            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
+        window.location.href = url;
+    }
 
+    function search() {
+        $("#searchForm").submit();
+    }
+</script>
 </html>

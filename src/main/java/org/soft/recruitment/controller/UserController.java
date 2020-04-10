@@ -246,7 +246,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("userIndex")
-    public String userIndex(Model model) {
+    public String userIndex(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                             @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                             String jobName, String jobAddress, String companyName, Model model) {
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/user/userIndex";
     }
 
