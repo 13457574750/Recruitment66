@@ -29,7 +29,9 @@
                     <div class="col-12">
                         <div class="blog blog-single">
                             <div class="content">
-                                <h6 class="title"><img src="${path}/images/${user.userCreateTime}" width="70px" height="70px">${user.userRealName}</h6>
+                                <h6 class="title">
+                                    <img src="/images/${user.userCreateTime}" width="70px" height="70px">${user.userRealName}
+                                </h6>
                                 <div class="desc">
                                     <div class="basic-info">
                                         <p class="mdi mdi-school">${user.userUniversity} / ${user.userEducation}
