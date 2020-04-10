@@ -184,6 +184,7 @@
                                 <div class="col-12 mb-3"><input type="text" id="userLoginName2" name="userLoginName"  placeholder="请输入账号"></div>
                                 <div class="col-12 mb-3"><input type="text" id="userEmail" name="userEmail"  placeholder="请输入邮箱"></div>
                                 <div class="col-12 mb-3"><input type="password" id="userLoginPassword2" name="userLoginPassword"  placeholder="请输入密码"></div>
+                                <div class="col-12 mb-3"><input type="text" id="userRealName" name="userRealName"  placeholder="请输入名字，确认注册后不可更改"></div>
                                 <div class="col-12 mb-3"><input id="submitBtn2" class="btn btn-primary w-100" type="button" value="注册" onclick="Check()"></div>
                             </div>
                         </form>
@@ -245,6 +246,7 @@
         var userLoginName=document.getElementById("userLoginName2").value;//用户名
         var userLoginPassword=document.getElementById("userLoginPassword2").value;//用户密码
         var userEmail=document.getElementById("userEmail").value;//用户邮箱
+        var userRealName=document.getElementById("userRealName").value;//用户名字
 
         if(userLoginName.length==0){
             alert("用户名为空");
@@ -259,6 +261,10 @@
         }
         if(userLoginPassword.length==0){
             alert("请输入密码");
+            return false;
+        }
+        if(userRealName.length==0){
+            alert("请输入名字");
             return false;
         }
         if(userEmail.length==0){
@@ -277,6 +283,7 @@
                 userLoginName:userLoginName,//用户登录名
                 userLoginPassword:userLoginPassword,//密码
                 userEmail:userEmail,//邮箱
+                userRealName:userRealName,//名字
             },
             type:"POST",
             dataType:"json",
