@@ -74,7 +74,7 @@ public class ApplyController {
      * @param jobId
      * @return
      */
-    @RequestMapping("/addApply")
+    @RequestMapping("addApply")
     @ResponseBody
     public Message addApply(String applyReleaseTime, String companyName, String companyCreateTime, String userRealName,
                             Integer jobId, String jobName, String jobAddress, String jobSalary, String jobEr, String jobEducation,
