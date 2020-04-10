@@ -160,7 +160,6 @@
 
 
 <%@include file="../user/foot.jsp" %>
-s
 
 </body>
 <script type="text/javascript">
