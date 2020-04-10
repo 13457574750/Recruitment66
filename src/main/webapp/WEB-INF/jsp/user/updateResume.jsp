@@ -31,13 +31,15 @@
                         <td><input type="hidden" name="userId" value="${user.userId}"/></td>
                         <td><input type="hidden" name="userLoginName" value="${user.userLoginName}"/></td>
                         <td><input type="hidden" name="userLoginPassword" value="${user.userLoginPassword}"/></td>
-                        <td><input type="hidden" name="userRealName" value="${user.userRealName}"/></td>
 
                         <!-- 左1 Start -->
                         <div class="col-12">
                             <div class="blog blog-single">
                                 <div class="content">
-                                    <h6 class="title"><img src="${path}/images/${user.userCreateTime}" width="70px" height="70px">${user.userRealName}</h6>
+                                    <h6 class="title">
+                                        <p class="mdi mdi-school">名字
+                                        <td><input type="text" name="userRealName" value="${user.userRealName}"/></td>
+                                    </h6>
                                         </h6>
                                     <div class="desc">
                                         <div class="basic-info">
@@ -155,6 +157,7 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">更换头像</h6>
+                            <p><img src="${path}/images/${user.userCreateTime}" width="70px" height="70px"></p>
                             <p><input type="file" name="file" accept="image/*"></p>
                         </div>
                     </div>
