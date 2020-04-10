@@ -252,6 +252,11 @@ public class UserController {
         List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
         PageInfo<Job> pageInfo = new PageInfo<>(jobList);
         model.addAttribute("pageInfo", pageInfo);
+
+        List<Company> companyList = companyService.findAllCompany(page,size,companyName);
+        //分页
+        PageInfo<Company> pageInfoCompany = new PageInfo<>(companyList);
+        model.addAttribute("pageInfoCompany", pageInfoCompany);
         return "/user/userIndex";
     }
 
@@ -321,7 +326,7 @@ public class UserController {
     @RequestMapping("findAllCompany")
     public String findAllCompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
                                  @RequestParam(value = "size", required = true, defaultValue = "6") int size,
-                                 String companyName, String jobName, String jobAddress,Integer jobId, Model model) {
+                                 String companyName,Integer jobId, Model model) {
         List<Company> companyList = companyService.findAllCompany(page, size, companyName);
         //分页
         PageInfo<Company> pageInfo = new PageInfo<>(companyList);

@@ -154,119 +154,35 @@
 
 <!-- 名企 Start -->
 <div class="section section-padding">
-    <div class="container">
-        <div class="section-title">
-            <h2 class="title">名企</h2>
-        </div>
+    <form action="${path}/user/findAllCompany" method="post">
 
-        <!-- Company List Wrap Start -->
-        <div class="company-slider row">
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
-                    <h6 class="title">Envato</h6>
-                    <span class="open-job">2 open positions</span>
-                </a>
+        <div class="container">
+            <div class="section-title">
+                <h2 class="title">名企</h2>
             </div>
-            <!-- Company List Start -->
 
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-2.png" alt="company-1"></span>
-                    <h6 class="title">Astha</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
+            <!-- Company List Wrap Start -->
+            <div class="company-slider row">
+                <button class="slick-prev slick-arrow" style=""><i class="fa fa-angle-left"></i></button>
+                <!-- Company List Start -->
+                <c:forEach items="${pageInfoCompany.list}" var="company">
+                    <div class="col">
+                        <a href="${path}/company/showACompany?companyId=${company.companyId}" class="feature-company"
+                           value="${company.companyId}">
+                        <span class="company-logo"><img src="${path}/images/${company.companyCreateTime}" width="70px"
+                                                        height="70px"></span>
+                            <h6 class="title">${company.companyName}</h6>
+                        </a>
+                    </div>
+                </c:forEach>
+                <!-- Company List Start -->
+                <button class="slick-next slick-arrow" style=""><i class="fa fa-angle-right"></i></button>
             </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-3.png" alt="company-1"></span>
-                    <h6 class="title">Github</h6>
-                    <span class="open-job">4 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-4.png" alt="company-1"></span>
-                    <h6 class="title">Medicore</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-5.png" alt="company-1"></span>
-                    <h6 class="title">Greensoul</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-6.png" alt="company-1"></span>
-                    <h6 class="title">Generous</h6>
-                    <span class="open-job">2 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-7.png" alt="company-1"></span>
-                    <h6 class="title">Buzco</h6>
-                    <span class="open-job">3 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-8.png" alt="company-1"></span>
-                    <h6 class="title">Salina</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-9.png" alt="company-1"></span>
-                    <h6 class="title">Hope</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-10.png"
-                                                    alt="company-span"></span>
-                    <h6 class="title">Bebsha</h6>
-                    <span class="open-job">2 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
+            <!-- Company List Wrap Start -->
 
         </div>
-        <!-- Company List Wrap Start -->
+    </form>
 
-    </div>
 </div>
 <!-- 名企 End -->
 
