@@ -15,7 +15,6 @@
 
 <body>
 <%@include file="../user/head.jsp"%>
-<iframe style="display: none" src="${path}/user/findAllJob"></iframe>
 <!-- 首页图片 Start -->
 <div class="slider-section section">
     <div class="slide-item bg-parallax" data-bg-image="${path}/assets/images/slider/slider-1.jpg" data-overlay="50">
@@ -35,7 +34,7 @@
 
             <!-- 搜索 Start -->
             <div class="job-search-form">
-                <form action="#">
+                <form action="${path}/user/findAllJob" id="searchForm" method="post">
                     <div class="row mb-n4">
                         <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
                             <input type="text" name="jobName" style="width: 150%;" placeholder="软件工程师">

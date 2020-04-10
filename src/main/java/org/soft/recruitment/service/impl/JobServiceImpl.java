@@ -81,4 +81,12 @@ public class JobServiceImpl implements IJobService {
 		return result;
 	}
 
+	/**
+	 * 删除职位
+	 * @param jobId
+	 */
+	public void deleteJob(Integer jobId) {
+		jobMapper.deleteByPrimaryKey(jobId);
+	}
+
 }

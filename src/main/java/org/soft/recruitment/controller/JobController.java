@@ -140,4 +140,18 @@ public class JobController {
 	public String addPost(Model model) {
 		return "/job/addPost";
 	}
+
+
+	/**
+	 * 根据ID删除职位
+	 *
+	 * @param jobId
+	 * @return
+	 */
+	@RequestMapping("deleteJob")
+	public String deleteJob(Integer jobId) {
+		jobService.deleteJob(jobId);
+		// 重定向到用户列表界面
+		return "redirect:/company/showACompany";
+	}
 }

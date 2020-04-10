@@ -18,5 +18,7 @@ public interface IJobService {
 
     //新增职位
     public int insertJob(Job job);
+
+    void deleteJob(Integer jobId);
 }
 

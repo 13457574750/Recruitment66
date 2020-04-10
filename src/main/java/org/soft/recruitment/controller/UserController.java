@@ -368,7 +368,6 @@ public class UserController {
         userService.deleteByUserId(userId);
         // 重定向到用户列表界面
         return "redirect:/admin/user";
-
     }
 
     /**
