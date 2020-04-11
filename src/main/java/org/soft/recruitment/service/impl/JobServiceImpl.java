@@ -54,7 +54,9 @@ public class JobServiceImpl implements IJobService {
 		if (StringUtils.isNotBlank(jobName)) {
 			criteria.andJobNameEqualTo(jobName);
 		}
-		criteria.andCompanyIdEqualTo(companyId+"");
+		if (StringUtils.isNotBlank(String.valueOf(companyId))) {
+			criteria.andCompanyIdEqualTo(companyId+"");
+		}
 		List<Job> jobList = jobMapper.selectByExample(example);
 		if (jobList != null && !jobList.isEmpty()) {
 			return jobList.get(0);
