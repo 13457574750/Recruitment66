@@ -271,7 +271,17 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("companyIndex")
-    public String companyIndex(Model model) {
+    public String userIndex(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                            @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                            String jobName, String jobAddress, String companyName, Model model) {
+        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        model.addAttribute("pageInfo", pageInfo);
+
+        List<Company> companyList = companyService.findAllCompany(1,20,companyName);
+        //分页
+        PageInfo<Company> pageInfoCompany = new PageInfo<>(companyList);
+        model.addAttribute("pageInfoCompany", pageInfoCompany);
         return "/company/companyIndex";
     }
 

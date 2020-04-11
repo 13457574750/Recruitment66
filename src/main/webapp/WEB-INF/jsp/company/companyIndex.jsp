@@ -33,21 +33,21 @@
     <div class="container">
         <div class="job-search-wrap">
 
-            <!-- Job Search Form Start -->
+            <!-- 搜索 Start -->
             <div class="job-search-form">
-                <form action="#">
+                <form action="${path}/job/findAllJob" id="searchForm" method="post">
                     <div class="row mb-n4">
-
                         <div class="col-lg-auto col-sm-6 col-12 flex-grow-1 mb-4">
-                            <input type="text" style="width: 150%;" placeholder="软件工程师">
+                            <input type="text" name="jobName" style="width: 150%;" placeholder="软件工程师">
                         </div>
                         <div class="col-lg-auto col-sm-6 col-5 flex-grow-1 mb-4">
-                            <button style="float: right;" class="btn btn-primary">搜索</button>
+                            <button type="button" style="float: right;" class="btn btn-primary" onclick="search()">搜索
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
-            <!-- Job Search Form End -->
+            <!-- 搜索 End -->
 
         </div>
     </div>
@@ -62,109 +62,54 @@
             <p>以下是网站上列出的最新工作.</p>
         </div>
 
-        <!-- Job List Wrap Start -->
+        <!-- 工作列表 Start -->
         <div class="job-list-wrap">
+            <c:forEach items="${pageInfo.list}" var="job">
 
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">${Salary}</span>
-                    <span class="badge badge-success">Full Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Full Stack Backend Developer</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Envato</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-2.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$7000 - $13000</span>
-                    <span class="badge badge-warning">Part Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Product UI & UX Expert</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Astha</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-3.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$5000 - $8000</span>
-                    <span class="badge badge-danger">Freelance</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Full Stack Backend Developer</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Github</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-4.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$7000 - $13000</span>
-                    <span class="badge badge-success">Full Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Product UI & UX Expert</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">Medicore</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
-            <!-- Job List Start -->
-            <a href="job-single.html" class="job-list">
-                <div class="company-logo col-auto">
-                    <img src="${path}/assets/images/companies/company-5.png" alt="Company Logo">
-                </div>
-                <div class="salary-type col-auto order-sm-3">
-                    <span class="salary-range">$5000 - $8000</span>
-                    <span class="badge badge-success">Full Time</span>
-                </div>
-                <div class="content col">
-                    <h6 class="title">Full Stack Backend Developer</h6>
-                    <ul class="meta">
-                        <li><strong class="text-primary">GreenSoul</strong></li>
-                        <li><i class="fa fa-map-marker"></i> 2020 Willshire Glen, GA-30009</li>
-                    </ul>
-                </div>
-            </a>
-            <!-- Job List Start -->
-
+                <a class="job-list"
+                   onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
+                           '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
+                           '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                    <div class="company-logo col-auto">
+                        <img src="${path}/images/${job.company.companyCreateTime}" width="70px" height="70px">
+                    </div>
+                    <div class="salary-type col-auto order-sm-3">
+                        <span class="salary-range">$${job.jobSalary}</span>
+                        <span class="badge badge-success"><trans>${job.jobType}</trans></span>
+                    </div>
+                    <div class="content col">
+                        <ul class="meta">
+                            <li>
+                                <h6 class="title">
+                                    <trans>${job.jobName}</trans>
+                                </h6>
+                            </li>
+                            <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
+                                <trans>发布时间：${job.jobReleaseTime}</trans>
+                            </strong></li>
+                        </ul>
+                        <ul class="meta">
+                            <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
+                                <trans>${job.company.companyName}</trans>
+                            </strong></li>
+                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
+                                <trans>${job.jobAddress}</trans>
+                            </strong></li>
+                            <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
+                                <trans>${job.jobEr}</trans>
+                            </strong></li>
+                            <li><strong class="text-primary"><i class="mdi mdi-library"></i>
+                                <trans>${job.jobEducation}</trans>
+                            </strong></li>
+                        </ul>
+                    </div>
+                </a>
+            </c:forEach>
         </div>
-        <!-- Job List Wrap Start -->
+        <!-- 工作列表 End -->
 
         <div class="text-center mt-4 mt-lg-5">
-            <a href="job-list.html" class="btn btn-primary">查看所有职位</a>
+            <a href="${path}/job/findAllJob" class="btn btn-primary">查看所有职位</a>
         </div>
 
     </div>
@@ -176,33 +121,33 @@
     <div class="container">
         <div class="funfact-wrap row">
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">1354</span>
-                <span class="title">Job Post</span>
+                <span class="title">工作岗位</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">1741</span>
-                <span class="title">Members</span>
+                <span class="title">求职者</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">1204</span>
-                <span class="title">Resume</span>
+                <span class="title">简历</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">142</span>
-                <span class="title">Company</span>
+                <span class="title">公司</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
         </div>
     </div>
@@ -216,114 +161,27 @@
             <h2 class="title">名企</h2>
         </div>
 
-        <!-- Company List Wrap Start -->
-        <div class="company-slider row">
+        <!-- 名企列表 Start -->
+        <form action="${path}/company/findAllCompany" method="post">
+            <div class="company-slider row">
 
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-1.png" alt="company-1"></span>
-                    <h6 class="title">Envato</h6>
-                    <span class="open-job">2 open positions</span>
-                </a>
+                <c:forEach items="${pageInfoCompany.list}" var="company">
+                    <div class="col">
+                        <a href="${path}/company/showACompany?companyId=${company.companyId}" class="feature-company"
+                           tabindex="-1"
+                           value="${company.companyId}">
+                        <span class="company-logo">
+                            <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></span>
+                            <h6 class="title">${company.companyName}</h6>
+                        </a>
+                    </div>
+                </c:forEach>
             </div>
-            <!-- Company List Start -->
+            <!-- 名企列表 Start -->
 
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-2.png" alt="company-1"></span>
-                    <h6 class="title">Astha</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-3.png" alt="company-1"></span>
-                    <h6 class="title">Github</h6>
-                    <span class="open-job">4 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-4.png" alt="company-1"></span>
-                    <h6 class="title">Medicore</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-5.png" alt="company-1"></span>
-                    <h6 class="title">Greensoul</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-6.png" alt="company-1"></span>
-                    <h6 class="title">Generous</h6>
-                    <span class="open-job">2 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-7.png" alt="company-1"></span>
-                    <h6 class="title">Buzco</h6>
-                    <span class="open-job">3 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-8.png" alt="company-1"></span>
-                    <h6 class="title">Salina</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-9.png" alt="company-1"></span>
-                    <h6 class="title">Hope</h6>
-                    <span class="open-job">1 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-            <!-- Company List Start -->
-            <div class="col">
-                <a href="${path}/company-single.html" class="feature-company">
-                    <span class="company-logo"><img src="${path}/assets/images/companies/company-10.png"
-                                                    alt="company-span"></span>
-                    <h6 class="title">Bebsha</h6>
-                    <span class="open-job">2 open positions</span>
-                </a>
-            </div>
-            <!-- Company List Start -->
-
-        </div>
-        <!-- Company List Wrap Start -->
-
+        </form>
     </div>
+
 </div>
 <!-- 名企 End -->
 
@@ -331,47 +189,46 @@
 <div class="section section-padding bg-parallax" data-bg-image="${path}/assets/images/bg/bg-2.jpg" data-overlay="65">
     <div class="container">
 
-        <!-- Testimonial Slider Start -->
+        <!-- 名人名言 Start -->
         <div class="testimonial-slider row">
 
-            <!-- Testimonial Start -->
+            <!-- 名人名言 Start -->
             <div class="col">
                 <div class="testimonial text-center text-white">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sed praesentium
-                        necessitatibus tenetur neque, veritatis esse voluptatem</p>
-                    <img src="${path}/assets/images/authors/author-1.jpg" alt="">
-                    <h6 class="name">Sharon Harper</h6>
-                    <span class="title">Marketer of Hastech</span>
+                    <p>要敢想敢做，要勇于走向孤独。不流俗、不平庸，做世界一流企业，这是生命充实激越起来的根本途径。</p>
+                    <img src="${path}/assets/images/authors/renzhengfei.jpg" alt="">
+                    <h6 class="name">任正非</h6>
+                    <span class="title">华为创始人</span>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- 名人名言 End -->
 
-            <!-- Testimonial Start -->
+            <!-- 名人名言 Start -->
             <div class="col">
                 <div class="testimonial text-center text-white">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sed praesentium
-                        necessitatibus tenetur neque, veritatis esse voluptatem</p>
-                    <img src="${path}/assets/images/authors/author-2.jpg" alt="">
-                    <h6 class="name">Harold McCoy</h6>
-                    <span class="title">CEO of Hastech</span>
+                    <p>创业就是干别人没有干过的事情，干别人干过了但没有干成的事情。一个非常优秀的创业者往往都是离经叛道的、
+                        那种很夸张的人。他有挑战一切的勇气，这是需要鼓励的品质。所以我鼓励创业者要能够挑战权威，颠覆现有规则，
+                        这才是成功的经验。</p>
+                    <img src="${path}/assets/images/authors/leijun.jpg" alt="">
+                    <h6 class="name">雷军</h6>
+                    <span class="title">小米科技创始人</span>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- 名人名言 End -->
 
-            <!-- Testimonial Start -->
+            <!-- 名人名言 Start -->
             <div class="col">
                 <div class="testimonial text-center text-white">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sed praesentium
-                        necessitatibus tenetur neque, veritatis esse voluptatem</p>
-                    <img src="${path}/assets/images/authors/author-3.jpg" alt="">
-                    <h6 class="name">Ronald Wright</h6>
-                    <span class="title">Admin of Hastech</span>
+                    <p>创业要想取得成功，关键就一句话：只要你能够解决一个问题，那么你的项目就一定会成功。</p>
+                    <img src="${path}/assets/images/authors/liuqiangdong.jpg" alt="">
+                    <h6 class="name">刘强东</h6>
+                    <span class="title">京东创始人</span>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- 名人名言 End -->
 
         </div>
-        <!-- Testimonial Slider End -->
+        <!-- 名人名言 End -->
 
     </div>
 </div>
@@ -385,5 +242,19 @@
 </body>
 
 <%@include file="../company/foot.jsp"%>
+<script type="text/javascript">
+    //加载参数并传递数据给url
+    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
+                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
+        var url = "${path}/job/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
+            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
+            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
+            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
+        window.location.href = url;
+    }
 
+    function search() {
+        $("#searchForm").submit();
+    }
+</script>
 </html>

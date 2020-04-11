@@ -253,7 +253,7 @@ public class UserController {
         PageInfo<Job> pageInfo = new PageInfo<>(jobList);
         model.addAttribute("pageInfo", pageInfo);
 
-        List<Company> companyList = companyService.findAllCompany(page,size,companyName);
+        List<Company> companyList = companyService.findAllCompany(1,20,companyName);
         //分页
         PageInfo<Company> pageInfoCompany = new PageInfo<>(companyList);
         model.addAttribute("pageInfoCompany", pageInfoCompany);

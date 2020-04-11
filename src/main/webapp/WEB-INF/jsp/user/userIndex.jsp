@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<%@include file="../user/head.jsp"%>
+<%@include file="../user/head.jsp" %>
 <!-- 首页图片 Start -->
 <div class="slider-section section">
     <div class="slide-item bg-parallax" data-bg-image="${path}/assets/images/slider/slider-1.jpg" data-overlay="50">
@@ -40,7 +40,8 @@
                             <input type="text" name="jobName" style="width: 150%;" placeholder="软件工程师">
                         </div>
                         <div class="col-lg-auto col-sm-6 col-5 flex-grow-1 mb-4">
-                            <button type="button" style="float: right;" class="btn btn-primary" onclick="search()">搜索</button>
+                            <button type="button" style="float: right;" class="btn btn-primary" onclick="search()">搜索
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -119,33 +120,33 @@
     <div class="container">
         <div class="funfact-wrap row">
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">1354</span>
-                <span class="title">Job Post</span>
+                <span class="title">工作岗位</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">1741</span>
-                <span class="title">Members</span>
+                <span class="title">求职者</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">1204</span>
-                <span class="title">Resume</span>
+                <span class="title">简历</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
                 <span class="counter">142</span>
-                <span class="title">Company</span>
+                <span class="title">公司</span>
             </div>
-            <!-- Funfact Start -->
+            <!-- 数据 Start -->
 
         </div>
     </div>
@@ -154,20 +155,19 @@
 
 <!-- 名企 Start -->
 <div class="section section-padding">
-    <form action="${path}/user/findAllCompany" method="post">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="title">名企</h2>
+        </div>
 
-        <div class="container">
-            <div class="section-title">
-                <h2 class="title">名企</h2>
-            </div>
-
-            <!-- 名企列表 Start -->
+        <!-- 名企列表 Start -->
+        <form action="${path}/user/findAllCompany" method="post">
             <div class="company-slider row">
-                <button class="slick-prev slick-arrow" style=""><i class="fa fa-angle-left"></i></button>
 
                 <c:forEach items="${pageInfoCompany.list}" var="company">
                     <div class="col">
                         <a href="${path}/company/showACompany?companyId=${company.companyId}" class="feature-company"
+                           tabindex="-1"
                            value="${company.companyId}">
                         <span class="company-logo">
                             <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></span>
@@ -175,13 +175,11 @@
                         </a>
                     </div>
                 </c:forEach>
-
-                <button class="slick-next slick-arrow" style=""><i class="fa fa-angle-right"></i></button>
             </div>
             <!-- 名企列表 Start -->
 
-        </div>
-    </form>
+        </form>
+    </div>
 
 </div>
 <!-- 名企 End -->
@@ -190,47 +188,46 @@
 <div class="section section-padding bg-parallax" data-bg-image="${path}/assets/images/bg/bg-2.jpg" data-overlay="65">
     <div class="container">
 
-        <!-- Testimonial Slider Start -->
+        <!-- 名人名言 Start -->
         <div class="testimonial-slider row">
 
-            <!-- Testimonial Start -->
+            <!-- 马云 Start -->
             <div class="col">
-                <div class="testimonial text-center text-white">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sed praesentium
-                        necessitatibus tenetur neque, veritatis esse voluptatem</p>
-                    <img src="${path}/assets/images/authors/author-1.jpg" alt="">
-                    <h6 class="name">Sharon Harper</h6>
-                    <span class="title">Marketer of Hastech</span>
+                <div class="testimonial text-white">
+                    <p>我永远相信只要永不放弃，我们还是有机会的。最后，我们还是坚信一点，这世界上只要有梦想，只要不断努力，
+                        只要不断学习，不管你长得如何，不管是这样，还是那样，男人的长相往往和他的的才华成反比。今天很残酷，
+                        明天更残酷，后天很美好，但绝对大部分是死在明天晚上，所以每个人不要放弃今天。</p>
+                    <img src="${path}/assets/images/authors/mayun2.jpg" alt="">
+                    <h6 class="name">马云</h6>
+                    <span class="title">阿里巴巴创始人</span>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- 马云 End -->
 
-            <!-- Testimonial Start -->
+            <!-- 马化腾 Start -->
             <div class="col">
                 <div class="testimonial text-center text-white">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sed praesentium
-                        necessitatibus tenetur neque, veritatis esse voluptatem</p>
-                    <img src="${path}/assets/images/authors/author-2.jpg" alt="">
-                    <h6 class="name">Harold McCoy</h6>
-                    <span class="title">CEO of Hastech</span>
+                    <p>不要在乎别人如何看你,要在乎你自己如何看未来,看梦想,看世界。</p>
+                    <img src="${path}/assets/images/authors/mahuateng.jpg" alt="">
+                    <h6 class="name">马化腾</h6>
+                    <span class="title">腾讯创始人</span>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- 马化腾 End -->
 
-            <!-- Testimonial Start -->
+            <!-- 李嘉诚 Start -->
             <div class="col">
                 <div class="testimonial text-center text-white">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, modi sed praesentium
-                        necessitatibus tenetur neque, veritatis esse voluptatem</p>
-                    <img src="${path}/assets/images/authors/author-3.jpg" alt="">
-                    <h6 class="name">Ronald Wright</h6>
-                    <span class="title">Admin of Hastech</span>
+                    <p>你的选择是做或不做，但不做就永远不会有机会。</p>
+                    <img src="${path}/assets/images/authors/lijiacheng.jpg" alt="">
+                    <h6 class="name">李嘉诚</h6>
+                    <span class="title">长江集团创始人</span>
                 </div>
             </div>
-            <!-- Testimonial End -->
+            <!-- 李嘉诚 End -->
 
         </div>
-        <!-- Testimonial Slider End -->
+        <!-- 名人名言 End -->
 
     </div>
 </div>
@@ -240,7 +237,7 @@
 <div class="section section-padding"></div>
 <!-- 底部空白区 End -->
 
-<%@include file="../user/foot.jsp"%>
+<%@include file="../user/foot.jsp" %>
 
 </body>
 <script type="text/javascript">
