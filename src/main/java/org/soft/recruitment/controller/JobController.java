@@ -3,10 +3,7 @@ package org.soft.recruitment.controller;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
-import org.soft.recruitment.model.Apply;
-import org.soft.recruitment.model.Company;
-import org.soft.recruitment.model.Job;
-import org.soft.recruitment.model.Message;
+import org.soft.recruitment.model.*;
 import org.soft.recruitment.service.ICompanyService;
 import org.soft.recruitment.service.IJobService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,7 +167,6 @@ public class JobController {
     public String addPost(Model model) {
         return "/job/addPost";
     }
-
 
     /**
      * 根据ID删除职位

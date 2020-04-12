@@ -127,7 +127,7 @@
                                        target="_parent">修改密码</a></li>
                                 <li>
                                     <a href="${path}/apply/companyShowApply?companyId=${sessionScope.currCompany.companyId}"
-                                       target="_parent">简历箱</a></li>
+                                       target="_parent">企业信箱</a></li>
                                 <li><a href="${path}/job/showACompanyJob?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}"
                                        target="_parent">已发布的职位</a></li>
                                 <li><a href="${path}/company/exit" target="_parent">退出</a></li>

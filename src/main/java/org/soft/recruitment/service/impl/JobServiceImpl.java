@@ -92,7 +92,6 @@ public class JobServiceImpl implements IJobService {
 		jobMapper.deleteByPrimaryKey(jobId);
 	}
 
-
 	/**
 	 * 根据用户真名查询记录
 	 *

@@ -112,43 +112,6 @@ public class UserController {
         return "redirect:/user/updateUserPassword";//重定向
     }
 
-
-    /**
-     * 根据用户真实姓名查找用户
-     *
-     * @param userRealName
-     * @param model
-     * @return
-     */
-    @RequestMapping("findUserByUserRealName")
-    public String findUserByUserRealName(String userRealName, Model model) {
-        User user = userService.findUserByUserRealName(userRealName);
-        if (user != null) {
-            model.addAttribute("user", user);
-            return "/user/findUserByUserRealName";
-        } else {
-            throw new RuntimeException("对不起，没有该用户的具体信息");
-        }
-    }
-
-    /**
-     * 根据用户ID查询用户
-     *
-     * @param userId
-     * @param model
-     * @return
-     */
-    @RequestMapping("findUserByUserId")
-    public String findUserByUserId(Integer userId, Model model) {
-        User user = userService.findUserByUserId(userId);
-        if (user != null) {
-            model.addAttribute("user", user);
-            return "/company/findUserByUserId";
-        } else {
-            throw new RuntimeException("对不起，没有该用户的具体信息");
-        }
-    }
-
     /**
      * 查看当前ID的用户信息
      *
