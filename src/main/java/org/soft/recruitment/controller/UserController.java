@@ -318,12 +318,12 @@ public class UserController {
             model.addAttribute("company", company);
         }
 
-        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
-        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        List<Job> jobList_ = jobService.findAllJobByCompanyId(page, size, String.valueOf(companyId));
+        //分页
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList_);
         model.addAttribute("pageInfo", pageInfo);
         return "/user/showACompany";
     }
-
 
     /**
      * 根据ID删除用户
