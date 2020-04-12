@@ -70,16 +70,9 @@
                     <h6 class="title">关注我们</h6>
                     <div class="footer-widget-newsletter">
                         <p>请把你的邮箱发送给我们,当有最新招聘信息时会及时通知您.</p>
-                        <form id="mc-form" class="mc-form" novalidate="true">
-                            <input id="mc-email" autocomplete="off" type="email" placeholder="Enter your e-mail address" name="EMAIL">
-                            <button id="mc-submit" class="btn"><i class="fa fa-envelope-o"></i></button>
+                        <form action="#">
+                            <input type="email" placeholder="Enter your e-mail address">
                         </form>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts text-centre">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success text-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error text-danger"></div><!-- mailchimp-error end -->
-                        </div><!-- mailchimp-alerts end -->
                     </div>
                 </div>
             </div>
