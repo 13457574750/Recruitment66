@@ -29,8 +29,7 @@
 
                     <h5 class="mb-3">
                          <span class="company-logo">
-                                    <img src="${path}/images/${company.companyCreateTime}" width="70px"
-                                         height="70px"></span>
+                                    <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></span>
                         <trans>${company.companyName}</trans>
                     </h5>
                     <p>
@@ -59,7 +58,7 @@
                                         <a onclick="show('${jobList_.company.companyId}','${jobList_.company.companyName}','${jobList_.company.companyCreateTime}','${jobList_.jobId}',
                                                 '${jobList_.jobName}','${jobList_.jobAddress}','${jobList_.jobSalary}','${jobList_.jobEr}','${jobList_.jobEducation}',
                                                 '${jobList_.jobReleaseTime}','${jobList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
-                                            <img src="/images/${jobList_.company.companyCreateTime}" width="70px" height="70px"></a>
+                                            <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></a>
                                     </div>
                                     <div class="salary-type col-auto order-sm-3">
                                         <span class="salary-range">$${jobList_.jobSalary}</span>
@@ -124,7 +123,7 @@
                             <div class="sidebar-company">
                                 <h6 class="title">
                                 <span class="company-logo">
-                                    <img src="${path}/images/${company.companyCreateTime}" width="70px"
+                                    <img src="/images/${company.companyCreateTime}" width="70px"
                                          height="70px"></span>
                                     <trans>${company.companyName}</trans>
                                 </h6>

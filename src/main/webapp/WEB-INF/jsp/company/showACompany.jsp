@@ -28,7 +28,8 @@
                 <div class="company-details">
 
                     <h5 class="mb-3">
-                         <span class="company-logo"><img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></span>
+                        <span class="company-logo"><img src="/images/${company.companyCreateTime}" width="70px"
+                                                        height="70px"></span>
                         <trans>关于${company.companyName}</trans>
                     </h5>
                     <p>
@@ -57,7 +58,7 @@
                                     <a onclick="show('${jobList_.company.companyId}','${jobList_.company.companyName}','${jobList_.company.companyCreateTime}','${jobList_.jobId}',
                                             '${jobList_.jobName}','${jobList_.jobAddress}','${jobList_.jobSalary}','${jobList_.jobEr}','${jobList_.jobEducation}',
                                             '${jobList_.jobReleaseTime}','${jobList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
-                                        <img src="/images/${jobList_.company.companyCreateTime}" width="70px" height="70px"></a>
+                                        <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></a>
                                 </div>
                                 <div class="salary-type col-auto order-sm-3">
                                     <span class="salary-range">$${jobList_.jobSalary}</span>
@@ -95,15 +96,15 @@
                     <!-- 分页 Start -->
                     <ul class="pagination pagination-center mt-5">
                         <li class="page-item"><a class="page-link"
-                                                 href="${path}/company/showACompany?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                                 href="${path}/company/showACompany?companyId=${company.companyId}&companyName=${company.companyName}&page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
                                 class="fa fa-angle-left"></i></a></li>
                         <c:forEach begin="1" end="4" var="pageNum">
                             <li class="page-item "><a class="page-link"
-                                                      href="${path}/company/showACompany?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                                      href="${path}/company/showACompany?companyId=${company.companyId}&companyName=${company.companyName}&page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
                             </li>
                         </c:forEach>
                         <li class="page-item"><a class="page-link"
-                                                 href="${path}/company/showACompany?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                                 href="${path}/company/showACompany?companyId=${company.companyId}&companyName=${company.companyName}&page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
                                 class="fa fa-angle-right"></i></a></li>
                     </ul>
                     <!-- 分页 End -->
@@ -122,7 +123,7 @@
                             <div class="sidebar-company">
                                 <h6 class="title">
                                 <span class="company-logo">
-                                <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></span>
+                                <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></span>
                                     <trans>${company.companyName}</trans>
                                 </h6>
                                 <ul>

@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -96,7 +97,7 @@ public class CompanyController {
     public String updateCompanyPassword(@RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
                                         @RequestParam(value = "size", required = true, defaultValue = "6") Integer size,
                                         Model model, Integer companyId) {
-        Company company = companyService.findCompanyByCompanyId(page,size,companyId);
+        Company company = companyService.findCompanyByCompanyId(page, size, companyId);
         if (company != null) {
             model.addAttribute("company", company);
         }
@@ -115,7 +116,7 @@ public class CompanyController {
         companyService.updateCompany(companyId, company);
         return "redirect:/company/updateCompanyPassword";//重定向
     }
-    
+
 
     /**
      * 浏览所有企业
@@ -127,7 +128,7 @@ public class CompanyController {
     public String findAllCompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
                                  @RequestParam(value = "size", required = true, defaultValue = "6") int size,
                                  String companyName, Model model) {
-        List<Company> companyList = companyService.findAllCompany(page,size,companyName);
+        List<Company> companyList = companyService.findAllCompany(page, size, companyName);
         //分页
         PageInfo<Company> pageInfo = new PageInfo<>(companyList);
         model.addAttribute("pageInfo", pageInfo);
@@ -142,15 +143,15 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("showACompany")
-    public String showACompany( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
-                                @RequestParam(value = "size", required = true, defaultValue = "5") int size,
-                                Model model, Integer companyId) {
-        Company company = companyService.findCompanyByCompanyId(page,size,companyId);
+    public String showACompany(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                               @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                               Model model, Integer companyId) {
+        Company company = companyService.findCompanyByCompanyId(page, size, companyId);
         if (company != null) {
             model.addAttribute("company", company);
         }
 
-        List<Job> jobList_ = jobService.findAllJobByCompanyId(page,size,String.valueOf(companyId));
+        List<Job> jobList_ = jobService.findAllJobByCompanyId(page, size, String.valueOf(companyId));
         //分页
         PageInfo<Job> pageInfo = new PageInfo<>(jobList_);
         model.addAttribute("pageInfo", pageInfo);
@@ -165,17 +166,17 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("showCompany")
-    public String showCompany( @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
-                               @RequestParam(value = "size", required = true, defaultValue = "5") Integer size,
+    public String showCompany(@RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
+                              @RequestParam(value = "size", required = true, defaultValue = "5") Integer size,
                               String companyId, Model model, HttpServletRequest request) {
         //获得session中存的当前对象
         Company currCompany = (Company) request.getSession().getAttribute("currCompany");
         Integer CompanyId = currCompany.getCompanyId();
-          //根据ID查询用户并显示该用户
+        //根据ID查询用户并显示该用户
         Company company = companyService.findCompanyByCompanyId(page, size, CompanyId);
         model.addAttribute("company", company);
 
-        List<Job> jobList_ = jobService.findAllJobByCompanyId(page,size,companyId);
+        List<Job> jobList_ = jobService.findAllJobByCompanyId(page, size, companyId);
         //分页
         PageInfo<Job> pageInfo = new PageInfo<>(jobList_);
         model.addAttribute("pageInfo", pageInfo);
@@ -208,32 +209,18 @@ public class CompanyController {
      * @return
      */
     @RequestMapping("updateCompanySubmit")
-    public String updateCompanySubmit(Integer companyId, Company company) {
-        //保存数据库的路径
-        String sqlPath = null;
-        //定义文件保存的本地路径
-        String localPath = "C:\\IDEA-workspace\\Recruitment\\src\\main\\webapp\\images\\";
-        //定义 文件名
-        String filename = null;
-        if (!company.getFile().isEmpty()) {
-            //生成uuid作为文件名称
-            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-            //获得文件类型（可以判断如果不是图片，禁止上传）
-            String contentType = company.getFile().getContentType();
-            //获得文件后缀名
-            String suffixName = contentType.substring(contentType.indexOf("/") + 1);
-            //得到 文件名
-            filename = uuid + "." + suffixName;
-            //文件保存路径
-            try {
-                company.getFile().transferTo(new File(localPath + filename));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        //把图片的相对路径保存至数据库
-        sqlPath = filename;
-        company.setCompanyCreateTime(sqlPath);
+    public String updateCompanySubmit(MultipartFile file, Integer companyId, Company company) throws IOException {
+        //图片上传成功后，将图片的地址写到数据库
+        String filePath = "C:\\IDEA-workspace\\Recruitment\\src\\main\\webapp\\images";//保存图片的路径,tomcat中有配置
+        //获取原始图片的拓展名
+        String originalFilename = file.getOriginalFilename();
+        //新的文件名字，使用uuid随机生成数+原始图片名字，这样不会重复
+        String newFileName = UUID.randomUUID() + originalFilename;
+        //封装上传文件位置的全路径，就是硬盘路径+文件名
+        File targetFile = new File(filePath, newFileName);
+        //把本地文件上传到已经封装好的文件位置的全路径就是上面的targetFile
+        file.transferTo(targetFile);//把本地文件上传到文件位置 , transferTo()是springMvc封装的方法，用于图片上传时，把内存中图片写入磁盘
+        company.setCompanyCreateTime(newFileName);//文件名保存到实体类对应属性上
         companyService.updateCompany(companyId, company);
         return "redirect:/company/showCompany";//重定向
     }
@@ -261,7 +248,7 @@ public class CompanyController {
     @RequestMapping("deleteCompany")
     public String deleteCompany(Integer companyId) {
         companyService.deleteCompany(companyId);
-         //重定向到列表界面
+        //重定向到列表界面
         return "redirect:/admin/company";
     }
 
@@ -279,7 +266,7 @@ public class CompanyController {
         PageInfo<Job> pageInfo = new PageInfo<>(jobList);
         model.addAttribute("pageInfo", pageInfo);
 
-        List<Company> companyList = companyService.findAllCompany(1,20,companyName);
+        List<Company> companyList = companyService.findAllCompany(1, 20, companyName);
         //分页
         PageInfo<Company> pageInfoCompany = new PageInfo<>(companyList);
         model.addAttribute("pageInfoCompany", pageInfoCompany);
@@ -351,7 +338,7 @@ public class CompanyController {
      */
     @RequestMapping(value = "/exit")
     public String exit(HttpServletRequest request) throws Exception {
-         //退出时清空session
+        //退出时清空session
         request.getSession().removeAttribute("currCompany");
         return "company/companyIndex";
     }
