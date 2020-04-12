@@ -9,7 +9,7 @@
     <title>关于我们</title>
 </head>
 <body>
-<%@include file="../company/head.jsp"%>
+<%@include file="../company/head.jsp" %>
 
 <!-- 首页图片 Start -->
 <div class="page-heading-section section bg-parallax" data-bg-image="${path}/assets/images/bg/bg-1.jpg"
@@ -20,87 +20,98 @@
     <div class="container">
         <form action="${path}/company/findAllCompany" id="searchForm" method="post">
 
-        <div class="row mb-n5">
+            <div class="row mb-n5">
 
-            <!-- 左边 Start-->
-            <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <!-- 企业列表 Start -->
-                <div class="company-list-wrap row">
-                    <c:forEach items="${pageInfo.list}" var="company">
-                    <!-- 1 -->
-                    <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
-                        <a href="${path}/company/showACompany?companyId=${company.companyId}" class="company-list" value="${company.companyId}">
-                            <span class="company-logo"><img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></span>
-                            <h6 class="title">${company.companyName}</h6>
-                            <span>${company.companyType}/${company.companyIndustry}/${company.companyNumber}人</span></br>
-                            <span>${company.companyProfile}</span></br>
-                            <span><i class="fa fa-map-o"></i>${company.companyAddress}</span>
-                        </a>
+                <!-- 左边 Start-->
+                <div class="col-lg-8 col-12 mb-5 pr-lg-5">
+                    <!-- 企业列表 Start -->
+                    <div class="company-list-wrap row">
+                        <c:forEach items="${pageInfo.list}" var="company">
+                            <!-- 1 -->
+                            <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 col-12">
+                                <a href="${path}/company/showACompany?companyId=${company.companyId}"
+                                   class="company-list" value="${company.companyId}">
+                                    <span class="company-logo"><img src="${path}/images/${company.companyCreateTime}"
+                                                                    width="70px" height="70px"></span>
+                                    <h6 class="title">${company.companyName}</h6>
+                                    <span>${company.companyType}/${company.companyIndustry}/${company.companyNumber}人</span></br>
+                                    <span>${company.companyProfile}</span></br>
+                                    <span><i class="fa fa-map-o"></i>${company.companyAddress}</span>
+                                </a>
+                            </div>
+                            <!-- 1 -->
+                        </c:forEach>
                     </div>
-                    <!-- 1 -->
-                    </c:forEach>
+                    <!-- 企业列表 Start -->
+                    <!-- 分页 Start -->
+                    <ul class="pagination pagination-center mt-5">
+                        <li class="page-item"><a class="page-link"
+                                                 href="${path}/company/findAllCompany?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                class="fa fa-angle-left"></i></a></li>
+                        <c:forEach begin="1" end="4" var="pageNum">
+                            <li class="page-item "><a class="page-link"
+                                                      href="${path}/company/findAllCompany?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                            </li>
+                        </c:forEach>
+                        <li class="page-item"><a class="page-link"
+                                                 href="${path}/company/findAllCompany?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                    <!-- 分页 End -->
                 </div>
-                <!-- 企业列表 Start -->
-                <!-- 分页 Start -->
-                <ul class="pagination pagination-center mt-5">
-                    <li class="page-item"><a class="page-link" href="${path}/company/findAllCompany?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-left"></i></a></li>
-                    <c:forEach begin="1" end="4" var="pageNum">
-                        <li class="page-item "><a class="page-link" href="${path}/company/findAllCompany?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
-                    </c:forEach>
-                    <li class="page-item"><a class="page-link" href="${path}/company/findAllCompany?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
-                <!-- 分页 End -->
+                <!-- 左边 End -->
+
+                <!-- 右边 Start-->
+                <div class="col-lg-4 col-12 mb-5">
+                    <form action="${path}/company/findAllCompany" method="post">
+                        <div class="sidebar-wrap">
+                            <!-- 搜索 Start -->
+                            <div class="sidebar-widget">
+                                <div class="inner">
+                                    <h6 class="title">
+                                        <trans>搜索公司</trans>
+                                    </h6>
+                                    <form action="#">
+                                        <input type="text" name="companyName" placeholder="请输入要搜索的公司">
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- 搜索 End -->
+
+                            <!-- 右4 Start -->
+                            <div class="sidebar-widget">
+                                <div class="inner">
+                                    <h6 class="title">
+                                        <trans>重置条件</trans>
+                                    </h6>
+                                    <form action="#">
+                                        <button type="button" class="btn btn-primary w-100" onclick="search()">重置
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- 右4 End -->
+
+                            <!-- 2 Start -->
+                            <div class="sidebar-widget">
+                                <div class="inner">
+                                    <a class="banner" target="_blank"><img
+                                            src="${path}/assets/images/banner/banner-1.jpg" alt="Banner"></a>
+                                </div>
+                            </div>
+                            <!-- 2 End -->
+                        </div>
+                    </form>
+                </div>
+                <!-- 右边 End -->
+
             </div>
-            <!-- 左边 End -->
-
-            <!-- 右边 Start-->
-            <div class="col-lg-4 col-12 mb-5">
-                <form action="${path}/company/findAllCompany" method="post">
-                    <div class="sidebar-wrap">
-                        <!-- 搜索 Start -->
-                        <div class="sidebar-widget">
-                            <div class="inner">
-                                <h6 class="title"><trans>搜索公司</trans></h6>
-                                <form action="#">
-                                    <input type="text" name="companyName" placeholder="请输入要搜索的公司">
-                                </form>
-                            </div>
-                        </div>
-                        <!-- 搜索 End -->
-
-                        <!-- 右4 Start -->
-                        <div class="sidebar-widget">
-                            <div class="inner">
-                                <h6 class="title">
-                                    <trans>重置条件</trans>
-                                </h6>
-                                <form action="#">
-                                    <button type="button" class="btn btn-primary w-100" onclick="search()">重置
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- 右4 End -->
-
-                        <!-- 2 Start -->
-                        <div class="sidebar-widget">
-                            <div class="inner">
-                                <a class="banner" target="_blank"><img src="${path}/assets/images/banner/banner-1.jpg" alt="Banner"></a>
-                            </div>
-                        </div>
-                        <!-- 2 End -->
-                    </div>
-                </form>
-            </div>
-            <!-- 右边 End -->
-
-        </div>
         </form>
     </div>
 </div>
 
 
-<%@include file="../company/foot.jsp"%>
+<%@include file="../company/foot.jsp" %>
 
 </body>
 <script type="text/javascript">

@@ -157,8 +157,8 @@
                     <div class="sidebar-widget">
                         <div class="inner">
                             <h6 class="title"><p class="mdi mdi-emoticon-excited">更换头像</h6>
-                            <p><img src="${path}/images/${user.userCreateTime}" width="70px" height="70px"></p>
-                            <p><input type="file" name="file" accept="image/*"></p>
+                            <p><img src="/images/${user.userCreateTime}" width="70px" height="70px"></p>
+                            <p><input type="file" name="file" accept="image/*" value="${user.userCreateTime}"></p>
                         </div>
                     </div>
                     <!-- 右4 End -->

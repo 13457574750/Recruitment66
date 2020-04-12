@@ -30,7 +30,8 @@
                                 <a onclick="show('${applyList_.job.company.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',
                                         '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',
                                         '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
-                                    <img src="${path}/images/${applyList_.companyCreateTime}" width="70px" height="70px"></a>
+                                    <img src="${path}/images/${applyList_.companyCreateTime}" width="70px"
+                                         height="70px"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                                 <span class="salary-range">$${applyList_.jobSalary}</span>
@@ -38,7 +39,7 @@
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
-                                    href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
+                                    href="${path}/apply/deleteApply?applyId=${applyList_.applyId}&userRealName=${sessionScope.currUser.userRealName}"
                                     onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
@@ -73,15 +74,15 @@
                 <!-- 分页 Start -->
                 <ul class="pagination pagination-center mt-5">
                     <li class="page-item"><a class="page-link"
-                                             href="${path}/apply/userShowApply?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                             href="${path}/apply/userShowApply?userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}&page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
                             class="fa fa-angle-left"></i></a></li>
                     <c:forEach begin="1" end="4" var="pageNum">
                         <li class="page-item "><a class="page-link"
-                                                  href="${path}/apply/userShowApply?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                                  href="${path}/apply/userShowApply?userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}&page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
                         </li>
                     </c:forEach>
                     <li class="page-item"><a class="page-link"
-                                             href="${path}/apply/userShowApply?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                             href="${path}/apply/userShowApply?userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}&page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
                             class="fa fa-angle-right"></i></a></li>
                 </ul>
                 <!-- 分页 End -->

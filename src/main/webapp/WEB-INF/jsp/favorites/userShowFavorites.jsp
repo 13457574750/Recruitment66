@@ -38,7 +38,7 @@
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
-                                    href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList.favoriteId}&userId=${sessionScope.currUser.userId}"
+                                    href="${path}/favorites/deleteFavorites?favoriteId=${favoritesList.favoriteId}&userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}"
                                     onclick="return confirm('确定要取消吗？');">取消收藏</a></trans></span>
                             </div>
                             <div class="content col">
@@ -74,15 +74,15 @@
                 <!-- 分页 Start -->
                 <ul class="pagination pagination-center mt-5">
                     <li class="page-item"><a class="page-link"
-                                             href="${path}/favorites/userShowFavorites?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                             href="${path}/favorites/userShowFavorites?userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}&page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
                             class="fa fa-angle-left"></i></a></li>
                     <c:forEach begin="1" end="4" var="pageNum">
                         <li class="page-item "><a class="page-link"
-                                                  href="${path}/favorites/userShowFavorites?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                                  href="${path}/favorites/userShowFavorites?userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}&page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
                         </li>
                     </c:forEach>
                     <li class="page-item"><a class="page-link"
-                                             href="${path}/favorites/userShowFavorites?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                             href="${path}/favorites/userShowFavorites?userId=${sessionScope.currUser.userId}&userRealName=${sessionScope.currUser.userRealName}&page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
                             class="fa fa-angle-right"></i></a></li>
                 </ul>
                 <!-- 分页 End -->
