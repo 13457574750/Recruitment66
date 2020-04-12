@@ -144,14 +144,15 @@ public class CompanyController {
     @RequestMapping("showACompany")
     public String showACompany( @RequestParam(value = "page", required = true, defaultValue = "1") int page,
                                 @RequestParam(value = "size", required = true, defaultValue = "5") int size,
-                                Model model, Integer companyId, String jobName, String jobAddress, String companyName) {
+                                Model model, Integer companyId) {
         Company company = companyService.findCompanyByCompanyId(page,size,companyId);
         if (company != null) {
             model.addAttribute("company", company);
         }
-        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
+
+        List<Job> jobList_ = jobService.findAllJobByCompanyId(page,size,String.valueOf(companyId));
         //分页
-        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList_);
         model.addAttribute("pageInfo", pageInfo);
         return "/company/showACompany";
     }
@@ -166,7 +167,7 @@ public class CompanyController {
     @RequestMapping("showCompany")
     public String showCompany( @RequestParam(value = "page", required = true, defaultValue = "1") Integer page,
                                @RequestParam(value = "size", required = true, defaultValue = "5") Integer size,
-                               String jobName, String jobAddress, String companyName, Model model, HttpServletRequest request) {
+                              String companyId, Model model, HttpServletRequest request) {
         //获得session中存的当前对象
         Company currCompany = (Company) request.getSession().getAttribute("currCompany");
         Integer CompanyId = currCompany.getCompanyId();
@@ -174,9 +175,9 @@ public class CompanyController {
         Company company = companyService.findCompanyByCompanyId(page, size, CompanyId);
         model.addAttribute("company", company);
 
-        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
+        List<Job> jobList_ = jobService.findAllJobByCompanyId(page,size,companyId);
         //分页
-        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
+        PageInfo<Job> pageInfo = new PageInfo<>(jobList_);
         model.addAttribute("pageInfo", pageInfo);
         return "/company/showCompany";
     }

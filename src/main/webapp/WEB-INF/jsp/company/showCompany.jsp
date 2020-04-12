@@ -46,73 +46,71 @@
                         </li>
                     </ul>
                     <!-- 左1 Start -->
-                    <button type="button" class="btn btn-primary w-100"
-                            onclick="$('#target').toggle();this.disabled='disabled';">招聘职位
+                    <button type="button" class="btn btn-primary w-100">招聘职位
                     </button>
 
                     <!-- 左2 Start -->
-                    <div class="job-list-wrap mt-5" id="target" style="display: none">
-                        <form action="${path}/job/findAllJob" id="searchForm" method="post">
-                            <c:forEach items="${pageInfo.list}" var="job">
-                                <a class="job-list"
-                                   onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
-                                           '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
-                                           '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                    <div class="job-list-wrap mt-5">
+                        <c:forEach items="${pageInfo.list}" var="jobList_">
+
+                            <div class="job-list-details">
+                                <div class="job-details-head row mx-0">
                                     <div class="company-logo col-auto">
-                                        <img src="${path}/assets/images/companies/company-1.png" alt="Company Logo">
+                                        <a onclick="show('${jobList_.company.companyId}','${jobList_.company.companyName}','${jobList_.company.companyCreateTime}','${jobList_.jobId}',
+                                                '${jobList_.jobName}','${jobList_.jobAddress}','${jobList_.jobSalary}','${jobList_.jobEr}','${jobList_.jobEducation}',
+                                                '${jobList_.jobReleaseTime}','${jobList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                            <img src="/images/${jobList_.company.companyCreateTime}" width="70px" height="70px"></a>
                                     </div>
                                     <div class="salary-type col-auto order-sm-3">
-                                        <span class="salary-range">$${job.jobSalary}</span>
-                                        <span class="badge badge-success"><trans>${job.jobType}</trans></span>
+                                        <span class="salary-range">$${jobList_.jobSalary}</span>
+                                        <span class="badge badge-success"><trans>${jobList_.jobType}</trans></span>
                                     </div>
                                     <div class="content col">
                                         <ul class="meta">
                                             <li>
                                                 <h6 class="title">
-                                                    <trans>${job.jobName}</trans>
+                                                    <trans>${jobList_.jobName}</trans>
                                                 </h6>
                                             </li>
                                             <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                                <trans>发布时间：${job.jobReleaseTime}</trans>
+                                                <trans>发布时间：${jobList_.jobReleaseTime}</trans>
                                             </strong></li>
                                         </ul>
                                         <ul class="meta">
-                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                                <trans>${job.company.companyName}</trans>
+                                            <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                                <trans>${jobList_.company.companyName}</trans>
                                             </strong></li>
-                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                                <trans>${job.jobAddress}</trans>
+                                            <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                                <trans>${jobList_.jobAddress}</trans>
                                             </strong></li>
-                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                                <trans>${job.jobEr}</trans>
+                                            <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                                <trans>${jobList_.jobEr}</trans>
                                             </strong></li>
-                                            <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                                <trans>${job.jobEducation}</trans>
+                                            <li><i class="fa fa-map-marker"></i><strong class="text-primary">
+                                                <trans>${jobList_.jobEducation}</trans>
                                             </strong></li>
                                         </ul>
                                     </div>
-                                </a>
-
+                                </div>
+                            </div>
+                        </c:forEach>
+                        <!-- 分页 Start -->
+                        <ul class="pagination pagination-center mt-5">
+                            <li class="page-item"><a class="page-link"
+                                                     href="${path}/company/showCompany?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
+                                    class="fa fa-angle-left"></i></a></li>
+                            <c:forEach begin="1" end="4" var="pageNum">
+                                <li class="page-item "><a class="page-link"
+                                                          href="${path}/company/showCompany?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                                </li>
                             </c:forEach>
-                            <input type="hidden" name="companyName" value="小米" placeholder="请输入要搜索的公司">
-                            <button type="button" class="btn btn-primary w-100" value="小米"
-                                    onclick="search();">搜索
-                            </button>
-                        </form>
+                            <li class="page-item"><a class="page-link"
+                                                     href="${path}/company/showCompany?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                    class="fa fa-angle-right"></i></a></li>
+                        </ul>
+                        <!-- 分页 End -->
                     </div>
                     <!-- 左2 Start -->
-
-                    <!-- 分页 Start -->
-                    <ul class="pagination pagination-center mt-5">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
-                    <!-- 分页 End -->
-
                 </div>
             </div>
             <!-- 左边 End -->
@@ -193,14 +191,6 @@
 </body>
 
 <script language="javascript">
-    function loadPage(href) {
-        $("#test").load(href);
-    }
-
-    function toggler(divId) {
-        $("#" + divId).toggle();
-    }
-
     function updateCompany(companyId) {
         var url = "${path}/company/updateCompany?companyId=" + companyId;
         window.location.href = url;
