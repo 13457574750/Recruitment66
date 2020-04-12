@@ -22,7 +22,8 @@ public interface IJobService {
     //删除职位
     void deleteJob(Integer jobId);
 
-    //根据公司名称查找工作
+    //根据公司Id查询所有工作记录
+    List<Job> findAllJobByCompanyId(int page, int size, String companyId);
 
 
 }

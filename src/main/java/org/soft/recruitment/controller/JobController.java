@@ -3,6 +3,7 @@ package org.soft.recruitment.controller;
 import java.util.List;
 
 import com.github.pagehelper.PageInfo;
+import org.soft.recruitment.model.Apply;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;
@@ -71,6 +72,23 @@ public class JobController {
 		return "/job/showAJob";
 	}
 
+	/**
+	 * 浏览单个企业的全部工作
+	 *
+	 * @param companyId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("showACompanyJob")
+	public String showACompanyJob(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+								   @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+								   String companyId, Model model) {
+			List<Job> jobList_ = jobService.findAllJobByCompanyId(page,size,companyId);
+			//分页
+			PageInfo<Job> pageInfo = new PageInfo<>(jobList_);
+			model.addAttribute("pageInfo", pageInfo);
+		return "/job/showACompanyJob";
+	}
 	/**
 	 * 添加职位
 	 * @param request
@@ -152,6 +170,6 @@ public class JobController {
 	public String deleteJob(Integer jobId) {
 		jobService.deleteJob(jobId);
 		// 重定向到用户列表界面
-		return "redirect:/company/showACompany";
+		return "redirect:/job/showACompanyJob";
 	}
 }
