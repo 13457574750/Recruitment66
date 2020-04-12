@@ -49,23 +49,25 @@
             <div class="col-lg-7 col-12 mb-5">
                 <div class="contact-form">
 
-                    <form id="userForm" action="${pageContext.request.contextPath }/user/saveUserPassword?userId=${user.userId}" method="post"
+                    <form id="userForm"
+                          action="${pageContext.request.contextPath }/user/saveUserPassword?userId=${user.userId}"
+                          method="post"
                           onsubmit="return submitForm();">
-                        <td><input type="hidden" name="userId" value="${user.userId}"/></td>
-                        <td><input type="hidden" name="userLoginName" value="${user.userLoginName}"/></td>
-                        <td><input type="hidden" name="userPhone" value="${user.userPhone}"/></td>
-                        <td><input type="hidden" name="userEmail" value="${user.userEmail}"/></td>
-                        <td><input type="hidden" name="userRealName" value="${user.userRealName}"/></td>
-                        <td><input type="hidden" name="userSex" value="${user.userSex}"/></td>
-                        <td><input type="hidden" name="userBirthday" value="${user.userBirthday}"/></td>
-                        <td><input type="hidden" name="userEducation" value="${user.userEducation}"/></td>
-                        <td><input type="hidden" name="userUniversity" value="${user.userUniversity}"/></td>
-                        <td><input type="hidden" name="userMajor" value="${user.userMajor}"/></td>
-                        <td><input type="hidden" name="userProfile" value="${user.userProfile}"/></td>
-                        <td><input type="hidden" name="userTechnology" value="${user.userTechnology}"/></td>
-                        <td><input type="hidden" name="userWantMoney" value="${user.userWantMoney}"/></td>
-                        <td><input type="hidden" name="userState" value="${user.userState}"/></td>
-                        <td><input type="hidden" name="userCreateTime" value="${user.userCreateTime}"/></td>
+                        <input type="hidden" name="userId" value="${user.userId}"/>
+                        <input type="hidden" name="userLoginName" value="${user.userLoginName}"/>
+                        <input type="hidden" name="userPhone" value="${user.userPhone}"/>
+                        <input type="hidden" name="userEmail" value="${user.userEmail}"/>
+                        <input type="hidden" name="userRealName" value="${user.userRealName}"/>
+                        <input type="hidden" name="userSex" value="${user.userSex}"/>
+                        <input type="hidden" name="userBirthday" value="${user.userBirthday}"/>
+                        <input type="hidden" name="userEducation" value="${user.userEducation}"/>
+                        <input type="hidden" name="userUniversity" value="${user.userUniversity}"/>
+                        <input type="hidden" name="userMajor" value="${user.userMajor}"/>
+                        <input type="hidden" name="userProfile" value="${user.userProfile}"/>
+                        <input type="hidden" name="userTechnology" value="${user.userTechnology}"/>
+                        <input type="hidden" name="userWantMoney" value="${user.userWantMoney}"/>
+                        <input type="hidden" name="userState" value="${user.userState}"/>
+                        <input type="hidden" name="userCreateTime" value="${user.userCreateTime}"/>
                         <h5><p>登录账号:${user.userLoginName}</p></h5>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="password">新密码</label>
@@ -76,7 +78,8 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="password2">确认密码</label>
                             <div class="col-md-7">
-                                <input type="text" id="password2" name="userLoginPassword" value="" placeholder="请确认新密码.." onkeyup="validate()">
+                                <input type="text" id="password2" name="userLoginPassword" value=""
+                                       placeholder="请确认新密码.." onkeyup="validate()">
                             </div>
                             <span id="tishi"></span>
                         </div>

@@ -49,22 +49,24 @@
             <div class="col-lg-7 col-12 mb-5">
                 <div class="contact-form">
 
-                    <form id="companyForm" action="${pageContext.request.contextPath }/company/updateCompanySubmit?userId=${company.companyId}" method="post"
+                    <form id="companyForm"
+                          action="${pageContext.request.contextPath }/company/saveCompanyPassword?userId=${company.companyId}"
+                          method="post"
                           onsubmit="return submitForm();">
-                        <td><input type="hidden" name="companyId" value="${company.companyId}"/></td>
-                        <td><input type="hidden" name="companyLoginName" value="${company.companyLoginName}"/></td>
-                        <td><input type="hidden" name="companyName" value="${company.companyName}"/></td>
-                        <td><input type="hidden" name="companyType" value="${company.companyType}"/></td>
-                        <td><input type="hidden" name="companyIndustry" value="${company.companyIndustry}"/></td>
-                        <td><input type="hidden" name="companyProfile" value="${company.companyProfile}"/></td>
-                        <td><input type="hidden" name="companyAddress" value="${company.companyAddress}"/></td>
-                        <td><input type="hidden" name="companyWeb" value="${company.companyWeb}"/></td>
-                        <td><input type="hidden" name="companyPhone" value="${company.companyPhone}"/></td>
-                        <td><input type="hidden" name="companyEmail" value="${company.companyEmail}"/></td>
-                        <td><input type="hidden" name="companyNumber" value="${company.companyNumber}"/></td>
-                        <td><input type="hidden" name="companyOwner" value="${company.companyOwner}"/></td>
-                        <td><input type="hidden" name="companyRegisterCapital" value="${company.companyRegisterCapital}"/></td>
-                        <td><input type="hidden" name="companyCreateTime" value="${company.companyCreateTime}"/></td>
+                        <input type="hidden" name="companyId" value="${company.companyId}"/>
+                        <input type="hidden" name="companyLoginName" value="${company.companyLoginName}"/>
+                        <input type="hidden" name="companyName" value="${company.companyName}"/>
+                        <input type="hidden" name="companyType" value="${company.companyType}"/>
+                        <input type="hidden" name="companyIndustry" value="${company.companyIndustry}"/>
+                        <input type="hidden" name="companyProfile" value="${company.companyProfile}"/>
+                        <input type="hidden" name="companyAddress" value="${company.companyAddress}"/>
+                        <input type="hidden" name="companyWeb" value="${company.companyWeb}"/>
+                        <input type="hidden" name="companyPhone" value="${company.companyPhone}"/>
+                        <input type="hidden" name="companyEmail" value="${company.companyEmail}"/>
+                        <input type="hidden" name="companyNumber" value="${company.companyNumber}"/>
+                        <input type="hidden" name="companyOwner" value="${company.companyOwner}"/>
+                        <input type="hidden" name="companyRegisterCapital" value="${company.companyRegisterCapital}"/>
+                        <input type="hidden" name="companyCreateTime" value="${company.companyCreateTime}"/>
                         <h5><p>登录账号:${company.companyLoginName}</p></h5>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="password">新密码</label>
@@ -75,7 +77,8 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="password2">确认密码</label>
                             <div class="col-md-7">
-                                <input type="text" id="password2" name="companyLoginPassword" value="" placeholder="请确认新密码.." onkeyup="validate()">
+                                <input type="text" id="password2" name="companyLoginPassword" value=""
+                                       placeholder="请确认新密码.." onkeyup="validate()">
                             </div>
                             <span id="tishi"></span>
                         </div>
