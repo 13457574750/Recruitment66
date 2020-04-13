@@ -203,6 +203,23 @@ public class UserController {
     }
 
     /**
+     * 根据用户真实姓名查找用户
+     *
+     * @param userRealName
+     * @param model
+     * @return
+     */
+    @RequestMapping("findUserByUserRealName")
+    public String findUserByUserRealName(String userRealName, Model model) {
+        User user = userService.findUserByUserRealName(userRealName);
+        if (user != null) {
+            model.addAttribute("user", user);
+            return "/user/showResume";
+        } else {
+            throw new RuntimeException("对不起，没有该用户的具体信息");
+        }
+    }
+    /**
      * 跳转到用户首页
      *
      * @param model
