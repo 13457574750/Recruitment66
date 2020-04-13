@@ -38,7 +38,8 @@
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
-                                    href="${path}/apply/deleteApply2?applyId=${applyList.applyId}&userId=${sessionScope.currUser.userId}"
+                                    href="${path}/apply/deleteApply2?applyId=${applyList.applyId}&userId=${sessionScope.currUser.userId}&
+                                    companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}"
                                     onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
@@ -46,7 +47,7 @@
                                     <li>
                                         <h6 class="title">
                                             <trans>${applyList.jobName}</trans>
-                                            <trans>${applyList.userRealName}</trans>
+                                            <trans><a onclick="showUser('${applyList.userRealName}')">${applyList.userRealName}</a></trans>
                                         </h6>
                                     </li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
@@ -126,6 +127,10 @@
             + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
             + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
         window.location.href = url;
+    }
+    function showUser(userRealName){
+        var url="${path}/user/findUserByUserRealName?userRealName=" + userRealName;
+        window.location.href=url;
     }
 </script>
 </html>
