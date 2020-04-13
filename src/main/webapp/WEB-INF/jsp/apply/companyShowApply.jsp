@@ -47,7 +47,6 @@
                                     <li>
                                         <h6 class="title">
                                             <trans>${applyList.jobName}</trans>
-                                            <trans><a onclick="showUser('${applyList.userRealName}')">${applyList.userRealName}</a></trans>
                                         </h6>
                                     </li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
@@ -66,6 +65,11 @@
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                         <trans>${applyList.jobEducation}</trans>
+                                    </strong></li>
+                                </ul>
+                                <ul class="meta">
+                                    <li><strong class="text-primary">
+                                        <trans>申请人:<a  target="_blank" style="text-decoration:underline;" onclick="showUser('${applyList.userRealName}')">${applyList.userRealName}</a></trans>
                                     </strong></li>
                                 </ul>
                             </div>
