@@ -131,7 +131,7 @@ public class UserController {
     }
 
     /**
-     * 查看当前ID的用户招聘信息
+     * 用户自己查看当前ID的用户招聘信息
      *
      * @param model
      * @param request
@@ -146,6 +146,23 @@ public class UserController {
         User user = userService.findUserByUserId(UserId);
         model.addAttribute("user", user);
         return "/user/showResume";
+    }
+    /**
+     * 企业查看当前ID的用户招聘信息
+     *
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping("showResume2")
+    public String showResume2(Model model, HttpServletRequest request) {
+        //获得session中存的当前对象
+        User currUser = (User) request.getSession().getAttribute("currUser");
+        Integer UserId = currUser.getUserId();
+        //  根据ID查询用户并显示该用户
+        User user = userService.findUserByUserId(UserId);
+        model.addAttribute("user", user);
+        return "/user/showResume2";
     }
 
     /**
@@ -214,7 +231,7 @@ public class UserController {
         User user = userService.findUserByUserRealName(userRealName);
         if (user != null) {
             model.addAttribute("user", user);
-            return "/user/showResume";
+            return "/user/showResume2";
         } else {
             throw new RuntimeException("对不起，没有该用户的具体信息");
         }
