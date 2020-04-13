@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.soft.recruitment.dao.BoardMapper" >
+  <resultMap id="BaseResultMap" type="org.soft.recruitment.model.Board" >
+    <id column="board_Id" property="boardId" jdbcType="INTEGER" />
+    <result column="board_Name" property="boardName" jdbcType="VARCHAR" />
+    <result column="board_Email" property="boardEmail" jdbcType="VARCHAR" />
+    <result column="board_Content" property="boardContent" jdbcType="VARCHAR" />
+    <result column="board_Time" property="boardTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    board_Id, board_Name, board_Email, board_Content, board_Time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="org.soft.recruitment.model.BoardExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from board
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from board
+    where board_Id = #{boardId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from board
+    where board_Id = #{boardId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="org.soft.recruitment.model.BoardExample" >
+    delete from board
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="org.soft.recruitment.model.Board" >
+    insert into board (board_Id, board_Name, board_Email, 
+      board_Content, board_Time)
+    values (#{boardId,jdbcType=INTEGER}, #{boardName,jdbcType=VARCHAR}, #{boardEmail,jdbcType=VARCHAR}, 
+      #{boardContent,jdbcType=VARCHAR}, #{boardTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.soft.recruitment.model.Board" >
+    insert into board
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="boardId != null" >
+        board_Id,
+      </if>
+      <if test="boardName != null" >
+        board_Name,
+      </if>
+      <if test="boardEmail != null" >
+        board_Email,
+      </if>
+      <if test="boardContent != null" >
+        board_Content,
+      </if>
+      <if test="boardTime != null" >
+        board_Time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="boardId != null" >
+        #{boardId,jdbcType=INTEGER},
+      </if>
+      <if test="boardName != null" >
+        #{boardName,jdbcType=VARCHAR},
+      </if>
+      <if test="boardEmail != null" >
+        #{boardEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="boardContent != null" >
+        #{boardContent,jdbcType=VARCHAR},
+      </if>
+      <if test="boardTime != null" >
+        #{boardTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="org.soft.recruitment.model.BoardExample" resultType="java.lang.Integer" >
+    select count(*) from board
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update board
+    <set >
+      <if test="record.boardId != null" >
+        board_Id = #{record.boardId,jdbcType=INTEGER},
+      </if>
+      <if test="record.boardName != null" >
+        board_Name = #{record.boardName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boardEmail != null" >
+        board_Email = #{record.boardEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boardContent != null" >
+        board_Content = #{record.boardContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.boardTime != null" >
+        board_Time = #{record.boardTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update board
+    set board_Id = #{record.boardId,jdbcType=INTEGER},
+      board_Name = #{record.boardName,jdbcType=VARCHAR},
+      board_Email = #{record.boardEmail,jdbcType=VARCHAR},
+      board_Content = #{record.boardContent,jdbcType=VARCHAR},
+      board_Time = #{record.boardTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="org.soft.recruitment.model.Board" >
+    update board
+    <set >
+      <if test="boardName != null" >
+        board_Name = #{boardName,jdbcType=VARCHAR},
+      </if>
+      <if test="boardEmail != null" >
+        board_Email = #{boardEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="boardContent != null" >
+        board_Content = #{boardContent,jdbcType=VARCHAR},
+      </if>
+      <if test="boardTime != null" >
+        board_Time = #{boardTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where board_Id = #{boardId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.soft.recruitment.model.Board" >
+    update board
+    set board_Name = #{boardName,jdbcType=VARCHAR},
+      board_Email = #{boardEmail,jdbcType=VARCHAR},
+      board_Content = #{boardContent,jdbcType=VARCHAR},
+      board_Time = #{boardTime,jdbcType=VARCHAR}
+    where board_Id = #{boardId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findAllBoard" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from board
+    where 1=1
+    <if test="boardContent != null and boardContent != ''">
+      <bind name="boardContent" value=" '%' + boardContent + '%' "/>
+      and board_Content like #{boardContent}
+    </if>
+  </select>
+</mapper>

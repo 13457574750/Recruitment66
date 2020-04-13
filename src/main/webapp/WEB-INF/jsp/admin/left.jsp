@@ -38,6 +38,9 @@
                                 <li><a href="${path}/admin/company">企业</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="${path}/board/Board"><i class="mdi mdi-format-align-justify"></i>留言管理</a>
+                        </li>
                     </ul>
                 </nav>
                 <div class="sidebar-footer"><p class="copyright">小羊会跳舞制作</p></div>

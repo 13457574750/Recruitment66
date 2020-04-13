@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -38,29 +39,18 @@ public class TestController {
     }
 
     @RequestMapping("add")
-    public String add(Test test, HttpServletRequest request, Model model) throws Exception {
-        //保存数据库的路径
-        String sqlPath = null;
-        //定义文件保存的本地路径
-        String localPath = "C:\\IDEA-workspace\\Recruitment\\src\\main\\webapp\\images\\";
-        //定义 文件名
-        String filename = null;
-        if (!test.getFile().isEmpty()) {
-            //生成uuid作为文件名称
-            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-            //获得文件类型（可以判断如果不是图片，禁止上传）
-            String contentType = test.getFile().getContentType();
-            //获得文件后缀名
-            String suffixName = contentType.substring(contentType.indexOf("/") + 1);
-            //得到 文件名
-            filename = uuid + "." + suffixName;
-            //文件保存路径
-            test.getFile().transferTo(new File(localPath + filename));
-        }
-        //把图片的相对路径保存至数据库
-        sqlPath = filename;
-        test.setTestName(sqlPath);
-        test.setTestSex(request.getParameter("testSex"));
+    public String add(MultipartFile file, Test test) throws Exception {
+        //图片上传成功后，将图片的地址写到数据库
+        String filePath = "C:\\IDEA-workspace\\Recruitment\\src\\main\\webapp\\images";//保存图片的路径,tomcat中有配置
+        //获取原始图片的拓展名
+        String originalFilename = file.getOriginalFilename();
+        //新的文件名字，使用uuid随机生成数+原始图片名字，这样不会重复
+        String newFileName = UUID.randomUUID() + originalFilename;
+        //封装上传文件位置的全路径，就是硬盘路径+文件名
+        File targetFile = new File(filePath, newFileName);
+        //把本地文件上传到已经封装好的文件位置的全路径就是上面的targetFile
+        file.transferTo(targetFile);//把本地文件上传到文件位置 , transferTo()是springMvc封装的方法，用于图片上传时，把内存中图片写入磁盘
+        test.setTestName(newFileName);//文件名保存到实体类对应属性上
         testService.adds(test);
         return "/test/test";
     }
