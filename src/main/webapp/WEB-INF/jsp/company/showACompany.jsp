@@ -77,7 +77,7 @@
                                     </ul>
                                     <ul class="meta">
                                         <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                            <trans>${jobList_.company.companyName}</trans>
+                                            <trans>${company.companyName}</trans>
                                         </strong></li>
                                         <li><i class="fa fa-map-marker"></i><strong class="text-primary">
                                             <trans>${jobList_.jobAddress}</trans>
