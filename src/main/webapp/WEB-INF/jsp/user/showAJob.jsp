@@ -46,7 +46,7 @@
 
                             </p>
                             <a href="${path}/user/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}">
-                                <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px"></a>
+                                <img src="/images/${company.companyCreateTime}" width="70px" height="70px"></a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">
                             <span class="salary-range">$${job.jobSalary}</span>
