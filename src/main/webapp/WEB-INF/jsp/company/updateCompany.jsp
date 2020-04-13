@@ -19,7 +19,7 @@
 <!-- 主体内容 Start -->
 <div class="section section-padding">
     <form id="companyForm" action="${pageContext.request.contextPath }/company/updateCompanySubmit" method="post"
-          onsubmit="return submitForm();">
+          onsubmit="return submitForm();" enctype="multipart/form-data">
         <div class="container">
             <div class="row">
                 <div class="create-job-form col-lg-10 mx-auto">
@@ -129,6 +129,7 @@
                                        value="${sessionScope.currCompany.companyLoginName}">
                                 <input type="hidden" name="companyLoginPassword" id="companyLoginPassword"
                                        value="${sessionScope.currCompany.companyLoginPassword}">
+
                                 <button type="button" class="btn btn-primary px-5"
                                         href="${pageContext.request.contextPath}/company/showCompany?companyId=${sessionScope.currCompany.companyId}"
                                         onclick="submitForm()">保存

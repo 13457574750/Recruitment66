@@ -195,9 +195,9 @@ public class UserController {
         //获取原始图片的拓展名
         String originalFilename = file.getOriginalFilename();
         //新的文件名字，使用uuid随机生成数+原始图片名字，这样不会重复
-        String newFileName = UUID.randomUUID()+originalFilename;
+        String newFileName = UUID.randomUUID() + originalFilename;
         //封装上传文件位置的全路径，就是硬盘路径+文件名
-        File targetFile = new File(filePath,newFileName);
+        File targetFile = new File(filePath, newFileName);
         //把本地文件上传到已经封装好的文件位置的全路径就是上面的targetFile
         file.transferTo(targetFile);//把本地文件上传到文件位置 , transferTo()是springMvc封装的方法，用于图片上传时，把内存中图片写入磁盘
         user.setUserCreateTime(newFileName);//文件名保存到实体类对应属性上
