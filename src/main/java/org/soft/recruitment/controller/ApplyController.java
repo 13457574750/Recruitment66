@@ -138,6 +138,6 @@ public class ApplyController {
     public String deleteApply2(Integer applyId) {
         applyService.deleteApply(applyId);
         // 重定向到投递记录界面
-        return "redirect:/apply/userShowApply";
+        return "redirect:/apply/companyShowApply";
     }
 }
