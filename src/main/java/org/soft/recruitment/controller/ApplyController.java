@@ -38,9 +38,9 @@ public class ApplyController {
                                    String companyName, Model model, HttpServletRequest request) {
         Company currCompany = (Company) request.getSession().getAttribute("currCompany");
         if (currCompany != null) {
-            List<Apply> applyList_ = applyService.findApplyByCompanyName(page,size,companyName);
+            List<Apply> applyList = applyService.findApplyByCompanyName(page,size,companyName);
             //分页
-            PageInfo<Apply> pageInfo = new PageInfo<>(applyList_);
+            PageInfo<Apply> pageInfo = new PageInfo<>(applyList);
             model.addAttribute("pageInfo", pageInfo);
         }
         return "/apply/companyShowApply";

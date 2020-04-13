@@ -57,10 +57,10 @@ public class ApplyServiceImpl implements IApplyService {
         if (StringUtils.isNotBlank(companyName)) {
             criteria.andCompanyNameEqualTo(companyName);
         }
-        List<Apply> applyList_ = applyMapper.selectByExample(example);
-        PageInfo<Apply> pageInfo = new PageInfo<>(applyList_);
-        if (applyList_ != null && applyList_.size()> 0) {
-            return applyList_;
+        List<Apply> applyList = applyMapper.selectByExample(example);
+        PageInfo<Apply> pageInfo = new PageInfo<>(applyList);
+        if (applyList != null && applyList.size()> 0) {
+            return applyList;
         }
         return pageInfo.getList();
     }

@@ -22,48 +22,49 @@
 
             <!-- 左边 Start -->
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
-                <c:forEach items="${pageInfo.list}" var="applyList_">
+                <c:forEach items="${pageInfo.list}" var="applyList">
 
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a onclick="show('${applyList_.job.company.companyId}','${applyList_.companyName}','${applyList_.companyCreateTime}','${applyList_.jobId}',
-                                        '${applyList_.jobName}','${applyList_.jobAddress}','${applyList_.jobSalary}','${applyList_.jobEr}','${applyList_.jobEducation}',
-                                        '${applyList_.jobReleaseTime}','${applyList_.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
-                                    <img src="${path}/images/${applyList_.companyCreateTime}" width="70px" height="70px"></a>
+                                <a onclick="show('${applyList.job.company.companyId}','${applyList.companyName}','${applyList.companyCreateTime}','${applyList.jobId}',
+                                        '${applyList.jobName}','${applyList.jobAddress}','${applyList.jobSalary}','${applyList.jobEr}','${applyList.jobEducation}',
+                                        '${applyList.jobReleaseTime}','${applyList.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                                    <img src="${path}/images/${applyList.companyCreateTime}" width="70px" height="70px"></a>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
-                                <span class="salary-range">$${applyList_.jobSalary}</span>
-                                <span class="badge badge-success"><trans>${applyList_.jobType}</trans></span>
+                                <span class="salary-range">$${applyList.jobSalary}</span>
+                                <span class="badge badge-success"><trans>${applyList.jobType}</trans></span>
                             </div>
                             <div class="salary-type col-auto order-sm-3">
                             <span class="badge badge-danger"><trans><a
-                                    href="${path}/apply/deleteApply2?applyId=${applyList_.applyId}&userId=${sessionScope.currUser.userId}"
+                                    href="${path}/apply/deleteApply2?applyId=${applyList.applyId}&userId=${sessionScope.currUser.userId}"
                                     onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
                                     <li>
                                         <h6 class="title">
-                                            <trans>${applyList_.jobName}</trans>
+                                            <trans>${applyList.jobName}</trans>
+                                            <trans>${applyList.userRealName}</trans>
                                         </h6>
                                     </li>
                                     <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                        <trans>发布时间：${applyList_.jobReleaseTime}</trans>
+                                        <trans>发布时间：${applyList.jobReleaseTime}</trans>
                                     </strong></li>
                                 </ul>
                                 <ul class="meta">
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${applyList_.companyName}</trans>
+                                        <trans>${applyList.companyName}</trans>
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${applyList_.jobAddress}</trans>
+                                        <trans>${applyList.jobAddress}</trans>
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${applyList_.jobEr}</trans>
+                                        <trans>${applyList.jobEr}</trans>
                                     </strong></li>
                                     <li><i class="fa fa-map-marker"></i><strong class="text-primary">
-                                        <trans>${applyList_.jobEducation}</trans>
+                                        <trans>${applyList.jobEducation}</trans>
                                     </strong></li>
                                 </ul>
                             </div>
@@ -72,17 +73,20 @@
                 </c:forEach>
                 <!-- 分页 Start -->
                 <ul class="pagination pagination-center mt-5">
-                    <li class="page-item"><a class="page-link"
-                                             href="${path}/apply/companyShowApply?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}"><i
-                            class="fa fa-angle-left"></i></a></li>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="${path}/apply/companyShowApply?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">
+                            <i class="fa fa-angle-left"></i></a></li>
                     <c:forEach begin="1" end="4" var="pageNum">
-                        <li class="page-item "><a class="page-link"
-                                                  href="${path}/apply/companyShowApply?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
+                        <li class="page-item ">
+                            <a class="page-link"
+                               href="${path}/apply/companyShowApply?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a>
                         </li>
                     </c:forEach>
-                    <li class="page-item"><a class="page-link"
-                                             href="${path}/apply/companyShowApply?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
-                            class="fa fa-angle-right"></i></a></li>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="${path}/apply/companyShowApply?companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}&page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}"><i
+                                class="fa fa-angle-right"></i></a></li>
                 </ul>
                 <!-- 分页 End -->
             </div>
