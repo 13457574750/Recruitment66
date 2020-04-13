@@ -111,7 +111,7 @@
 
                             <div class="col-md-6 col-12 mb-3">
                                 <label for="companyRegisterCapital">更换公司LOGO</label>
-                                <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px">
+                                <img src="/images/${company.companyCreateTime}" width="70px" height="70px">
                                 <input type="file" name="file" accept="image/*">
                             </div>
 
