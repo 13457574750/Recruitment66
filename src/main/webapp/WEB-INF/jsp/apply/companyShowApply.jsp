@@ -40,7 +40,7 @@
                             <span class="badge badge-danger"><trans><a
                                     href="${path}/apply/deleteApply2?applyId=${applyList.applyId}&userId=${sessionScope.currUser.userId}&
                                     companyId=${sessionScope.currCompany.companyId}&companyName=${sessionScope.currCompany.companyName}"
-                                    onclick="return confirm('确定要删除吗？');">删除</a></trans></span>
+                                    onclick="return confirm('确定要拒绝吗？');">拒绝</a></trans></span>
                             </div>
                             <div class="content col">
                                 <ul class="meta">
