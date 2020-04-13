@@ -52,7 +52,7 @@ public class BoardController {
     public Message insertBoard(Board board) {
         Message msg = new Message();
         boardService.insertBoard(board);//插入具体数据
-        msg.setStr("提交成功");
+        msg.setStr("感谢您的留言，谢谢");
         return msg;
     }
 
