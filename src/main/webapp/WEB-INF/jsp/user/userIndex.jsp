@@ -70,7 +70,7 @@
                            '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
                            '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
                     <div class="company-logo col-auto">
-                        <img src="${path}/images/${job.company.companyCreateTime}" width="70px" height="70px">
+                        <img src="/images/${job.company.companyCreateTime}" width="70px" height="70px">
                     </div>
                     <div class="salary-type col-auto order-sm-3">
                         <span class="salary-range">$${job.jobSalary}</span>
