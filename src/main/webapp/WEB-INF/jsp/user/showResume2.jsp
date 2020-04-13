@@ -9,7 +9,7 @@
     <title>个人简历</title>
 </head>
 <body>
-<%@include file="../user/head.jsp" %>
+<%@include file="../company/head.jsp" %>
 
 <!-- 首页图片 Start -->
 <div class="page-heading-section section bg-parallax" data-bg-image="${path}/assets/images/bg/bg-1.jpg"
@@ -124,7 +124,7 @@
     </div>
 </div>
 <!-- 简历 End -->
-<%@include file="../user/foot.jsp" %>
+<%@include file="../company/foot.jsp" %>
 
 
 </body>
