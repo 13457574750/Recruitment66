@@ -193,7 +193,7 @@
 
             <!-- 马云 Start -->
             <div class="col">
-                <div class="testimonial text-white">
+                <div class="testimonial text-center text-white">
                     <p>我永远相信只要永不放弃，我们还是有机会的。最后，我们还是坚信一点，这世界上只要有梦想，只要不断努力，
                         只要不断学习，不管你长得如何，不管是这样，还是那样，男人的长相往往和他的的才华成反比。今天很残酷，
                         明天更残酷，后天很美好，但绝对大部分是死在明天晚上，所以每个人不要放弃今天。</p>
