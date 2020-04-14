@@ -27,26 +27,26 @@
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
                             <%-- 接收数据--%>
-                            <p>
-                                <input type="hidden" id="companyName" name="companyName" value="${company.companyName}">
-                                <input type="hidden" id="companyCreateTime" value="${company.companyCreateTime}">
+<%--                            <p>--%>
+<%--                                <input type="text" id="companyName" name="companyName" value="${sessionScope.currCompany.companyName}">--%>
+<%--                                <input type="text" id="companyCreateTime" value="${sessionScope.currCompany.companyCreateTime}">--%>
 
-                                <input type="hidden" id="jobId" value="${job.jobId}">
-                                <input type="hidden" id="jobName" name="jobName" value="${job.jobName}">
-                                <input type="hidden" id="jobAddress" value="${job.jobAddress}">
-                                <input type="hidden" id="jobSalary" value="${job.jobSalary}">
-                                <input type="hidden" id="jobEr" value="${job.jobEr}">
-                                <input type="hidden" id="jobEducation" value="${job.jobEducation}">
-                                <input type="hidden" id="jobReleaseTime" value="${job.jobReleaseTime}">
-                                <input type="hidden" id="jobType" value="${job.jobType}">
+<%--                                <input type="text" id="jobId" value="${job.jobId}">--%>
+<%--                                <input type="text" id="jobName" name="jobName" value="${job.jobName}">--%>
+<%--                                <input type="text" id="jobAddress" value="${job.jobAddress}">--%>
+<%--                                <input type="text" id="jobSalary" value="${job.jobSalary}">--%>
+<%--                                <input type="text" id="jobEr" value="${job.jobEr}">--%>
+<%--                                <input type="text" id="jobEducation" value="${job.jobEducation}">--%>
+<%--                                <input type="text" id="jobReleaseTime" value="${job.jobReleaseTime}">--%>
+<%--                                <input type="text" id="jobType" value="${job.jobType}">--%>
 
-                                <input type="hidden" id="userId" value="${sessionScope.currUser.userId}">
-                                <input type="hidden" id="userRealName" name="userRealName"
-                                       value="${sessionScope.currUser.userRealName}">
+<%--                                <input type="text" id="userId" value="${sessionScope.currUser.userId}">--%>
+<%--                                <input type="text" id="userRealName" name="userRealName"--%>
+<%--                                       value="${sessionScope.currUser.userRealName}">--%>
 
-                            </p>
+<%--                            </p>--%>
                             <a href="${path}/company/showACompany?jobId=${job.jobId}&companyId=${job.companyId}&?userId=${sessionScope.currUser.userId}">
-                                <img src="${path}/images/${company.companyCreateTime}" width="70px" height="70px">
+                                <img src="/images/${company.companyCreateTime}" width="70px" height="70px">
                             </a>
                         </div>
                         <div class="salary-type col-auto order-sm-3">

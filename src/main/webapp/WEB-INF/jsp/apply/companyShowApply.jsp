@@ -27,7 +27,7 @@
                     <div class="job-list-details">
                         <div class="job-details-head row mx-0">
                             <div class="company-logo col-auto">
-                                <a onclick="show('${applyList.job.company.companyId}','${applyList.companyName}','${applyList.companyCreateTime}','${applyList.jobId}',
+                                <a onclick="show('${sessionScope.currCompany.companyId}','${applyList.companyName}','${applyList.companyCreateTime}','${applyList.jobId}',
                                         '${applyList.jobName}','${applyList.jobAddress}','${applyList.jobSalary}','${applyList.jobEr}','${applyList.jobEducation}',
                                         '${applyList.jobReleaseTime}','${applyList.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
                                     <img src="${path}/images/${applyList.companyCreateTime}" width="70px" height="70px"></a>
