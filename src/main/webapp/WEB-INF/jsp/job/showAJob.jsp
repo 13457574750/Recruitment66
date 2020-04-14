@@ -26,7 +26,7 @@
                 <div class="job-list-details">
                     <div class="job-details-head row mx-0">
                         <div class="company-logo col-auto">
-                            <%-- 接收数据--%>
+                            <%-- 接收数据测试--%>
 <%--                            <p>--%>
 <%--                                <input type="text" id="companyName" name="companyName" value="${sessionScope.currCompany.companyName}">--%>
 <%--                                <input type="text" id="companyCreateTime" value="${sessionScope.currCompany.companyCreateTime}">--%>

@@ -87,7 +87,7 @@
                     <!-- 2 Start -->
                     <div class="sidebar-widget">
                         <div class="inner">
-                            <a class="banner" target="_blank"><img src="${path}/assets/images/banner/banner-1.jpg" alt="Banner"></a>
+                            <a class="banner" target="_blank"><img src="${path}/assets/images/blog/blog-8.jpg" alt="Banner"></a>
                         </div>
                     </div>
                     <!-- 2 End -->

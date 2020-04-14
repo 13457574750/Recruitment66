@@ -48,7 +48,7 @@
 </div>
 <!-- 关于我们 End -->
 
-<div class="section section-padding bg-parallax" data-bg-image="${path}/assets/images/bg/bg-3.jpg" data-overlay="50">
+<div class="section section-padding bg-parallax" data-bg-image="${path}/assets/images/blog/blog-3.jpg" data-overlay="50">
                 <div class="container">
                     <div class="funfact-wrap row">
 
