@@ -34,6 +34,14 @@ public class Apply {
 
     public void setJob(Job job) { this.job = job; }
 
+    private Company company;
+
+    public Company getCompany() { return company; }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
 
 
     public Integer getApplyId() {
