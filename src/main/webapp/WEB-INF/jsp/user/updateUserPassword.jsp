@@ -68,7 +68,6 @@
                         <input type="hidden" name="userWantMoney" value="${user.userWantMoney}"/>
                         <input type="hidden" name="userState" value="${user.userState}"/>
                         <input type="hidden" name="userCreateTime" value="${user.userCreateTime}"/>
-                        <h5><p>登录账号:${user.userLoginName}</p></h5>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="password">新密码</label>
                             <div class="col-md-7">

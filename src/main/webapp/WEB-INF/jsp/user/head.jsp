@@ -219,6 +219,13 @@
         if(userLoginPassword.length==0){
             alert("请输入用户密码");
             return false;
+        }else{
+            var pattern = /^[0-9a-zA-Z]+$/;
+            if(!pattern.test(document.getElementById("userLoginPassword").value))
+            {
+                alert('\n密码只可输入数字或者字母!');
+                return false;
+            }
         }
         $.ajax({
             url:"${pageContext.request.contextPath}/user/toUserLogin",
@@ -260,6 +267,13 @@
         if(userLoginPassword.length==0){
             alert("请输入密码");
             return false;
+        }else{
+            var pattern = /^[0-9a-zA-Z]+$/;
+            if(!pattern.test(document.getElementById("userLoginPassword2").value))
+            {
+                alert('\n密码只可输入数字或者字母!');
+                return false;
+            }
         }
         if(userEmail.length==0){
             alert("邮箱为空");

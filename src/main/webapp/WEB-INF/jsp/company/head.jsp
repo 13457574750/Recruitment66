@@ -246,6 +246,12 @@
         if (companyLoginPassword.length == 0) {
             alert("请输入用户密码");
             return false;
+        }else {
+            var pattern = /^[0-9a-zA-Z]+$/;
+            if (!pattern.test(document.getElementById("companyLoginPassword").value)) {
+                alert('\n密码只可输入数字或者字母!');
+                return false;
+            }
         }
         $.ajax({
             url: "${pageContext.request.contextPath}/company/toCompanyLogin",
@@ -288,6 +294,12 @@
         if (companyLoginPassword.length == 0) {
             alert("登录密码不能为空");
             return false;
+        }else {
+            var pattern = /^[0-9a-zA-Z]+$/;
+            if (!pattern.test(document.getElementById("companyLoginPassword2").value)) {
+                alert('\n密码只可输入数字或者字母!');
+                return false;
+            }
         }
         if (companyEmail.length == 0) {
             alert("邮箱不能为空");

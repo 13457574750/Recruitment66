@@ -43,7 +43,7 @@ public class UserController {
      * @return
      */
     @RequestMapping("toUserRegister")
-    @ResponseBody
+    @ResponseBody//@ResponseBody的作用其实是将java对象转为json格式的数据。
     public Message toUserRegister(User user) {
         Message msg = new Message();
         // 根据登录名来判断

@@ -67,7 +67,6 @@
                         <input type="hidden" name="companyOwner" value="${company.companyOwner}"/>
                         <input type="hidden" name="companyRegisterCapital" value="${company.companyRegisterCapital}"/>
                         <input type="hidden" name="companyCreateTime" value="${company.companyCreateTime}"/>
-                        <h5><p>登录账号:${company.companyLoginName}</p></h5>
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="password">新密码</label>
                             <div class="col-md-7">

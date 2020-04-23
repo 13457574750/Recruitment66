@@ -53,7 +53,7 @@
                                             <th>掌握技能</th>
                                             <th>期望薪资</th>
                                             <th>状态</th>
-                                            <th>注册时间</th>
+                                            <th>头像</th>
                                             <th>操作</th>
                                         </tr>
                                         </thead>
