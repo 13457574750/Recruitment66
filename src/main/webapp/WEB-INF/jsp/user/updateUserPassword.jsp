@@ -80,7 +80,6 @@
                                 <input type="text" id="password2" name="userLoginPassword" value=""
                                        placeholder="请确认新密码.." onkeyup="validate()">
                             </div>
-                            <span id="tishi"></span>
                         </div>
                         <div class="form-group">
                             <div class="col-md-9 col-md-offset-3">
@@ -104,20 +103,19 @@
 </body>
 <script type="text/javascript">
     function submitForm() {
-        alert("保存成功");
-        document.getElementById("userForm").submit();
-    }
-
-    function validate() {
         var password = document.getElementById("password").value;
         var password2 = document.getElementById("password2").value;
+        if(password.length==0){
+            alert("新密码不能为空");
+            return false;
+        }
         <!-- 对比两次输入的密码 -->
-        if (password == password2) {
-            document.getElementById("tishi").innerHTML = "<font color='green'>两次密码相同</font>";
-            document.getElementById("userForm").disabled = false;
+        else if (password == password2) {
+            alert("保存成功");
+            document.getElementById("userForm").submit();
         } else {
-            document.getElementById("tishi").innerHTML = "<font color='red'>两次不密码相同</font>";
-            document.getElementById("userForm").disabled = true;
+            alert("两次不密码相同");
+            return false;
         }
     }
 </script>

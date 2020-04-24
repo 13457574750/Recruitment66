@@ -77,15 +77,14 @@
                             <label class="col-md-3 control-label" for="password2">确认密码</label>
                             <div class="col-md-7">
                                 <input type="text" id="password2" name="companyLoginPassword" value=""
-                                       placeholder="请确认新密码.." onkeyup="validate()">
+                                       placeholder="请确认新密码..">
                             </div>
-                            <span id="tishi"></span>
                         </div>
                         <div class="form-group">
                             <div class="col-md-9 col-md-offset-3">
                                 <button><a type="button"
                                            href="${pageContext.request.contextPath}/company/updateCompanyPassword?companyId=${company.companyId}"
-                                           onclick="submitForm();">保存</a></button>
+                                           onclick="submitForm()">保存</a></button>
                             </div>
                         </div>
                     </form>
@@ -103,20 +102,19 @@
 </body>
 <script type="text/javascript">
     function submitForm() {
-        alert("保存成功");
-        document.getElementById("companyForm").submit();
-    }
-
-    function validate() {
         var password = document.getElementById("password").value;
         var password2 = document.getElementById("password2").value;
+        if(password.length==0){
+            alert("新密码不能为空");
+            return false;
+        }
         <!-- 对比两次输入的密码 -->
-        if (password == password2) {
-            document.getElementById("tishi").innerHTML = "<font color='green'>两次密码相同</font>";
-            document.getElementById("companyForm").disabled = false;
+        else if (password == password2) {
+            alert("保存成功");
+            document.getElementById("companyForm").submit();
         } else {
-            document.getElementById("tishi").innerHTML = "<font color='red'>两次不密码相同</font>";
-            document.getElementById("companyForm").disabled = true;
+            alert("两次不密码相同");
+            return false;
         }
     }
 </script>
