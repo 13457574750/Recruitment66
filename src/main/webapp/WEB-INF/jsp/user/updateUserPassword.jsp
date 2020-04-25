@@ -111,10 +111,10 @@
         }
         <!-- 对比两次输入的密码 -->
         else if (password == password2) {
-            alert("保存成功");
+            alert("修改密码成功");
             document.getElementById("userForm").submit();
         } else {
-            alert("两次不密码相同");
+            alert("密码不相同");
             return false;
         }
     }

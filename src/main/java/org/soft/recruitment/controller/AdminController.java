@@ -1,5 +1,6 @@
 package org.soft.recruitment.controller;
 
+import com.github.pagehelper.PageInfo;
 import org.soft.recruitment.model.Admin;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Message;
@@ -188,7 +189,9 @@ public class AdminController {/*管理员所能使用的功能*/
                           @RequestParam(value = "size", required = true, defaultValue = "5") int size,
                           String companyName, Model model) {
         List<Company> companyList = companyService.findAllCompany(page, size, companyName);
-        model.addAttribute("companyList", companyList);
+        //分页
+        PageInfo<Company> pageInfo = new PageInfo<>(companyList);
+        model.addAttribute("pageInfo", pageInfo);
         return "/admin/company";
     }
 
