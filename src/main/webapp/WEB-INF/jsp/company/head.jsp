@@ -46,6 +46,7 @@
                         <li class="has-children"><a href="${path}/job/findAllJob?companyId=${sessionScope.currCompany.companyId}" target="_parent">职位</a>
                             <ul class="sub-menu">
                                 <li><a href="${path}/job/addPost?companyId=${sessionScope.currCompany.companyId}" target="_parent">发布职位</a></li>
+                                <li><a href="${path}/company/findAllUser?companyId=${sessionScope.currCompany.companyId}" target="_parent">所有求职者</a></li>
                             </ul>
                         </li>
                         <li><a href="${path}/company/findAllCompany?companyId=${sessionScope.currCompany.companyId}" target="_parent">公司</a></li>
@@ -99,6 +100,7 @@
                     <li class="has-children"><a href="${path}/job/findAllJob?companyId=${sessionScope.currCompany.companyId}" target="_parent">职位</a>
                         <ul class="sub-menu">
                             <li><a href="${path}/job/addPost?companyId=${sessionScope.currCompany.companyId}" target="_parent">发布职位</a></li>
+                            <li><a href="${path}/company/findAllUser?companyId=${sessionScope.currCompany.companyId}" target="_parent">所有求职者</a></li>
                         </ul>
                     </li>
 

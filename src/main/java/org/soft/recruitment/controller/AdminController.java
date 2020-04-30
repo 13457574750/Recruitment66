@@ -145,9 +145,13 @@ public class AdminController {/*管理员所能使用的功能*/
      * @return
      */
     @RequestMapping("user")
-    public String user(Model model) {
-        List<User> userList = userService.findAllUser();
-        model.addAttribute("userList", userList);
+    public String user(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                       @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                       String userRealName, Model model) {
+        List<User> userList = userService.findAllUser(page, size, userRealName);
+        //分页
+        PageInfo<User> pageInfoUser = new PageInfo<>(userList);
+        model.addAttribute("pageInfoUser", pageInfoUser);
         return "/admin/user";
     }
 

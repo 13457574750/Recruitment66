@@ -4,8 +4,10 @@ import com.github.pagehelper.PageInfo;
 import org.soft.recruitment.model.Company;
 import org.soft.recruitment.model.Job;
 import org.soft.recruitment.model.Message;
+import org.soft.recruitment.model.User;
 import org.soft.recruitment.service.ICompanyService;
 import org.soft.recruitment.service.IJobService;
+import org.soft.recruitment.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,9 @@ public class CompanyController {
 
     @Autowired
     private IJobService jobService;
+
+    @Autowired
+    private IUserService userService;
 
     /**
      * 公司注册
@@ -261,17 +266,38 @@ public class CompanyController {
     @RequestMapping("companyIndex")
     public String userIndex(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
                             @RequestParam(value = "size", required = true, defaultValue = "5") int size,
-                            String jobName, String jobAddress, String companyName, Model model) {
-        List<Job> jobList = jobService.findAllJob(page, size, jobName, jobAddress, companyName);
-        PageInfo<Job> pageInfo = new PageInfo<>(jobList);
-        model.addAttribute("pageInfo", pageInfo);
-
+                            String jobName, String jobAddress, String companyName, String userRealName, Model model) {
         List<Company> companyList = companyService.findAllCompany(1, 20, companyName);
         //分页
         PageInfo<Company> pageInfoCompany = new PageInfo<>(companyList);
         model.addAttribute("pageInfoCompany", pageInfoCompany);
+
+        List<User> userList = userService.findAllUser(page, size, userRealName);
+        //分页
+        PageInfo<User> pageInfoUser = new PageInfo<>(userList);
+        model.addAttribute("pageInfoUser", pageInfoUser);
         return "/company/companyIndex";
     }
+
+    /**
+     * 查看所有求职者
+     * @param page
+     * @param size
+     * @param userRealName
+     * @param model
+     * @return
+     */
+    @RequestMapping("findAllUser")
+    public String findAllJob(@RequestParam(value = "page", required = true, defaultValue = "1") int page,
+                             @RequestParam(value = "size", required = true, defaultValue = "5") int size,
+                            String userRealName, Model model) {
+        List<User> userList = userService.findAllUser(page, size, userRealName);
+        //分页
+        PageInfo<User> pageInfoUser = new PageInfo<>(userList);
+        model.addAttribute("pageInfoUser", pageInfoUser);
+        return "/company/findAllUser";
+    }
+
 
     /**
      * 跳转到底部导航

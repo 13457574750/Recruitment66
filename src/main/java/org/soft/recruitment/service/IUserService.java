@@ -16,7 +16,7 @@ public interface IUserService {
     void updateUserPassword(Integer userId, User User);
 
     // 查询所有用户
-    List<User> findAllUser();
+    List<User> findAllUser(int page, int size, String userRealName);
 
     //根据ID查询用户
     User findUserByUserId(Integer userId);

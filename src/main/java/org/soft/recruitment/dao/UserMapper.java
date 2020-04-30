@@ -1,6 +1,8 @@
 package org.soft.recruitment.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.soft.recruitment.model.User;
 import org.soft.recruitment.model.UserExample;
@@ -28,5 +30,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    List<User> findAllUser();
+    List<User> findAllUser(Map<String,Object> map);
 }

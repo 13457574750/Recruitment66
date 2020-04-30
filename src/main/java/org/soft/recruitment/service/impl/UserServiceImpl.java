@@ -1,5 +1,6 @@
 package org.soft.recruitment.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.soft.recruitment.model.User;
 import org.soft.recruitment.model.UserExample;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -68,9 +71,11 @@ public class UserServiceImpl implements IUserService {
      *
      * @return
      */
-    public List<User> findAllUser() {
-        List<User> userList = userMapper.findAllUser();
-        return userList;
+    public List<User> findAllUser(int page, int size, String userRealName) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("userRealName", userRealName);
+        PageHelper.startPage(page, size);
+        return userMapper.findAllUser(map);
     }
 
     /**

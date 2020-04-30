@@ -7,7 +7,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <title>留言管理</title>
+    <title>企业管理</title>
 </head>
 <body data-logobg="color_8" data-sidebarbg="color_8">
 <div class="lyear-layout-web">

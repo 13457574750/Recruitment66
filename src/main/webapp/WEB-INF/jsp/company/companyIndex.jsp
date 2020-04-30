@@ -58,58 +58,52 @@
 <div class="section section-padding">
     <div class="container">
         <div class="section-title">
-            <h2 class="title">最新工作</h2>
-            <p>以下是网站上列出的最新工作.</p>
+            <h2 class="title">优秀求职者</h2>
+            <p>以下是网站上的优秀求职者.</p>
         </div>
 
-        <!-- 工作列表 Start -->
+        <!-- 用户推荐列表 Start -->
         <div class="job-list-wrap">
-            <c:forEach items="${pageInfo.list}" var="job">
+            <c:forEach items="${pageInfoUser.list}" var="user">
 
-                <a class="job-list"
-                   onclick="show('${job.company.companyId}','${job.company.companyName}','${job.company.companyCreateTime}','${job.jobId}',
-                           '${job.jobName}','${job.jobAddress}','${job.jobSalary}','${job.jobEr}','${job.jobEducation}',
-                           '${job.jobReleaseTime}','${job.jobType}','${sessionScope.currUser.userId}','${sessionScope.currUser.userRealName}')">
+                <a class="job-list" onclick="showUser('${user.userRealName}')">
                     <div class="company-logo col-auto">
-                        <img src="${path}/images/${job.company.companyCreateTime}" width="70px" height="70px">
+                        <img src="${path}/images/${user.userCreateTime}" width="70px" height="70px">
                     </div>
                     <div class="salary-type col-auto order-sm-3">
-                        <span class="salary-range">$${job.jobSalary}</span>
-                        <span class="badge badge-success"><trans>${job.jobType}</trans></span>
+                        <span class="salary-range">$${user.userWantMoney}</span>
+                        <span class="badge badge-success"><trans>${user.userState}</trans></span>
                     </div>
                     <div class="content col">
                         <ul class="meta">
                             <li>
                                 <h6 class="title">
-                                    <trans>${job.jobName}</trans>
+                                    <trans>${user.userRealName}</trans>
                                 </h6>
                             </li>
-                            <li><strong class="text-primary"><i class="mdi mdi-alarm-multiple"></i>
-                                <trans>发布时间：${job.jobReleaseTime}</trans>
-                            </strong></li>
                         </ul>
                         <ul class="meta">
                             <li><strong class="text-primary"><i class="mdi mdi-account-card-details"></i>
-                                <trans>${job.company.companyName}</trans>
+                                <trans>${user.userUniversity}</trans>
                             </strong></li>
                             <li><strong class="text-primary"><i class="fa fa-map-marker"></i>
-                                <trans>${job.jobAddress}</trans>
+                                <trans>${user.userEducation}</trans>
                             </strong></li>
                             <li><strong class="text-primary"><i class="mdi mdi-pen"></i>
-                                <trans>${job.jobEr}</trans>
+                                <trans>${user.userMajor}</trans>
                             </strong></li>
                             <li><strong class="text-primary"><i class="mdi mdi-library"></i>
-                                <trans>${job.jobEducation}</trans>
+                                <trans>${user.userSex}</trans>
                             </strong></li>
                         </ul>
                     </div>
                 </a>
             </c:forEach>
         </div>
-        <!-- 工作列表 End -->
+        <!-- 用户推荐列表 End -->
 
         <div class="text-center mt-4 mt-lg-5">
-            <a href="${path}/job/findAllJob" class="btn btn-primary">查看所有职位</a>
+            <a href="${path}/company/findAllUser" class="btn btn-primary">查看所有求职者</a>
         </div>
 
     </div>
@@ -243,18 +237,13 @@
 
 <%@include file="../company/foot.jsp"%>
 <script type="text/javascript">
-    //加载参数并传递数据给url
-    function show(companyId, companyName, companyCreateTime, jobId, jobName, jobAddress,
-                  jobSalary, jobEr, jobEducation, jobReleaseTime, jobType, userId, userRealName) {
-        var url = "${path}/job/showAJob?companyId=" + companyId + "&companyName=" + companyName + "&companyCreateTime="
-            + companyCreateTime + "&jobId=" + jobId + "&jobName=" + jobName + "&jobAddress=" + jobAddress + "&jobSalary="
-            + jobSalary + "&jobSalary=" + jobSalary + "&jobEr=" + jobEr + "&jobEducation=" + jobEducation + "&jobReleaseTime="
-            + jobReleaseTime + "&jobType=" + jobType + "&userId=" + userId + "&userRealName=" + userRealName;
-        window.location.href = url;
-    }
-
     function search() {
         $("#searchForm").submit();
+    }
+
+    function showUser(userRealName){
+        var url="${path}/user/findUserByUserRealName?userRealName=" + userRealName;
+        window.location.href=url;
     }
 </script>
 </html>

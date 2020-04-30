@@ -19,7 +19,7 @@
 <!-- 简历 Start -->
 <div class="section section-padding">
     <div class="container">
-        <div class="row mb-n5" action="${pageContext.request.contextPath }/user/showResume" method="post">
+        <div class="row mb-n5" action="${pageContext.request.contextPath }/user/showResume2" method="post">
 
             <div class="col-lg-8 col-12 mb-5 pr-lg-5">
                 <!--左边 Start -->

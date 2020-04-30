@@ -383,7 +383,12 @@
       user_Create_Time = #{userCreateTime,jdbcType=VARCHAR}
     where user_Id = #{userId,jdbcType=INTEGER}
   </update>
-  <select id="findAllUser" resultMap="BaseResultMap">
+  <select id="findAllUser" parameterType="java.util.Map" resultMap="BaseResultMap">
   	select * from user
+  	where 1=1
+    <if test="userRealName != null and userRealName != ''">
+      <bind name="userRealName" value=" '%' + userRealName + '%' "/>
+      and user_Real_Name like #{userRealName}
+    </if>
   </select>
 </mapper>
