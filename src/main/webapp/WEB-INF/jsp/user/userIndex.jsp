@@ -122,28 +122,28 @@
 
             <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
-                <span class="counter">1354</span>
+                <span class="counter">1234</span>
                 <span class="title">工作岗位</span>
             </div>
             <!-- 数据 Start -->
 
             <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
-                <span class="counter">1741</span>
+                <span class="counter">4321</span>
                 <span class="title">求职者</span>
             </div>
             <!-- 数据 Start -->
 
             <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
-                <span class="counter">1204</span>
+                <span class="counter">4202</span>
                 <span class="title">简历</span>
             </div>
             <!-- 数据 Start -->
 
             <!-- 数据 Start -->
             <div class="funfact col-md-3 col-sm-6 col-12">
-                <span class="counter">142</span>
+                <span class="counter">233</span>
                 <span class="title">公司</span>
             </div>
             <!-- 数据 Start -->
